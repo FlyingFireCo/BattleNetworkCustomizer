@@ -9,6 +9,7 @@
 <body>
     <div id="app">
         <input type="file" ref="fileInput" @change="loadSaveFile" />
+        <input type="file" ref="fileInput" @change="loadRom" />
         <p>Position of game name string in the save data: {{ stringPosition }}</p>
         <p>Extracted Game Name: {{ gameName }}</p>
 

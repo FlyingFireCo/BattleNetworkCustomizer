@@ -113,6 +113,58 @@ new Vue({
             reader.readAsArrayBuffer(file);
         },
 
+        loadRom(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+        
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const buffer = e.target.result;
+                const dataView = new DataView(buffer);
+        
+                const chipData = this.extractChipData(dataView);
+                console.log(chipData);
+            };
+        
+            reader.readAsArrayBuffer(file);
+        },
+
+        extractChipData(dataView) {
+            const target = [99, 97, 110, 110, 111, 110]; // Target sequence of bytes to search for
+        
+            for (let i = 0; i < dataView.byteLength - target.length + 1; i++) {
+                let found = true;
+        
+                for (let j = 0; j < target.length; j++) {
+                    if (dataView.getUint8(i + j) !== target[j]) {
+                        found = false;
+                        break;
+                    }
+                }
+        
+                if (found) {
+                    console.log("Found at address:", i);
+        
+                    // Extract the next 20 characters
+                    const charsToLog = Math.min(80, dataView.byteLength - i);
+                    const chars = [];
+                    for (let j = 0; j < charsToLog; j++) {
+                        const byteValue = dataView.getUint8(i + j);
+        
+                        // Assuming printable ASCII characters are between 32 and 126.
+                        if (byteValue >= 32 && byteValue <= 126) {
+                            chars.push(String.fromCharCode(byteValue));
+                        } else {
+                            chars.push('.');
+                        }
+                    }
+        
+                    console.log(chars.join(""));
+                }
+            }
+        },
+
+
         logSurroundingBytes(fullByteArray, before = 20, after = 20) {
             // Log bytes before SAVE_START_OFFSET
             const beforeBytes = Array.from(fullByteArray.slice(Math.max(0, SAVE_START_OFFSET - before), SAVE_START_OFFSET))
@@ -147,18 +199,40 @@ new Vue({
         loadFolderChips(byteArray, folderIndex) {
             const chipStartOffset = CHIP_FOLDER_OFFSET + (folderIndex * CHIPS_PER_FOLDER * CHIP_SIZE);
             this.chips = []; // Clear chips array
-
+        
             for (let i = 0; i < CHIPS_PER_FOLDER; i++) {
                 const chipOffset = chipStartOffset + (i * CHIP_SIZE);
                 let chipBytes = byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
+                chipBytes[0] = 250 + i;
+                chipBytes[1] = 0;
 
+                //i * 2 - 1 mega codes a-*
+                //some mega chips are in standard set
+
+                //need to remember to skip 18 (gun del sol ex)
+                //37-39 are corn shot, but 
+        
                 // Extract the ID and Code from chipBytes
-                const id = (chipBytes[0] | ((chipBytes[1] & 0x1F) << 8)); // Get the first 9 bits
-                byteArray[chipOffset + 1] &= 0x0F; // Set the top 4 bits to 0
-                chipBytes = byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
-                const code = (chipBytes[1] >> 4); // Get the next 7 bits
+                let id = (chipBytes[0]); // Get the first 9 bits
 
+                let code = (chipBytes[1]); // Get the first 9 bits
+        
+                //if id is 1 set the bytes to 2
+                // if (id === 1) {
+                //     chipBytes[0] = 0x04;
+                //     chipBytes[1] = 0x00;
+                //     id = (chipBytes[0] | ((chipBytes[1] & 0x1F) << 8)); // Get the first 9 bits
+                // }
+        
+                //byteArray[chipOffset + 1] &= 0x0F; // Set the top 4 bits to 0
+                // chipBytes = byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
+                // const code = (chipBytes[1] >> 4); // Get the next 7 bits
+        
 
+                //set the changes back to the byteArray
+                byteArray.set(chipBytes, chipOffset);
+                console.log(`Chip ${i}:`, chipBytes);
+        
                 this.chips.push({ id, code });
             }
         },
