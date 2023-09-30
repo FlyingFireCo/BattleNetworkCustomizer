@@ -27,12 +27,19 @@ new Vue({
         chips: []  // This will hold the chips for the selected folder
     },
     methods: {
-        mask(byteArray, start, size) {
-            const maskValue = byteArray[MASK_OFFSET];
-            for (let i = start; i < start + size; i++) {
-                byteArray[i] ^= maskValue;
+        mask(byteArray) {
+            const mask = new DataView(byteArray.buffer).getUint32(MASK_OFFSET, true); // assuming little-endian
+            const maskByte = mask & 0xFF; // Take only the least significant byte
+        
+            for (let i = 0; i < byteArray.length; i++) {
+                byteArray[i] ^= maskByte;
             }
-        },
+        
+            // Write the original mask value back to its offset
+            const maskBytes = new Uint8Array(new Uint32Array([mask]).buffer);
+            byteArray.set(maskBytes, MASK_OFFSET);
+        }
+        ,
         loadSaveFile(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -41,20 +48,21 @@ new Vue({
 
             const reader = new FileReader();
             reader.onload = (e) => {
-                const byteArray = new Uint8Array(e.target.result);
+                let fullByteArray = new Uint8Array(e.target.result);
+                const byteArray = fullByteArray.slice(SAVE_START_OFFSET, SAVE_START_OFFSET + SAVE_SIZE);
+
+                const originalByteArray = new Uint8Array(byteArray); // Make a copy of the original bytes for comparison later
+
 
                 // Mask the entire data
-                const mask = byteArray[MASK_OFFSET];
-                for (let i = 0; i < byteArray.length; i++) {
-                    byteArray[i] ^= mask;
-                }
+                this.mask(byteArray);
 
                 // Find the start position of the game name in the masked data
-                // this.stringPosition = this.indexOfSequence(byteArray, expectedBytes);
+                this.stringPosition = this.indexOfSequence(byteArray, expectedBytes);
 
                 // Extract the bytes for the full game name
-                const gameNameBytes = byteArray.slice(SAVE_START_OFFSET + GAME_NAME_OFFSET, SAVE_START_OFFSET + GAME_NAME_OFFSET + 20);
-                this.numFolders = byteArray[SAVE_START_OFFSET + 0x1c09];
+                const gameNameBytes = byteArray.slice(GAME_NAME_OFFSET, GAME_NAME_OFFSET + 20);
+                this.numFolders = byteArray[0x1c09];
                 this.getEquippedFolder(byteArray);
 
 
@@ -73,27 +81,57 @@ new Vue({
                 // At the end of the loadSaveFile, load the chip data for the selected folder
                 this.loadFolderChips(byteArray, this.selectedFolder);
 
-                // Re-mask the entire data before saving
-                for (let i = 0; i < byteArray.length; i++) {
-                    byteArray[i] ^= mask;
-                }
-                const originalChecksum = new DataView(byteArray.buffer).getUint32(SAVE_START_OFFSET + CHECKSUM_OFFSET, true); // assuming little-endian
+                const originalChecksum = new DataView(byteArray.buffer).getUint32(CHECKSUM_OFFSET, true); // assuming little-endian
                 console.log(`Original Checksum: ${originalChecksum}`);
+
+                // Log bytes around the checksum for inspection
+                const startLogOffset = CHECKSUM_OFFSET - 10; // 10 bytes before
+                const endLogOffset = CHECKSUM_OFFSET + 14; // 10 bytes after + 4 bytes of checksum itself
+                console.log(`Bytes around the checksum: ${Array.from(byteArray.slice(startLogOffset, endLogOffset)).map(b => b.toString(16).padStart(2, '0')).join(' ')}`);
                 if (true) {//checksum debug
                     const newChecksum = this.computeChecksum(byteArray);
                     const checksumBytes = new Uint8Array(new Uint32Array([newChecksum]).buffer);
-                    byteArray.set(checksumBytes, SAVE_START_OFFSET + CHECKSUM_OFFSET);
-
+                    byteArray.set(checksumBytes, CHECKSUM_OFFSET);
                 }
-                const newChecksum = new DataView(byteArray.buffer).getUint32(SAVE_START_OFFSET + CHECKSUM_OFFSET, true); // assuming little-endian
+                const newChecksum = new DataView(byteArray.buffer).getUint32(CHECKSUM_OFFSET, true); // assuming little-endian
                 console.log(`New Checksum: ${newChecksum}`);
 
 
+                // Re-mask the entire data before saving
+                this.mask(byteArray);
+                this.compareAndLogDifferences(originalByteArray, byteArray);
+
+                // Merge the modified byteArray back into fullByteArray
+                fullByteArray.set(byteArray, SAVE_START_OFFSET);
+
+
+
                 // Add a call to download the modified file
-                this.downloadModifiedFile(byteArray);
+                this.downloadModifiedFile(fullByteArray); // Using fullByteArray here
             };
 
             reader.readAsArrayBuffer(file);
+        },
+
+        logSurroundingBytes(fullByteArray, before = 20, after = 20) {
+            // Log bytes before SAVE_START_OFFSET
+            const beforeBytes = Array.from(fullByteArray.slice(Math.max(0, SAVE_START_OFFSET - before), SAVE_START_OFFSET))
+                                      .map(b => b.toString(16).padStart(2, '0'))
+                                      .join(' ');
+            console.log(`Bytes before byteArray: ${beforeBytes}`);
+        
+            // Log bytes after SAVE_START_OFFSET + SAVE_SIZE
+            const afterBytes = Array.from(fullByteArray.slice(SAVE_START_OFFSET + SAVE_SIZE, SAVE_START_OFFSET + SAVE_SIZE + after))
+                                     .map(b => b.toString(16).padStart(2, '0'))
+                                     .join(' ');
+            console.log(`Bytes after byteArray: ${afterBytes}`);
+        },        
+        compareAndLogDifferences(original, modified) {
+            for (let i = 0; i < original.length; i++) {
+                if (original[i] !== modified[i]) {
+                    console.log(`Difference at index ${i}: Original Byte: ${original[i]}, Modified Byte: ${modified[i]}`);
+                }
+            }
         },
         getEquippedFolder(byteArray) {
             // Use the method to get the naviStatsOffset
@@ -102,7 +140,7 @@ new Vue({
         },
 
         getNaviStatsOffset(naviId) {
-            return SAVE_START_OFFSET + 0x47cc + 0x64 * (naviId === 0 ? 0 : 1);
+            return 0x47cc + 0x64 * (naviId === 0 ? 0 : 1);
         },
 
         // This method will extract the chips for the given folder
@@ -111,13 +149,14 @@ new Vue({
             this.chips = []; // Clear chips array
 
             for (let i = 0; i < CHIPS_PER_FOLDER; i++) {
-                const chipOffset = SAVE_START_OFFSET + chipStartOffset + (i * CHIP_SIZE);
-                const chipBytes = byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
+                const chipOffset = chipStartOffset + (i * CHIP_SIZE);
+                let chipBytes = byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
 
                 // Extract the ID and Code from chipBytes
                 const id = (chipBytes[0] | ((chipBytes[1] & 0x1F) << 8)); // Get the first 9 bits
+                byteArray[chipOffset + 1] &= 0x0F; // Set the top 4 bits to 0
+                chipBytes = byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
                 const code = (chipBytes[1] >> 4); // Get the next 7 bits
-                // byteArray[chipOffset + 1] &= 0x0F; // Set the top 4 bits to 0
 
 
                 this.chips.push({ id, code });
@@ -139,7 +178,7 @@ new Vue({
         },
         // Method to compute the checksum
         computeChecksum(byteArray) {
-            let checksum = this.computeRawChecksum(byteArray, SAVE_START_OFFSET + CHECKSUM_OFFSET);
+            let checksum = this.computeRawChecksum(byteArray, CHECKSUM_OFFSET);
 
             if (this.gameVariant === "Gregar") {
                 checksum += 0x72;
@@ -151,19 +190,21 @@ new Vue({
         },
 
         computeRawChecksum(byteArray, checksumOffset) {
-            // Sum all byte values in the buffer except the checksum bytes
-            const totalSum = byteArray.reduce((acc, val, idx) => {
-                // If the current index is within the range of the checksum bytes, don't include it in the sum
-                if (idx >= checksumOffset && idx < checksumOffset + 4) {
-                    return acc;
+            // Sum all the byte values in the byteArray
+            let totalSum = 0;
+            for (let i = 0; i < byteArray.length; i++) {
+                if (i >= checksumOffset && i < checksumOffset + 4) {
+                    // Log the bytes we're skipping to verify if they match the original checksum
+                    console.log(`Skipped byte at index ${i}: ${byteArray[i].toString(16).padStart(2, '0')}`);
+                    continue; // Skip the 4 bytes at the checksum offset
                 }
-                return acc + val;
-            }, 0);
+                totalSum = (totalSum + byteArray[i]) >>> 0;
+            }
 
-            const checksumSum = new DataView(byteArray.buffer).getUint32(checksumOffset, true);
+            return totalSum;
+        }
 
-            return totalSum - checksumSum;
-        },
+        ,
 
         indexOfSequence(array, sequence) {
             for (let i = 0; i < array.length - sequence.length + 1; i++) {
