@@ -339,9 +339,9 @@ new Vue({
         computeChecksum(byteArray) {
             let checksum = this.computeRawChecksum(byteArray, CHECKSUM_OFFSET);
 
-            if (this.gameVariant === "Gregar") {
+            if (this.gameName.includes("REXE6 G")) {
                 checksum += 0x72;
-            } else if (this.gameVariant === "Falzar") {
+            } else if (this.gameName.includes("REXE6 F")) {
                 checksum += 0x18;
             }
 
