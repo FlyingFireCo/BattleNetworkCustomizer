@@ -29,8 +29,12 @@
       "PackagePath": "staticwebassets\\app.js"
     },
     {
-      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\csvParser.py",
-      "PackagePath": "staticwebassets\\csvParser.py"
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Folder1.json",
+      "PackagePath": "staticwebassets\\folders\\Folder1.json"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Shinobi.json",
+      "PackagePath": "staticwebassets\\folders\\Shinobi.json"
     },
     {
       "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\img\\image1.png",

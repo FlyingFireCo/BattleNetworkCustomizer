@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4b6wWkqUHkE9cLX3eSQJGi0bXSEai4ZcjwDzcyBhUoc=",
+  "Hash": "KpKUQSa2V4NqqLVC/KveBSq1vrSoLzagorMjQXTPVnI=",
   "Source": "BattleNetworkCustomizer",
   "BasePath": "_content/BattleNetworkCustomizer",
   "Mode": "Default",
@@ -34,12 +34,12 @@
       "OriginalItemSpec": "wwwroot\\app.js"
     },
     {
-      "Identity": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\csvParser.py",
+      "Identity": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Folder1.json",
       "SourceId": "BattleNetworkCustomizer",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\",
       "BasePath": "_content/BattleNetworkCustomizer",
-      "RelativePath": "csvParser.py",
+      "RelativePath": "folders/Folder1.json",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,7 +48,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\csvParser.py"
+      "OriginalItemSpec": "wwwroot\\folders\\Folder1.json"
+    },
+    {
+      "Identity": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Shinobi.json",
+      "SourceId": "BattleNetworkCustomizer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\",
+      "BasePath": "_content/BattleNetworkCustomizer",
+      "RelativePath": "folders/Shinobi.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\folders\\Shinobi.json"
     },
     {
       "Identity": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\Giga.csv",

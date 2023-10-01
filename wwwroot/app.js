@@ -34,6 +34,18 @@ new Vue({
         sortDirection: 0,  // 0: none, 1: ascending, -1: descending.
         currentTab: 'Standard',
         showDetailedFilter: false,
+        folderName: '',
+        folderNames: [],
+        selectedItems: null,
+        tangoSaveFolderName: '',
+        showDialog: false,
+        dialogTitle: "",
+        dialogItems: [],
+        selectedItem: null,
+        dialogFilter: "",
+        dialogCallback: null, // This will store a function to be executed on confirmation
+        fullByteArray: null,
+        byteArray: null,
         detailedFilter: {
             Name: '',
             Description: '',
@@ -42,7 +54,7 @@ new Vue({
             Element: '',
             MB: ''
         },
-        selectedFolderChips: [], // Chips currently in the folder
+        selectedItemsChips: [], // Chips currently in the folder
         highlightedFolderChips: [], // Chips highlighted in the folder
         highlightedLibraryChips: [], // Chips highlighted in the library
 
@@ -149,6 +161,29 @@ new Vue({
                 }
             });
             return [...this.chips, ...placeholders];
+        },
+        filteredOptions() {
+            if (!this.dialogFilter) return this.dialogItems;
+
+            // Convert the filter string to lowercase for case-insensitive search
+            const filter = this.dialogFilter.toLowerCase();
+
+            // Return filtered items using our simple fuzzy search
+            return this.dialogItems.filter(item => {
+                let lastIndex = -1;
+                for (let char of filter) {
+                    lastIndex = item.toLowerCase().indexOf(char, lastIndex + 1);
+                    if (lastIndex === -1) return false; // Char was not found
+                }
+                return true; // Every char in filter was found in item in order
+            });
+        }
+
+    },
+    watch: {
+        tangoSaveFolderName(newVal) {
+            // When tangoSaveFolderName changes, save the new value to a cookie
+            this.setCookie('tangoSaveFolderName', newVal, 365);
         }
     },
 
@@ -156,10 +191,127 @@ new Vue({
         this.fetchChips('giga', this.gigaList);
         this.fetchChips('mega', this.megaList);
         this.fetchChips('standard', this.standardList);
+        this.tangoSaveFolderName = this.getCookie('tangoSaveFolderName') || '';
+
     },
 
     methods: {
+        setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        },
+        getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        },
+        async loadFolders() {
+            try {
+                const response = await fetch(`/folders`);
 
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                this.folderNames = await response.json();
+            } catch (error) {
+                console.error('Error loading the folder names', error);
+            }
+        },
+
+        async loadSelectedFolder() {
+            if (!this.selectedItem) return;
+
+            try {
+                const response = await fetch(`/folders/${encodeURIComponent(this.selectedItem)}`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const folderData = await response.json();
+                this.loadFolderFromJson(folderData);
+            } catch (error) {
+                console.error('Error loading the selected folder', error);
+            }
+        },
+
+        loadFolderFromJson(jsonChips) {
+            this.chips = []; // Clear chips array
+
+            jsonChips.forEach(chipData => {
+                const chip = this.readChipData(chipData.Id, chipData.Code);
+                this.chips.push({ chip });
+            });
+        },
+
+        openFolderDialog() {
+            this.loadFolders();
+            this.showDialog = true;
+            this.dialogTitle = "Select a Folder";
+        },
+
+        confirmFolder() {
+            this.loadSelectedFolder();
+            this.showDialog = false;
+        },
+        openDialog(title, fetchUrl, callback) {
+            this.dialogTitle = title;
+            this.dialogCallback = callback;
+            fetch(fetchUrl)
+                .then(res => res.json())
+                .then(data => {
+                    this.dialogItems = data;
+                    this.showDialog = true;
+                });
+        },
+        openDialogPost(title, fetchUrl, callback) {
+            this.dialogTitle = title;
+            this.dialogCallback = callback;
+
+            // Define the request payload
+            const payload = {
+                path: this.tangoSaveFolderName
+            };
+
+            // Make the POST request
+            fetch(fetchUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    this.dialogItems = data;
+                    this.showDialog = true;
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error.message);
+                });
+        },
+        confirmDialog() {
+            if (this.dialogCallback && typeof this.dialogCallback === 'function') {
+                this.dialogCallback(this.selectedItem);
+            }
+            this.showDialog = false;
+        },
         removeFolderChip(chip) {
             const chipIndex = this.chips.indexOf(chip);
             this.chips.splice(chipIndex, 1);
@@ -199,7 +351,7 @@ new Vue({
             this.$forceUpdate();
         },
 
-        checkCanAddToFolder(chip){
+        checkCanAddToFolder(chip) {
             //todo check MB and limitiations
             return true;
         },
@@ -221,6 +373,37 @@ new Vue({
                     console.error(`There was an error fetching the ${chipType} chip JSON data:`, error);
                 });
         },
+
+        async loadSaveFileFromAPI() {
+            try {
+                let response = await this.fetchSaveData(this.selectedItem);
+
+                if (response) {
+                    this.fullByteArray = new Uint8Array(response);
+                    this.byteArray = this.fullByteArray.slice(SAVE_START_OFFSET, SAVE_START_OFFSET + SAVE_SIZE);
+                    this.loadSaveFile();
+                }
+            } catch (error) {
+                console.error("Error fetching save data:", error);
+            }
+        },
+        async fetchSaveData(filePath) {
+            const requestConfig = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ path: filePath })
+            };
+            
+            let response = await fetch("/Save/GetSaveData", requestConfig);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            return response.arrayBuffer();
+        },
         mask(byteArray) {
             const mask = new DataView(byteArray.buffer).getUint32(MASK_OFFSET, true); // assuming little-endian
             const maskByte = mask & 0xFF; // Take only the least significant byte
@@ -234,77 +417,67 @@ new Vue({
             byteArray.set(maskBytes, MASK_OFFSET);
         }
         ,
-        loadSaveFile(event) {
-            const file = event.target.files[0];
-            if (!file) return;
+        loadSaveFile() {
+
+            // const originalByteArray = new Uint8Array(byteArray); // Make a copy of the original bytes for comparison later
 
             const expectedBytes = new TextEncoder().encode(this.gameName);
+            
+            // Mask the entire data
+            this.mask(this.byteArray);
 
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                let fullByteArray = new Uint8Array(e.target.result);
-                const byteArray = fullByteArray.slice(SAVE_START_OFFSET, SAVE_START_OFFSET + SAVE_SIZE);
+            // Find the start position of the game name in the masked data
+            this.stringPosition = this.indexOfSequence(this.byteArray, expectedBytes);
 
-                const originalByteArray = new Uint8Array(byteArray); // Make a copy of the original bytes for comparison later
-
-
-                // Mask the entire data
-                this.mask(byteArray);
-
-                // Find the start position of the game name in the masked data
-                this.stringPosition = this.indexOfSequence(byteArray, expectedBytes);
-
-                // Extract the bytes for the full game name
-                const gameNameBytes = byteArray.slice(GAME_NAME_OFFSET, GAME_NAME_OFFSET + 20);
-                this.numFolders = byteArray[0x1c09];
-                this.getEquippedFolder(byteArray);
+            // Extract the bytes for the full game name
+            const gameNameBytes = this.byteArray.slice(GAME_NAME_OFFSET, GAME_NAME_OFFSET + 20);
+            this.numFolders = this.byteArray[0x1c09];
+            this.getEquippedFolder(this.byteArray);
 
 
-                // Attempt to decode the bytes to a string
-                try {
-                    this.gameName = new TextDecoder().decode(gameNameBytes);
-                } catch (error) {
-                    console.error("Error decoding game name:", error);
-                    this.gameName = "Decoding error";
-                }
+            // Attempt to decode the bytes to a string
+            try {
+                this.gameName = new TextDecoder().decode(gameNameBytes);
+            } catch (error) {
+                console.error("Error decoding game name:", error);
+                this.gameName = "Decoding error";
+            }
 
-                // Logging for debugging purposes
-                const hexBytes = Array.from(gameNameBytes).map(b => b.toString(16).padStart(2, '0')).join(' ');
-                console.log("Hex representation:", hexBytes);
+            // Logging for debugging purposes
+            const hexBytes = Array.from(gameNameBytes).map(b => b.toString(16).padStart(2, '0')).join(' ');
+            console.log("Hex representation:", hexBytes);
 
-                // At the end of the loadSaveFile, load the chip data for the selected folder
-                this.loadFolderChips(byteArray, this.selectedFolder);
+            // At the end of the loadSaveFile, load the chip data for the selected folder
+            this.loadFolderChips(this.byteArray, this.selectedFolder);
 
-                const originalChecksum = new DataView(byteArray.buffer).getUint32(CHECKSUM_OFFSET, true); // assuming little-endian
-                console.log(`Original Checksum: ${originalChecksum}`);
+            const originalChecksum = new DataView(this.byteArray.buffer).getUint32(CHECKSUM_OFFSET, true); // assuming little-endian
+            console.log(`Original Checksum: ${originalChecksum}`);
 
-                // Log bytes around the checksum for inspection
-                const startLogOffset = CHECKSUM_OFFSET - 10; // 10 bytes before
-                const endLogOffset = CHECKSUM_OFFSET + 14; // 10 bytes after + 4 bytes of checksum itself
-                console.log(`Bytes around the checksum: ${Array.from(byteArray.slice(startLogOffset, endLogOffset)).map(b => b.toString(16).padStart(2, '0')).join(' ')}`);
-                if (true) {//checksum debug
-                    const newChecksum = this.computeChecksum(byteArray);
-                    const checksumBytes = new Uint8Array(new Uint32Array([newChecksum]).buffer);
-                    byteArray.set(checksumBytes, CHECKSUM_OFFSET);
-                }
-                const newChecksum = new DataView(byteArray.buffer).getUint32(CHECKSUM_OFFSET, true); // assuming little-endian
-                console.log(`New Checksum: ${newChecksum}`);
+            // Log bytes around the checksum for inspection
+            const startLogOffset = CHECKSUM_OFFSET - 10; // 10 bytes before
+            const endLogOffset = CHECKSUM_OFFSET + 14; // 10 bytes after + 4 bytes of checksum itself
+            console.log(`Bytes around the checksum: ${Array.from(this.byteArray.slice(startLogOffset, endLogOffset)).map(b => b.toString(16).padStart(2, '0')).join(' ')}`);
+            if (true) {//checksum debug
+                const newChecksum = this.computeChecksum(this.byteArray);
+                const checksumBytes = new Uint8Array(new Uint32Array([newChecksum]).buffer);
+                this.byteArray.set(checksumBytes, CHECKSUM_OFFSET);
+            }
+            const newChecksum = new DataView(this.byteArray.buffer).getUint32(CHECKSUM_OFFSET, true); // assuming little-endian
+            console.log(`New Checksum: ${newChecksum}`);
 
 
-                // Re-mask the entire data before saving
-                this.mask(byteArray);
-                // this.compareAndLogDifferences(originalByteArray, byteArray);
+            // Re-mask the entire data before saving
+            this.mask(this.byteArray);
+            // this.compareAndLogDifferences(originalByteArray, byteArray);
 
-                // Merge the modified byteArray back into fullByteArray
-                fullByteArray.set(byteArray, SAVE_START_OFFSET);
+            // Merge the modified byteArray back into fullByteArray
+            this.fullByteArray.set(this.byteArray, SAVE_START_OFFSET);
 
 
 
-                // Add a call to download the modified file
-                // this.downloadModifiedFile(fullByteArray); // Using fullByteArray here
-            };
+            // Add a call to download the modified file
+            // this.downloadModifiedFile(fullByteArray); // Using fullByteArray here
 
-            reader.readAsArrayBuffer(file);
         },
 
         loadRom(event) {
@@ -389,6 +562,8 @@ new Vue({
             return 0x47cc + 0x64 * (naviId === 0 ? 0 : 1);
         },
 
+
+
         // This method will extract the chips for the given folder
         loadFolderChips(byteArray, folderIndex) {
             const chipStartOffset = CHIP_FOLDER_OFFSET + (folderIndex * CHIPS_PER_FOLDER * CHIP_SIZE);
@@ -396,88 +571,14 @@ new Vue({
 
             for (let i = 0; i < CHIPS_PER_FOLDER; i++) {
                 const chipOffset = chipStartOffset + (i * CHIP_SIZE);
-                let chipBytes = byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
-                // chipBytes[0] = i + 240;
-                // chipBytes[1] = 1;
+                const chipBytes = byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
 
                 const rawId = chipBytes[0];
-                let id = rawId;
-                let codeIndex = chipBytes[1]
-                let isSet2 = false;
-                if (chipBytes[1] % 2 == 1) {
-                    codeIndex = parseInt(chipBytes[1] / 2);
-                    //look at the MId
-                    isSet2 = true;
-                }
-                else {
-                    codeIndex = chipBytes[1] / 2;
-                }
+                const rawCode = chipBytes[1];
 
+                const chip = this.readChipData(rawId, rawCode);
 
-
-                // const chip = this.getChip();
-
-                let codeIndexes = "ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
-
-                let code = codeIndexes[codeIndex];
-
-                let chip = this.allChips.find(c =>
-                    (isSet2) ? c.MId == id : c.SId == id);
-
-                //clone this chip object and create an instance of it with the current code
-                chip = Object.assign({}, chip);
-                chip.code = code;
-                chip.raw = {
-                    id: rawId,
-                    code: chipBytes[1],
-                };
-
-
-
-                // codeIndex = codeIndexes.indexOf(chip.Code[0]);
-
-
-
-                // let id = 0;
-                // let code = 0;
-
-                // if (chip.SId) {
-                //     id = chip.SId;
-                //     code = codeIndex * 2;
-                // }
-                // else if (chip.MId) {
-                //     id = chip.MId;
-                //     code = codeIndex * 2 +1;
-                // }
-
-
-
-                // chipBytes[0] = id;
-                // chipBytes[1] = code;
-                //i * 2 - 1 mega codes a-*
-                //some mega chips are in standard set
-
-                //need to remember to skip 18 (gun del sol ex)
-                //37-39 are corn shot, but 
-
-                // Extract the ID and Code from chipBytes
-                // let id = (chipBytes[0]); // Get the first 9 bits
-
-                // let code = (chipBytes[1]); // Get the first 9 bits
-
-                //if id is 1 set the bytes to 2
-                // if (id === 1) {
-                //     chipBytes[0] = 0x04;
-                //     chipBytes[1] = 0x00;
-                //     id = (chipBytes[0] | ((chipBytes[1] & 0x1F) << 8)); // Get the first 9 bits
-                // }
-
-                //byteArray[chipOffset + 1] &= 0x0F; // Set the top 4 bits to 0
-                // chipBytes = byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
-                // const code = (chipBytes[1] >> 4); // Get the next 7 bits
-
-
-                //set the changes back to the byteArray
+                // Set the changes back to the byteArray
                 byteArray.set(chipBytes, chipOffset);
                 console.log(`Chip ${i}:`, chipBytes);
 
@@ -485,6 +586,71 @@ new Vue({
             }
         },
 
+        readChipData(rawId, rawCode) {
+            let id = rawId;
+            let codeIndex = rawCode;
+            let isSet2 = false;
+
+            if (rawCode % 2 == 1) {
+                codeIndex = parseInt(rawCode / 2);
+                isSet2 = true; //look at the MId
+            }
+            else {
+                codeIndex = rawCode / 2;
+            }
+
+            const codeIndexes = "ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
+            const code = codeIndexes[codeIndex];
+
+            const chip = this.allChips.find(c =>
+                (isSet2) ? c.MId == id : c.SId == id);
+
+            const chipInstance = Object.assign({}, chip);
+            chipInstance.code = code;
+
+            return chipInstance;
+        },
+
+
+        async saveFolder() {
+            // Convert this.chips to raw data
+            const rawChips = this.chips.map(chipObj => this.chipToRaw(chipObj.chip));
+
+            // Make an HTTP POST request using fetch
+            try {
+                const response = await fetch(`/folders/${this.folderName}`, {  // Modified the URL to include folderName
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(rawChips)  // Sending rawChips directly without wrapping in an object
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                } else {
+                    console.log('Folder saved successfully', await response.text());
+                }
+            } catch (error) {
+                console.error('Error saving the folder', error);
+            }
+        },
+
+        chipToRaw(chip) {
+            // Constants
+            const codeIndexes = "ABCDEFGHIJKLMNOPQRSTUVWXYZ*";
+
+            // Determine ID - We'll prefer MId if present since isSet2 checks for MId first in your method
+            const id = chip.MId || chip.SId;
+
+            // Find the code index. Using the indexOf method to get the position of the code in the codeIndexes string.
+            const rawCode = codeIndexes.indexOf(chip.code);
+
+            // If the chip has an MId, we adjust the rawCode value.
+            let code = (chip.MId) ? (2 * rawCode) + 1 : 2 * rawCode;
+
+            return { id, code };
+        },
         getChip() {
             //right now just get a random chip from all chips
             let chip = this.allChips[Math.floor(Math.random() * this.allChips.length)];

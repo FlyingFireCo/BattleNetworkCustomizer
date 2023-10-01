@@ -12,13 +12,24 @@
 <body>
     <div id="app">
         <input type="file" ref="fileInput" @change="loadSaveFile" />
+        <button @click="openDialog('Select a Folder', '/folders', confirmFolder)">Select Folder</button>
         <!-- <p>Position of game name string in the save data: {{ stringPosition }}</p> -->
         <p>Extracted Game Name: {{ gameName }}</p>
+        <label>Folder Name:
+            <input style="width:10%" type="text" v-model="folderName" placeholder="Enter folder name...">
+        </label><button @click="saveFolder">Save Folder</button>
+
+        <label>Tango Save Folder:
+            <input style="width:10%" type="text" v-model="tangoSaveFolderName" placeholder="Enter folder name...">
+        </label>
+        <button @click="openDialogPost('Open Save', `/save`, loadSaveFileFromAPI)">Open Save</button>
+
+        <!-- <button @click="saveFolder">Save Folder</button> -->
 
         <div style="width:80%; margin: 0 auto">
-            <!-- <p>Chips in Folder #{{ selectedFolder + 1 }}:</p> -->
+            <!-- <p>Chips in Folder #{{ selectedItem + 1 }}:</p> -->
             <div style="float:left; width: 50%;
-        height: 90vh;
+        height: 85vh;
         overflow-y: scroll;">
                 <table border="1">
                     <thead>
@@ -57,7 +68,7 @@
             <!-- Chips view on the right -->
             <div style="    float: right;
         width: 50%;
-        height: 90vh;
+        height: 85vh;
         overflow-y: scroll;">
 
                 <!-- Toggle Detailed Filter Button -->
@@ -159,6 +170,31 @@
             <div style="clear:both;"></div> <!-- Clearing floats -->
         </div>
         <!-- <p>Number of Folders: {{ numFolders }}</p> -->
+        <div v-if="showDialog" class="modal-dialog">
+            <div class="modal-content">
+                <h2>{{ dialogTitle }}</h2>
+
+                <div class="input-container">
+                    <input type="text" v-model="dialogFilter" placeholder="Filter options">
+
+                </div>
+
+                <!-- This is the list of folders from the /wwwroot/folders directory -->
+                <div class="option-list">
+                    <div class="option-item" v-for="item in filteredOptions" :key="item"
+                        :class="{ 'selected': item === selectedItem }" @click="selectedItem = item"
+                        @dblclick="confirmDialog">
+                        {{ item }}
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <button @click="showDialog = false">Cancel</button>
+                    <button @click="confirmDialog">OK</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
