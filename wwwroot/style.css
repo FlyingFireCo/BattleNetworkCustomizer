@@ -314,3 +314,49 @@ textarea {
     width: 30vw;
         height: 14em;
   }
+
+  /* Base Table Style */
+table {
+    width: 80%; /* Setting the width to 80% of its container */
+    margin: 0 auto; /* Centering the table horizontally */
+    border-collapse: collapse; /* Removing the space between cells */
+    border: 1px solid #556; /* Sleek border around the table */
+    background-color: #334; /* Dark background */
+    color: white; /* Text color */
+    margin-bottom: 20px; /* Space below the table */
+}
+
+/* Table Header */
+table thead {
+    background-color: #445; /* Slightly different shade for header */
+}
+
+table thead th {
+    padding: 10px 5px; /* Padding for header cells */
+    border-bottom: 2px solid #556; /* Sleek border at the bottom of the header */
+    text-transform: uppercase; /* Making header text uppercase for a modern feel */
+    letter-spacing: 1px; /* Spacing between letters for a sleek look */
+    font-weight: normal; /* Removing bold - optional */
+}
+
+/* Table Rows */
+table tbody tr:nth-child(odd) {
+    background-color: hsl(240 22% 17% / 1)
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #334; /* Even rows with the base color */
+}
+
+/* Table Data Cells */
+table td {
+    padding: 8px 5px; /* Padding inside each cell */
+    border-bottom: 1px solid #556; /* Sleek border at the bottom of each row */
+}
+
+/* Image inside the cells */
+table td img {
+    display: block; /* Making images block to remove any unwanted space */
+    margin: 0 auto; /* Centering images horizontally in cells */
+    border-radius: 4px; /* Optional rounded corners */
+}

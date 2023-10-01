@@ -4,6 +4,7 @@
         "MId": null,
         "Name": "Cannon",
         "Description": "Cannon attack to 1 enemy",
+        "Damage": "40",
         "Code": [
             "*",
             "A",
@@ -19,6 +20,7 @@
         "MId": null,
         "Name": "HiCannon",
         "Description": "Cannon attack to 1 enemy",
+        "Damage": "100",
         "Code": [
             "*",
             "L",
@@ -34,6 +36,7 @@
         "MId": null,
         "Name": "M-Cannon",
         "Description": "Cannon attack to 1 enemy",
+        "Damage": "180",
         "Code": [
             "*",
             "R",
@@ -49,6 +52,7 @@
         "MId": null,
         "Name": "AirShot",
         "Description": "Knock enmy back 1 square",
+        "Damage": "20",
         "Code": [
             "*"
         ],
@@ -61,6 +65,7 @@
         "MId": null,
         "Name": "Vulcan1",
         "Description": "3-shot to pierce 1 panel!",
+        "Damage": "10",
         "Code": [
             "*",
             "B",
@@ -76,6 +81,7 @@
         "MId": null,
         "Name": "Vulcan2",
         "Description": "4-shot to pierce 1 panel!",
+        "Damage": "15",
         "Code": [
             "D",
             "F",
@@ -90,6 +96,7 @@
         "MId": null,
         "Name": "Vulcan3",
         "Description": "5-shot to pierce 1 panel!",
+        "Damage": "20",
         "Code": [
             "A",
             "G",
@@ -104,6 +111,7 @@
         "MId": null,
         "Name": "SuprVulc",
         "Description": "10-shot vulcan cannon!",
+        "Damage": "20",
         "Code": [
             "V"
         ],
@@ -116,6 +124,7 @@
         "MId": null,
         "Name": "Spreadr1",
         "Description": "Spreads damg to adj panels",
+        "Damage": "30",
         "Code": [
             "*",
             "L",
@@ -131,6 +140,7 @@
         "MId": null,
         "Name": "Spreadr2",
         "Description": "Spreads damg to adj panels",
+        "Damage": "60",
         "Code": [
             "*",
             "A",
@@ -146,6 +156,7 @@
         "MId": null,
         "Name": "Spreadr3",
         "Description": "Spreads damg to adj panels",
+        "Damage": "90",
         "Code": [
             "*",
             "Q",
@@ -161,6 +172,7 @@
         "MId": null,
         "Name": "TankCan1",
         "Description": "3sqr blst if hits end row",
+        "Damage": "120",
         "Code": [
             "A",
             "G",
@@ -175,6 +187,7 @@
         "MId": null,
         "Name": "TankCan2",
         "Description": "3sqr blst if hits end row",
+        "Damage": "160",
         "Code": [
             "L",
             "S",
@@ -189,6 +202,7 @@
         "MId": null,
         "Name": "TankCan3",
         "Description": "3sqr blst if hits end row",
+        "Damage": "200",
         "Code": [
             "B",
             "M",
@@ -203,6 +217,7 @@
         "MId": null,
         "Name": "GunDelS1",
         "Description": "Hits row 2pnl ahd w/sunshne",
+        "Damage": "-",
         "Code": [
             "*",
             "C",
@@ -218,6 +233,7 @@
         "MId": null,
         "Name": "GunDelS2",
         "Description": "Hits row 2pnl ahd w/sunshne",
+        "Damage": "-",
         "Code": [
             "B",
             "E",
@@ -232,6 +248,7 @@
         "MId": null,
         "Name": "GunDelS3",
         "Description": "Hits row 2pnl ahd w/sunshne",
+        "Damage": "-",
         "Code": [
             "N",
             "Q",
@@ -246,6 +263,7 @@
         "MId": null,
         "Name": "GUN DEL S EX",
         "Description": "",
+        "Damage": "",
         "Code": [
             null
         ],
@@ -258,6 +276,7 @@
         "MId": null,
         "Name": "GunDelEX*",
         "Description": "Fires a spread sunbeam",
+        "Damage": "",
         "Code": [
             "G"
         ],
@@ -270,6 +289,7 @@
         "MId": null,
         "Name": "YoYo",
         "Description": "YoYo atk reaches 3sq ahead",
+        "Damage": "50",
         "Code": [
             "*",
             "L",
@@ -285,6 +305,7 @@
         "MId": null,
         "Name": "FireBrn1",
         "Description": "Crcks 3 sqrs ahd with fire",
+        "Damage": "70",
         "Code": [
             "*",
             "F",
@@ -300,6 +321,7 @@
         "MId": null,
         "Name": "FireBrn2",
         "Description": "Crcks 3 sqrs ahd with fire",
+        "Damage": "110",
         "Code": [
             "S",
             "T",
@@ -314,6 +336,7 @@
         "MId": null,
         "Name": "FireBrn3",
         "Description": "Crcks 3 sqrs ahd with fire",
+        "Damage": "150",
         "Code": [
             "C",
             "D",
@@ -328,6 +351,7 @@
         "MId": null,
         "Name": "WideSht",
         "Description": "Fires 3sq shotgun blast!",
+        "Damage": "100",
         "Code": [
             "P",
             "Q",
@@ -342,6 +366,7 @@
         "MId": null,
         "Name": "TrnArrw1",
         "Description": "Hits enmy w/arrow. Use dstnc",
+        "Damage": "30",
         "Code": [
             "A",
             "F",
@@ -356,6 +381,7 @@
         "MId": null,
         "Name": "TrnArrw2",
         "Description": "Hits enmy w/arrow. Use dstnc",
+        "Damage": "40",
         "Code": [
             "G",
             "M",
@@ -370,6 +396,7 @@
         "MId": null,
         "Name": "TrnArrw3",
         "Description": "Hits enmy w/arrow. Use dstnc",
+        "Damage": "50",
         "Code": [
             "M",
             "S",
@@ -384,6 +411,7 @@
         "MId": null,
         "Name": "BblStar1",
         "Description": "Seals an enemy in a bubble.",
+        "Damage": "60",
         "Code": [
             "B",
             "E",
@@ -398,6 +426,7 @@
         "MId": null,
         "Name": "BblStar2",
         "Description": "Seals an enemy in a bubble.",
+        "Damage": "80",
         "Code": [
             "C",
             "L",
@@ -412,6 +441,7 @@
         "MId": null,
         "Name": "BblStar3",
         "Description": "Seals an enemy in a bubble.",
+        "Damage": "100",
         "Code": [
             "G",
             "R",
@@ -426,6 +456,7 @@
         "MId": null,
         "Name": "Thunder",
         "Description": "Pralyzing electric attack!",
+        "Damage": "40",
         "Code": [
             "*",
             "B",
@@ -441,6 +472,7 @@
         "MId": null,
         "Name": "DolThdr1",
         "Description": "A piercng thunder attack!",
+        "Damage": "120",
         "Code": [
             "A",
             "E",
@@ -455,6 +487,7 @@
         "MId": null,
         "Name": "DolThdr2",
         "Description": "A piercng thunder attack!",
+        "Damage": "150",
         "Code": [
             "C",
             "L",
@@ -469,6 +502,7 @@
         "MId": null,
         "Name": "DolThdr3",
         "Description": "A piercng thunder attack!",
+        "Damage": "180",
         "Code": [
             "B",
             "R",
@@ -483,6 +517,7 @@
         "MId": null,
         "Name": "ElcPuls1",
         "Description": "Sprd elec puls that paralyzes",
+        "Damage": "100",
         "Code": [
             "J",
             "L",
@@ -497,6 +532,7 @@
         "MId": null,
         "Name": "ElcPuls2",
         "Description": "Sprd elec pulse. Pul enemy in.",
+        "Damage": "120",
         "Code": [
             "A",
             "E",
@@ -511,6 +547,7 @@
         "MId": null,
         "Name": "ElcPuls3",
         "Description": "Sprd elec puls. Hit w/HP bug.",
+        "Damage": "140",
         "Code": [
             "A",
             "J",
@@ -525,6 +562,7 @@
         "MId": null,
         "Name": "RskyHny1",
         "Description": "Bees attk whle hive defending",
+        "Damage": "10",
         "Code": [
             "B",
             "G",
@@ -539,6 +577,7 @@
         "MId": null,
         "Name": "RskyHny2",
         "Description": "Bees attk whle hive defending",
+        "Damage": "15",
         "Code": [
             "C",
             "R",
@@ -553,6 +592,7 @@
         "MId": null,
         "Name": "RskyHny3",
         "Description": "Bees attk whle hive defending",
+        "Damage": "20",
         "Code": [
             "A",
             "D",
@@ -567,6 +607,7 @@
         "MId": null,
         "Name": "RlngLog1",
         "Description": "Send out 2 logs 2pnl fwd",
+        "Damage": "50",
         "Code": [
             "I",
             "K",
@@ -581,6 +622,7 @@
         "MId": null,
         "Name": "RlngLog2",
         "Description": "Send out 2 logs 2pnl fwd",
+        "Damage": "70",
         "Code": [
             "E",
             "Q",
@@ -595,6 +637,7 @@
         "MId": null,
         "Name": "RlngLog3",
         "Description": "Send out 2 logs 2pnl fwd",
+        "Damage": "90",
         "Code": [
             "F",
             "N",
@@ -609,6 +652,7 @@
         "MId": null,
         "Name": "MachGun1",
         "Description": "Fire 9sts at row w/clst enmy",
+        "Damage": "30",
         "Code": [
             "*",
             "A",
@@ -624,6 +668,7 @@
         "MId": null,
         "Name": "MachGun2",
         "Description": "Fire 9sts at row w/clst enmy",
+        "Damage": "50",
         "Code": [
             "E",
             "G",
@@ -638,6 +683,7 @@
         "MId": null,
         "Name": "MachGun3",
         "Description": "Fire 9sts at row w/clst enmy",
+        "Damage": "70",
         "Code": [
             "B",
             "F",
@@ -652,6 +698,7 @@
         "MId": null,
         "Name": "HeatDrgn",
         "Description": "Drgn near clst enmy Hit 2 rows",
+        "Damage": "140",
         "Code": [
             "G",
             "R",
@@ -666,6 +713,7 @@
         "MId": null,
         "Name": "ElecDrgn",
         "Description": "Drgn near clst enmy Hit 2 rows",
+        "Damage": "150",
         "Code": [
             "A",
             "L",
@@ -680,6 +728,7 @@
         "MId": null,
         "Name": "AquaDrgn",
         "Description": "Drgn near clst enmy Hit 2 rows",
+        "Damage": "120",
         "Code": [
             "H",
             "P",
@@ -694,6 +743,7 @@
         "MId": null,
         "Name": "WoodDrgn",
         "Description": "Drgn near clst enmy Hit 2 rows",
+        "Damage": "130",
         "Code": [
             "G",
             "T",
@@ -708,6 +758,7 @@
         "MId": null,
         "Name": "AirHocky",
         "Description": "Bounce the puck off walls",
+        "Damage": "60",
         "Code": [
             "L",
             "M",
@@ -722,6 +773,7 @@
         "MId": null,
         "Name": "DrilArm",
         "Description": "Knocks enmy 2sq away",
+        "Damage": "70",
         "Code": [
             "G",
             "M",
@@ -736,6 +788,7 @@
         "MId": null,
         "Name": "Tornado",
         "Description": "8hit strm 2 squares ahead",
+        "Damage": "20",
         "Code": [
             "L",
             "R",
@@ -750,6 +803,7 @@
         "MId": null,
         "Name": "Static",
         "Description": "A static blast 2sq ahead",
+        "Damage": "20",
         "Code": [
             "G",
             "S",
@@ -764,6 +818,7 @@
         "MId": null,
         "Name": "MiniBomb",
         "Description": "Throws a MiniBomb 3sq ahead",
+        "Damage": "50",
         "Code": [
             "*",
             "B",
@@ -779,6 +834,7 @@
         "MId": null,
         "Name": "EnergBom",
         "Description": "Throws a bomb 3sq ahead",
+        "Damage": "40",
         "Code": [
             "*",
             "C",
@@ -794,6 +850,7 @@
         "MId": null,
         "Name": "MegEnBom",
         "Description": "Throws a bomb 3sq ahead",
+        "Damage": "60",
         "Code": [
             "*",
             "G",
@@ -809,6 +866,7 @@
         "MId": null,
         "Name": "FlshBom1",
         "Description": "Thrw dlyd stun bomb 3sq fwd",
+        "Damage": "40",
         "Code": [
             "*",
             "J",
@@ -824,6 +882,7 @@
         "MId": null,
         "Name": "FlshBom2",
         "Description": "Thrw dlyd stun bomb 3sq fwd",
+        "Damage": "70",
         "Code": [
             "G",
             "K",
@@ -838,6 +897,7 @@
         "MId": null,
         "Name": "FlshBom3",
         "Description": "Thrw dlyd stun bomb 3sq fwd",
+        "Damage": "100",
         "Code": [
             "H",
             "P",
@@ -852,6 +912,7 @@
         "MId": null,
         "Name": "BlkBomb",
         "Description": "Thrw shel 3sqr fwd. Fire attk",
+        "Damage": "250",
         "Code": [
             "B",
             "F",
@@ -866,6 +927,7 @@
         "MId": null,
         "Name": "AquaNdl1",
         "Description": "Target 3 needles at enemy!",
+        "Damage": "40",
         "Code": [
             "C",
             "J",
@@ -880,6 +942,7 @@
         "MId": null,
         "Name": "AquaNdl2",
         "Description": "Target 3 needles at enemy!",
+        "Damage": "60",
         "Code": [
             "F",
             "K",
@@ -894,6 +957,7 @@
         "MId": null,
         "Name": "AquaNdl3",
         "Description": "Target 3 needles at enemy!",
+        "Damage": "80",
         "Code": [
             "A",
             "L",
@@ -908,6 +972,7 @@
         "MId": null,
         "Name": "CornSht1",
         "Description": "Damages enemies w/corn",
+        "Damage": "50",
         "Code": [
             "J",
             "K",
@@ -922,6 +987,7 @@
         "MId": null,
         "Name": "CornSht2",
         "Description": "Damages enemies w/corn",
+        "Damage": "60",
         "Code": [
             "C",
             "D",
@@ -936,6 +1002,7 @@
         "MId": null,
         "Name": "CornSht3",
         "Description": "Damages enemies w/corn",
+        "Damage": "70",
         "Code": [
             "P",
             "Q",
@@ -950,6 +1017,7 @@
         "MId": null,
         "Name": "BugBomb",
         "Description": "Throws a BugBomb 3sq ahead",
+        "Damage": "-",
         "Code": [
             "G",
             "S",
@@ -964,6 +1032,7 @@
         "MId": null,
         "Name": "GrasSeed",
         "Description": "Makes 9sq meadow 3sq ahead",
+        "Damage": "-",
         "Code": [
             "*",
             "A",
@@ -979,6 +1048,7 @@
         "MId": null,
         "Name": "IceSeed",
         "Description": "Makes 9sq ice field 3sq ahead",
+        "Damage": "-",
         "Code": [
             "*",
             "A",
@@ -994,6 +1064,7 @@
         "MId": null,
         "Name": "PoisSeed",
         "Description": "Makes 9sq poisn swp 3sq ahead",
+        "Damage": "-",
         "Code": [
             "*",
             "H",
@@ -1009,6 +1080,7 @@
         "MId": null,
         "Name": "Sword",
         "Description": "Cuts enmy in front! Range 1",
+        "Damage": "80",
         "Code": [
             "*",
             "H",
@@ -1024,6 +1096,7 @@
         "MId": null,
         "Name": "WideSwrd",
         "Description": "Cuts enmy in front! Range 3",
+        "Damage": "80",
         "Code": [
             "*",
             "H",
@@ -1039,6 +1112,7 @@
         "MId": null,
         "Name": "LongSwrd",
         "Description": "Cuts enmy in front! Range 2",
+        "Damage": "100",
         "Code": [
             "*",
             "H",
@@ -1054,6 +1128,7 @@
         "MId": null,
         "Name": "WideBlde",
         "Description": "Cuts enmy in front! Range 3",
+        "Damage": "150",
         "Code": [
             "B",
             "R",
@@ -1068,6 +1143,7 @@
         "MId": null,
         "Name": "LongBlde",
         "Description": "Cuts enmy in front! Range 2",
+        "Damage": "150",
         "Code": [
             "B",
             "M",
@@ -1082,6 +1158,7 @@
         "MId": null,
         "Name": "FireSwrd",
         "Description": "Cut enmy 3sq fwrd w/fire",
+        "Damage": "140",
         "Code": [
             "F",
             "O",
@@ -1096,6 +1173,7 @@
         "MId": null,
         "Name": "AquaSwrd",
         "Description": "Cut enmy 3sq fwrd w/aqua",
+        "Damage": "160",
         "Code": [
             "A",
             "I",
@@ -1110,6 +1188,7 @@
         "MId": null,
         "Name": "ElecSwrd",
         "Description": "Cut enmy 3sq fwrd w/elec",
+        "Damage": "120",
         "Code": [
             "E",
             "K",
@@ -1124,6 +1203,7 @@
         "MId": null,
         "Name": "BambSwrd",
         "Description": "Cut enmy 3sq fwrd w/wood",
+        "Damage": "150",
         "Code": [
             "H",
             "S",
@@ -1138,6 +1218,7 @@
         "MId": null,
         "Name": "WindRack",
         "Description": "Blow enmy in front! Range 3",
+        "Damage": "140",
         "Code": [
             "*",
             "F",
@@ -1153,6 +1234,7 @@
         "MId": null,
         "Name": "StepSwrd",
         "Description": "Use WideSwrd 2sq ahead",
+        "Damage": "160",
         "Code": [
             "B",
             "L",
@@ -1167,6 +1249,7 @@
         "MId": null,
         "Name": "VarSwrd",
         "Description": "A magical shifting sword.",
+        "Damage": "160",
         "Code": [
             "K",
             "V",
@@ -1181,6 +1264,7 @@
         "MId": null,
         "Name": "NeoVari",
         "Description": "A magical shifting sword.",
+        "Damage": "220",
         "Code": [
             "N"
         ],
@@ -1193,6 +1277,7 @@
         "MId": null,
         "Name": "MoonBld",
         "Description": "Slices enemies around",
+        "Damage": "130",
         "Code": [
             "A",
             "M",
@@ -1207,6 +1292,7 @@
         "MId": null,
         "Name": "Muramasa",
         "Description": "Atk power equals amt of lostHP",
+        "Damage": "???",
         "Code": [
             "M"
         ],
@@ -1219,6 +1305,7 @@
         "MId": null,
         "Name": "MchnSwrd",
         "Description": "Search and hit stund enemies.",
+        "Damage": "200",
         "Code": [
             "H",
             "L",
@@ -1233,6 +1320,7 @@
         "MId": null,
         "Name": "ElemSwrd",
         "Description": "Cuts enmy on Wood, ice, fire",
+        "Damage": "220",
         "Code": [
             "J",
             "M",
@@ -1247,6 +1335,7 @@
         "MId": null,
         "Name": "AssnSwrd",
         "Description": "When plyz cut enemy spec panl",
+        "Damage": "240",
         "Code": [
             "N",
             "R",
@@ -1261,6 +1350,7 @@
         "MId": null,
         "Name": "CrakShot",
         "Description": "Shoot a panel at an enemy!",
+        "Damage": "60",
         "Code": [
             "*",
             "A",
@@ -1276,6 +1366,7 @@
         "MId": null,
         "Name": "DublShot",
         "Description": "Shoot 2 panels at an enemy!",
+        "Damage": "60",
         "Code": [
             "*",
             "C",
@@ -1291,6 +1382,7 @@
         "MId": null,
         "Name": "TrplShot",
         "Description": "Shoot 3 panels at an enemy!",
+        "Damage": "100",
         "Code": [
             "*",
             "J",
@@ -1306,6 +1398,7 @@
         "MId": null,
         "Name": "WaveArm1",
         "Description": "Fllw enemy and fire trap wave",
+        "Damage": "80",
         "Code": [
             "E",
             "F",
@@ -1320,6 +1413,7 @@
         "MId": null,
         "Name": "WaveArm2",
         "Description": "Fllw enemy and fire trap wave",
+        "Damage": "120",
         "Code": [
             "L",
             "M",
@@ -1334,6 +1428,7 @@
         "MId": null,
         "Name": "WaveArm3",
         "Description": "Fllw enemy and fire trap wave",
+        "Damage": "160",
         "Code": [
             "R",
             "S",
@@ -1348,6 +1443,7 @@
         "MId": null,
         "Name": "AuraHed1",
         "Description": "A flying head with 2spc tail",
+        "Damage": "130",
         "Code": [
             "B",
             "C",
@@ -1362,6 +1458,7 @@
         "MId": null,
         "Name": "AuraHed2",
         "Description": "A flying head with 2spc tail",
+        "Damage": "150",
         "Code": [
             "D",
             "E",
@@ -1376,6 +1473,7 @@
         "MId": null,
         "Name": "AuraHed3",
         "Description": "A flying head with 2spc tail",
+        "Damage": "170",
         "Code": [
             "F",
             "G",
@@ -1390,6 +1488,7 @@
         "MId": null,
         "Name": "LilBolr1",
         "Description": "3pnl fwd Kttl attk Attack+",
+        "Damage": "100",
         "Code": [
             "F",
             "K",
@@ -1404,6 +1503,7 @@
         "MId": null,
         "Name": "LilBolr2",
         "Description": "3pnl fwd Kttl attk Attack+",
+        "Damage": "140",
         "Code": [
             "E",
             "M",
@@ -1418,6 +1518,7 @@
         "MId": null,
         "Name": "LilBolr3",
         "Description": "3pnl fwd Kttl attk Attack+",
+        "Damage": "180",
         "Code": [
             "G",
             "S",
@@ -1432,6 +1533,7 @@
         "MId": null,
         "Name": "SandWrm1",
         "Description": "Attk enmy from rear w/snakarm",
+        "Damage": "130",
         "Code": [
             "A",
             "G",
@@ -1446,6 +1548,7 @@
         "MId": null,
         "Name": "SandWrm2",
         "Description": "Attk enmy from rear w/snakarm",
+        "Damage": "150",
         "Code": [
             "B",
             "R",
@@ -1460,6 +1563,7 @@
         "MId": null,
         "Name": "SandWrm3",
         "Description": "Attk enmy from rear w/snakarm",
+        "Damage": "170",
         "Code": [
             "H",
             "J",
@@ -1474,6 +1578,7 @@
         "MId": null,
         "Name": "AirRaid1",
         "Description": "Attk enmy w/flying FgtrPlne.",
+        "Damage": "10",
         "Code": [
             "G",
             "K",
@@ -1488,6 +1593,7 @@
         "MId": null,
         "Name": "AirRaid2",
         "Description": "Attk enmy w/flying FgtrPlne.",
+        "Damage": "10",
         "Code": [
             "O",
             "T",
@@ -1502,6 +1608,7 @@
         "MId": null,
         "Name": "AirRaid3",
         "Description": "Attk enmy w/flying FgtrPlne.",
+        "Damage": "10",
         "Code": [
             "N",
             "U",
@@ -1516,6 +1623,7 @@
         "MId": null,
         "Name": "FireHit1",
         "Description": "Slams closest enemy",
+        "Damage": "60",
         "Code": [
             "D",
             "E",
@@ -1530,6 +1638,7 @@
         "MId": null,
         "Name": "FireHit2",
         "Description": "Slams closest enemy",
+        "Damage": "120",
         "Code": [
             "R",
             "S",
@@ -1544,6 +1653,7 @@
         "MId": null,
         "Name": "FireHit3",
         "Description": "Slams closest enemy",
+        "Damage": "180",
         "Code": [
             "A",
             "B",
@@ -1558,6 +1668,7 @@
         "MId": null,
         "Name": "BurnSqr1",
         "Description": "Press A to burn a 4pnl sqr",
+        "Damage": "100",
         "Code": [
             "H",
             "P",
@@ -1572,6 +1683,7 @@
         "MId": null,
         "Name": "BurnSqr2",
         "Description": "Press A to burn a 4pnl sqr",
+        "Damage": "120",
         "Code": [
             "D",
             "M",
@@ -1586,6 +1698,7 @@
         "MId": null,
         "Name": "BurnSqr3",
         "Description": "Press A to burn a 4pnl sqr",
+        "Damage": "140",
         "Code": [
             "E",
             "O",
@@ -1600,6 +1713,7 @@
         "MId": null,
         "Name": "Sensor1",
         "Description": "Hit enmy with beam from snsr",
+        "Damage": "100",
         "Code": [
             "J",
             "O",
@@ -1614,6 +1728,7 @@
         "MId": null,
         "Name": "Sensor2",
         "Description": "Hit enmy with beam from snsr",
+        "Damage": "130",
         "Code": [
             "N",
             "U",
@@ -1628,6 +1743,7 @@
         "MId": null,
         "Name": "Sensor3",
         "Description": "Hit enmy with beam from snsr",
+        "Damage": "160",
         "Code": [
             "I",
             "K",
@@ -1642,6 +1758,7 @@
         "MId": null,
         "Name": "Boomer",
         "Description": "Boomerang that circ btl field",
+        "Damage": "100",
         "Code": [
             "J",
             "K",
@@ -1656,6 +1773,7 @@
         "MId": null,
         "Name": "HiBoomer",
         "Description": "Boomerang that circ btl field",
+        "Damage": "140",
         "Code": [
             "B",
             "L",
@@ -1670,6 +1788,7 @@
         "MId": null,
         "Name": "M-Boomer",
         "Description": "Boomerang that circ btl field",
+        "Damage": "170",
         "Code": [
             "I",
             "M",
@@ -1684,6 +1803,7 @@
         "MId": null,
         "Name": "Lance",
         "Description": "Lance through back line",
+        "Damage": "150",
         "Code": [
             "*",
             "A",
@@ -1699,6 +1819,7 @@
         "MId": null,
         "Name": "GolmHit1",
         "Description": "Hit 3pnl area arnd clst enmy",
+        "Damage": "140",
         "Code": [
             "I",
             "K",
@@ -1713,6 +1834,7 @@
         "MId": null,
         "Name": "GolmHit2",
         "Description": "Hit 3pnl area arnd clst enmy",
+        "Damage": "190",
         "Code": [
             "D",
             "P",
@@ -1727,6 +1849,7 @@
         "MId": null,
         "Name": "GolmHit3",
         "Description": "Hit 3pnl area arnd clst enmy",
+        "Damage": "250",
         "Code": [
             "H",
             "M",
@@ -1741,6 +1864,7 @@
         "MId": null,
         "Name": "IronShl1",
         "Description": "Fire off piercing shell.",
+        "Damage": "70",
         "Code": [
             "J",
             "K",
@@ -1755,6 +1879,7 @@
         "MId": null,
         "Name": "IronShl2",
         "Description": "Fire off piercing shell.",
+        "Damage": "100",
         "Code": [
             "C",
             "D",
@@ -1769,6 +1894,7 @@
         "MId": null,
         "Name": "IronShl3",
         "Description": "Fire off piercing shell.",
+        "Damage": "130",
         "Code": [
             "L",
             "M",
@@ -1783,6 +1909,7 @@
         "MId": null,
         "Name": "AirSpin1",
         "Description": "Spits out hurricane attack",
+        "Damage": "50",
         "Code": [
             "F",
             "G",
@@ -1797,6 +1924,7 @@
         "MId": null,
         "Name": "AirSpin2",
         "Description": "Spits out hurricane attack",
+        "Damage": "50",
         "Code": [
             "A",
             "L",
@@ -1811,6 +1939,7 @@
         "MId": null,
         "Name": "AirSpin3",
         "Description": "Spits out hurricane attack",
+        "Damage": "50",
         "Code": [
             "N",
             "O",
@@ -1825,6 +1954,7 @@
         "MId": null,
         "Name": "Wind",
         "Description": "Windbox blows at enmy area",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -1837,6 +1967,7 @@
         "MId": null,
         "Name": "Fan",
         "Description": "VacuumFn pulls enemy in",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -1849,6 +1980,7 @@
         "MId": null,
         "Name": "Rflectr1",
         "Description": "Bounce an attk back at them!",
+        "Damage": "60",
         "Code": [
             "*",
             "A",
@@ -1864,6 +1996,7 @@
         "MId": null,
         "Name": "Rflectr2",
         "Description": "Bounce an attk back at them!",
+        "Damage": "120",
         "Code": [
             "*",
             "A",
@@ -1879,6 +2012,7 @@
         "MId": null,
         "Name": "Rflectr3",
         "Description": "Bounce an attk back at them!",
+        "Damage": "200",
         "Code": [
             "*",
             "E",
@@ -1894,6 +2028,7 @@
         "MId": null,
         "Name": "Snake",
         "Description": "Call snke from hole in area.",
+        "Damage": "30",
         "Code": [
             "H",
             "L",
@@ -1908,6 +2043,7 @@
         "MId": null,
         "Name": "SumnBlk1",
         "Description": "Summon a Nghtmare attack!",
+        "Damage": "160",
         "Code": [
             "E",
             "I",
@@ -1922,6 +2058,7 @@
         "MId": null,
         "Name": "SumnBlk2",
         "Description": "Summon a Nghtmare attack!",
+        "Damage": "200",
         "Code": [
             "H",
             "O",
@@ -1936,6 +2073,7 @@
         "MId": null,
         "Name": "SumnBlk3",
         "Description": "Summon a Nghtmare attack!",
+        "Damage": "260",
         "Code": [
             "W",
             "Y",
@@ -1950,6 +2088,7 @@
         "MId": null,
         "Name": "NumbrBl",
         "Description": "Last 2 HP digits = atk pwr",
+        "Damage": "???",
         "Code": [
             "N"
         ],
@@ -1962,6 +2101,7 @@
         "MId": null,
         "Name": "Meteors",
         "Description": "Drop many meteor on enmy area",
+        "Damage": "40",
         "Code": [
             "R"
         ],
@@ -1974,6 +2114,7 @@
         "MId": null,
         "Name": "JustcOne",
         "Description": "Fist Atk on center panel",
+        "Damage": "220",
         "Code": [
             "J"
         ],
@@ -1986,6 +2127,7 @@
         "MId": null,
         "Name": "Magnum",
         "Description": "Cursor destroys panels!",
+        "Damage": "130",
         "Code": [
             "F",
             "L",
@@ -2000,6 +2142,7 @@
         "MId": null,
         "Name": "CircGun",
         "Description": "Stop sght w/Button and attck",
+        "Damage": "150",
         "Code": [
             "P",
             "T",
@@ -2014,6 +2157,7 @@
         "MId": null,
         "Name": "RockCube",
         "Description": "Place a RockCube in front",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2026,6 +2170,7 @@
         "MId": null,
         "Name": "TimeBom1",
         "Description": "Explodes 3 seconds later",
+        "Damage": "150",
         "Code": [
             "F",
             "G",
@@ -2040,6 +2185,7 @@
         "MId": null,
         "Name": "Mine",
         "Description": "Place a mine in enmy area",
+        "Damage": "200",
         "Code": [
             "A",
             "S",
@@ -2054,6 +2200,7 @@
         "MId": null,
         "Name": "Fanfare",
         "Description": "Take no dmage for a while",
+        "Damage": "-",
         "Code": [
             "*",
             "P",
@@ -2069,6 +2216,7 @@
         "MId": null,
         "Name": "Discord",
         "Description": "Confuses enemies w/music",
+        "Damage": "-",
         "Code": [
             "*",
             "A",
@@ -2084,6 +2232,7 @@
         "MId": null,
         "Name": "Timpani",
         "Description": "Stop enmy feet with music",
+        "Damage": "-",
         "Code": [
             "*",
             "I",
@@ -2099,6 +2248,7 @@
         "MId": null,
         "Name": "Silence",
         "Description": "Blinds enemies w/music",
+        "Damage": "-",
         "Code": [
             "*",
             "B",
@@ -2114,6 +2264,7 @@
         "MId": null,
         "Name": "VDoll",
         "Description": "Throws VDoll 3sq ahead",
+        "Damage": "-",
         "Code": [
             "*",
             "F",
@@ -2129,6 +2280,7 @@
         "MId": null,
         "Name": "Guardian",
         "Description": "Statue punishes when hit",
+        "Damage": "200",
         "Code": [
             "O"
         ],
@@ -2141,6 +2293,7 @@
         "MId": null,
         "Name": "Anubis",
         "Description": "Anubis poisons enemies",
+        "Damage": "-",
         "Code": [
             "P"
         ],
@@ -2153,6 +2306,7 @@
         "MId": null,
         "Name": "Otenko*",
         "Description": "Put Otnko to raise atk pwr",
+        "Damage": "",
         "Code": [
             "O"
         ],
@@ -2165,6 +2319,7 @@
         "MId": null,
         "Name": "Recov10",
         "Description": "Recovers 10HP",
+        "Damage": "-",
         "Code": [
             "*",
             "A",
@@ -2180,6 +2335,7 @@
         "MId": null,
         "Name": "Recov30",
         "Description": "Recovers 30HP",
+        "Damage": "-",
         "Code": [
             "*",
             "E",
@@ -2195,6 +2351,7 @@
         "MId": null,
         "Name": "Recov50",
         "Description": "Recovers 50HP",
+        "Damage": "-",
         "Code": [
             "*",
             "C",
@@ -2210,6 +2367,7 @@
         "MId": null,
         "Name": "Recov80",
         "Description": "Recovers 80HP",
+        "Damage": "-",
         "Code": [
             "*",
             "H",
@@ -2225,6 +2383,7 @@
         "MId": null,
         "Name": "Recov120",
         "Description": "Recovers 120HP",
+        "Damage": "-",
         "Code": [
             "F",
             "P",
@@ -2239,6 +2398,7 @@
         "MId": null,
         "Name": "Recov150",
         "Description": "Recovers 150HP",
+        "Damage": "-",
         "Code": [
             "J",
             "M",
@@ -2253,6 +2413,7 @@
         "MId": null,
         "Name": "Recov200",
         "Description": "Recovers 200HP",
+        "Damage": "-",
         "Code": [
             "I",
             "Q",
@@ -2267,6 +2428,7 @@
         "MId": null,
         "Name": "Recov300",
         "Description": "Recovers 300HP",
+        "Damage": "-",
         "Code": [
             "J",
             "O",
@@ -2281,6 +2443,7 @@
         "MId": null,
         "Name": "PanlGrab",
         "Description": "Steals 1 enemy square!",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2293,6 +2456,7 @@
         "MId": null,
         "Name": "AreaGrab",
         "Description": "Steals left edge from enmy",
+        "Damage": "-",
         "Code": [
             "*",
             "F",
@@ -2307,6 +2471,7 @@
         "MId": null,
         "Name": "AreaGrab",
         "Description": "Steals left edge from enmy",
+        "Damage": "-",
         "Code": [
             "B"
         ],
@@ -2319,6 +2484,7 @@
         "MId": null,
         "Name": "GrabBnsh",
         "Description": "20 damage for every stolen sq",
+        "Damage": "-",
         "Code": [
             "B",
             "M",
@@ -2333,6 +2499,7 @@
         "MId": null,
         "Name": "GrabRvng",
         "Description": "40 damage for every stolen sq",
+        "Damage": "-",
         "Code": [
             "I",
             "Q",
@@ -2347,6 +2514,7 @@
         "MId": null,
         "Name": "PnlRetrn",
         "Description": "Fix your area's panels",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2359,6 +2527,7 @@
         "MId": null,
         "Name": "Geddon",
         "Description": "Breaks all empty panels",
+        "Damage": "-",
         "Code": [
             "*",
             "A",
@@ -2374,6 +2543,7 @@
         "MId": null,
         "Name": "HolyPanl",
         "Description": "Creates a HolyPanl in front",
+        "Damage": "-",
         "Code": [
             "*",
             "A",
@@ -2389,6 +2559,7 @@
         "MId": null,
         "Name": "Snctuary",
         "Description": "Chng all own panel to holy",
+        "Damage": "-",
         "Code": [
             "Z"
         ],
@@ -2401,6 +2572,7 @@
         "MId": null,
         "Name": "ComingRd",
         "Description": "Pull an enemy to the front",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2413,6 +2585,7 @@
         "MId": null,
         "Name": "GoingRd",
         "Description": "Push an enemy to the back",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2425,6 +2598,7 @@
         "MId": null,
         "Name": "SloGauge",
         "Description": "CustGauge slow-down",
+        "Damage": "-",
         "Code": [
             "*",
             "A",
@@ -2440,6 +2614,7 @@
         "MId": null,
         "Name": "FstGauge",
         "Description": "CustGauge speed-up",
+        "Damage": "-",
         "Code": [
             "*",
             "E",
@@ -2455,6 +2630,7 @@
         "MId": null,
         "Name": "FullCust",
         "Description": "CustGauge instantly refills",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2467,6 +2643,7 @@
         "MId": null,
         "Name": "BusterUp",
         "Description": "Power goes up by 1",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2479,6 +2656,7 @@
         "MId": null,
         "Name": "BugFix",
         "Description": "Repairs & removes bugs",
+        "Damage": "-",
         "Code": [
             "*",
             "K",
@@ -2494,6 +2672,7 @@
         "MId": null,
         "Name": "Invisibl",
         "Description": "Invisible for a while",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2506,6 +2685,7 @@
         "MId": null,
         "Name": "Barrier",
         "Description": "Nullifies 10 HP of damage",
+        "Damage": "-",
         "Code": [
             "*",
             "A",
@@ -2521,6 +2701,7 @@
         "MId": null,
         "Name": "Barr100",
         "Description": "Nullifies 100 HP of damage",
+        "Damage": "-",
         "Code": [
             "H",
             "O",
@@ -2535,6 +2716,7 @@
         "MId": null,
         "Name": "Barr200",
         "Description": "Nullifies 200 HP of damage",
+        "Damage": "-",
         "Code": [
             "K",
             "U",
@@ -2549,6 +2731,7 @@
         "MId": null,
         "Name": "BblWrap",
         "Description": "Weak against elec atk",
+        "Damage": "-",
         "Code": [
             "I",
             "Q",
@@ -2563,6 +2746,7 @@
         "MId": null,
         "Name": "LifeAur",
         "Description": "Repel all attacks under200",
+        "Damage": "-",
         "Code": [
             "U"
         ],
@@ -2575,6 +2759,7 @@
         "MId": null,
         "Name": "MagCoil",
         "Description": "Draw in enmy with mag force",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2587,6 +2772,7 @@
         "MId": null,
         "Name": "WhiCapsl",
         "Description": "Add an effect Paralyze",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2599,6 +2785,7 @@
         "MId": null,
         "Name": "Uninstll",
         "Description": "Attach to NoDim chp NavCusOff",
+        "Damage": "-",
         "Code": [
             "G",
             "L",
@@ -2613,6 +2800,7 @@
         "MId": null,
         "Name": "AntiNavi",
         "Description": "Takes the enemy's Navi away",
+        "Damage": "-",
         "Code": [
             "*",
             "F",
@@ -2628,6 +2816,7 @@
         "MId": null,
         "Name": "AntiDmg",
         "Description": "Sets trap and throw stars",
+        "Damage": "100",
         "Code": [
             "*",
             "G",
@@ -2643,6 +2832,7 @@
         "MId": null,
         "Name": "AntiSwrd",
         "Description": "Retaliate for sword damage",
+        "Damage": "100",
         "Code": [
             "*",
             "A",
@@ -2658,6 +2848,7 @@
         "MId": null,
         "Name": "AntiRecv",
         "Description": "Damages enemy in recovery",
+        "Damage": "-",
         "Code": [
             "*",
             "A",
@@ -2673,6 +2864,7 @@
         "MId": null,
         "Name": "CopyDmg",
         "Description": "Duplicate damage to 2nd enemy",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2685,6 +2877,7 @@
         "MId": null,
         "Name": "LifeSync",
         "Description": "Makes HP same as enemy",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2697,6 +2890,7 @@
         "MId": null,
         "Name": "Atk+10",
         "Description": "+10 for selected atk chip",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2709,6 +2903,7 @@
         "MId": null,
         "Name": "Navi+20",
         "Description": "+20 for selected Navi chip",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2721,6 +2916,7 @@
         "MId": null,
         "Name": "ColorPt",
         "Description": "+10 for next chip attack",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2733,6 +2929,7 @@
         "MId": null,
         "Name": "Atk+30",
         "Description": "+30 for selected atk chip",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2745,6 +2942,7 @@
         "MId": null,
         "Name": "DblPoint",
         "Description": "+20 for next chip attack",
+        "Damage": "-",
         "Code": [
             "*"
         ],
@@ -2757,6 +2955,7 @@
         "MId": null,
         "Name": "ElemTrap",
         "Description": "Trap enmy and attk with elem",
+        "Damage": "240",
         "Code": [
             "*",
             "G",
@@ -2772,6 +2971,7 @@
         "MId": null,
         "Name": "ColArmy",
         "Description": "Launch an attk with Col. army",
+        "Damage": "40",
         "Code": [
             "*",
             "B",
@@ -2787,6 +2987,7 @@
         "MId": null,
         "Name": "BlzrdBal",
         "Description": "Launch a giant snowball",
+        "Damage": "150",
         "Code": [
             "H",
             "N",
@@ -2801,6 +3002,7 @@
         "MId": null,
         "Name": "TimeBom2",
         "Description": "Explodes 3 seconds later",
+        "Damage": "190",
         "Code": [
             "C",
             "D",
@@ -2815,6 +3017,7 @@
         "MId": null,
         "Name": "TimeBom3",
         "Description": "Explodes 3 seconds later",
+        "Damage": "230",
         "Code": [
             "L",
             "M",
@@ -2829,6 +3032,7 @@
         "MId": null,
         "Name": "BigBomb",
         "Description": "Throws a 9 panl bomb 3panl fwd",
+        "Damage": "140",
         "Code": [
             "O",
             "P",

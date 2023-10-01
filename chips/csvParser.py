@@ -31,6 +31,7 @@ def convert_csv_to_json(input_file, output_file):
                     'MId': mid,
                     'Name': row['Name'],
                     'Description': row['Description'],
+                    'Damage': row['Damage'],
                     'Code': [first_character_code],  # Store as a list
                     'Element': row['Element'],
                     'Image': row['Image'],

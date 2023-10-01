@@ -29,13 +29,61 @@ new Vue({
         megaList: [],  // This will hold the data from Giga.json
         standardList: [],  // This will hold the data from Giga.json
         allChips: [],
+        searchQuery: '',
+        currentTab: 'Standard',
+        showDetailedFilter: false,
+        detailedFilter: {
+            Name: '',
+            Description: '',
+            Damage: '',
+            Code: '',
+            Element: '',
+            MB: ''
+        },
 
     },
+    computed: {
+        filteredChips() {
+            return this.allChips.filter(chip => {
+                
+                // General search
+                if (this.searchQuery && !this.showDetailedFilter) {
+                    let regex = new RegExp(this.searchQuery, 'i');
+                    for (let key in chip) {
+                        if (chip[key] && regex.test(chip[key].toString())) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                
+                // Detailed search
+                if (this.showDetailedFilter) {
+                    for (let key in this.detailedFilter) {
+                        if (this.detailedFilter[key] && chip[key]) {
+                            if (Array.isArray(this.detailedFilter[key])) {
+                                if (!this.detailedFilter[key].every(val => chip[key].includes(val))) {
+                                    return false;
+                                }
+                            } else if (!chip[key].toString().toLowerCase().includes(this.detailedFilter[key].toLowerCase())) {
+                                return false;
+                            }
+                        }
+                    }
+                    return true;
+                }
+    
+                return true;
+            });
+        }
+    },
+
     mounted() {
         this.fetchChips('giga', this.gigaList);
         this.fetchChips('mega', this.megaList);
         this.fetchChips('standard', this.standardList);
     },
+
     methods: {
 
         fetchChips(chipType, chipList) {
@@ -128,7 +176,7 @@ new Vue({
 
                 // Re-mask the entire data before saving
                 this.mask(byteArray);
-                this.compareAndLogDifferences(originalByteArray, byteArray);
+                // this.compareAndLogDifferences(originalByteArray, byteArray);
 
                 // Merge the modified byteArray back into fullByteArray
                 fullByteArray.set(byteArray, SAVE_START_OFFSET);
@@ -136,7 +184,7 @@ new Vue({
 
 
                 // Add a call to download the modified file
-                this.downloadModifiedFile(fullByteArray); // Using fullByteArray here
+                // this.downloadModifiedFile(fullByteArray); // Using fullByteArray here
             };
 
             reader.readAsArrayBuffer(file);
@@ -232,8 +280,8 @@ new Vue({
             for (let i = 0; i < CHIPS_PER_FOLDER; i++) {
                 const chipOffset = chipStartOffset + (i * CHIP_SIZE);
                 let chipBytes = byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
-                chipBytes[0] = i + 240;
-                chipBytes[1] = 1;
+                // chipBytes[0] = i + 240;
+                // chipBytes[1] = 1;
 
                 const rawId = chipBytes[0];
                 let id = rawId;
@@ -244,7 +292,7 @@ new Vue({
                     //look at the MId
                     isSet2 = true;
                 }
-                else{
+                else {
                     codeIndex = chipBytes[1] / 2;
                 }
 
@@ -262,7 +310,10 @@ new Vue({
                 //clone this chip object and create an instance of it with the current code
                 chip = Object.assign({}, chip);
                 chip.code = code;
-
+                chip.raw = {
+                    id: rawId,
+                    code: chipBytes[1],
+                };
 
 
 

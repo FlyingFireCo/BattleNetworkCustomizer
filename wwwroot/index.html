@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,43 +8,121 @@
     <script src="vue.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="app">
         <input type="file" ref="fileInput" @change="loadSaveFile" />
-        <input type="file" ref="fileInput" @change="loadRom" />
-        <p>Position of game name string in the save data: {{ stringPosition }}</p>
+        <!-- <p>Position of game name string in the save data: {{ stringPosition }}</p> -->
         <p>Extracted Game Name: {{ gameName }}</p>
-    
-        <p>Chips in Folder #{{ selectedFolder + 1 }}:</p>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Code</th>
-                    <th>Element</th>
-                    <th>Image</th>
-                    <th>MB</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="chipObj in chips">
-                    <td>{{ chipObj.chip.MId || chipObj.chip.SId }}</td>
-                    <td>{{ chipObj.chip.Name }}</td>
-                    <td>{{ chipObj.chip.Description }}</td>
-                    <td>{{ chipObj.chip.code}}</td>
-                    <td>{{ chipObj.chip.Element }}</td>
-                    <td><img v-bind:src="'/img/' + chipObj.chip.Image" alt="Chip Image" width="100"></td>
-                    <td>{{ chipObj.chip.MB }}</td>
-                </tr>
-            </tbody>
-        </table>
-    
-        <p>Number of Folders: {{ numFolders }}</p>
+
+        <!-- <p>Chips in Folder #{{ selectedFolder + 1 }}:</p> -->
+        <div style="float:left; width: 50%;
+        height: 90vh;
+        overflow-y: scroll;">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Damage</th>
+                        <th>Code</th>
+                        <th>Element</th>
+                        <th>MB</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="chipObj in chips">
+                        <td>{{ chipObj.chip.MId || chipObj.chip.SId }}</td>
+                        <td><img v-bind:src="'/img/' + chipObj.chip.Image" alt="Chip Image" width="100"></td>
+                        <td>{{ chipObj.chip.Name }}</td>
+                        <td>{{ chipObj.chip.Description }}</td>
+                        <td>{{ chipObj.chip.Damage}}</td>
+                        <td>{{ chipObj.chip.code}}</td>
+                        <td>{{ chipObj.chip.Element }}</td>
+                        <td>{{ chipObj.chip.MB }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Chips view on the right -->
+        <div style="    float: right;
+        width: 50%;
+        height: 90vh;
+        overflow-y: scroll;">
+
+            <!-- Toggle Detailed Filter Button -->
+            <button @click="showDetailedFilter = !showDetailedFilter">Toggle Detailed Filter</button>
+
+            <!-- Detailed Filter Inputs -->
+            <div v-if="showDetailedFilter">
+                <label>Name:
+                    <input type="text" v-model="detailedFilter.Name" placeholder="Filter by Name..."></label>
+                </label>
+                <label>Description:
+                    <input type="text" v-model="detailedFilter.Description"
+                        placeholder="Filter by Description..."></label>
+                </label>
+                <label>Damage:
+                    <input type="text" v-model="detailedFilter.Damage" placeholder="Filter by Damage..."></label>
+                </label>
+                <label>Code:
+                    <input type="text" v-model="detailedFilter.Code"
+                        placeholder="Filter by Code (comma separated)..."></label>
+                </label>
+                <label>Element:
+                    <input type="text" v-model="detailedFilter.Element" placeholder="Filter by Element..."></label>
+                </label>
+                <label>MB:
+                    <input type="text" v-model="detailedFilter.MB" placeholder="Filter by MB..."></label>
+                </label>
+            </div>
+            <div v-else>
+                <!-- Search bar -->
+                <input type="text" v-model="searchQuery" placeholder="Search for chips...">
+            </div>
+
+            <!-- Tabs -->
+            <button v-for="tab in ['Standard', 'Mega', 'Giga', 'All']" @click="currentTab = tab">{{ tab }}</button>
+
+            <!-- Chips Table based on current tab -->
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Damage</th>
+                        <th>Code(s)</th>
+                        <th>Element</th>
+                        <th>MB</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="chip in filteredChips">
+                        <td>{{ chip.SId || chip.MId }}</td>
+                        <td><img v-bind:src="'/img/' + chip.Image" alt="Chip Image" width="100"></td>
+                        <td>{{ chip.Name }}</td>
+                        <td>{{ chip.Description }}</td>
+                        <td>{{ chip.Damage }}</td>
+                        <td>{{ chip.Code.join(', ') }}</td>
+                        <td>{{ chip.Element }}</td>
+                        <td>{{ chip.MB }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="clear:both;"></div> <!-- Clearing floats -->
+
+        <!-- <p>Number of Folders: {{ numFolders }}</p> -->
     </div>
-    
+
 
     <script src="app.js"></script>
 </body>
+
 </html>

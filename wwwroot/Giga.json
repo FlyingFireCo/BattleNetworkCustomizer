@@ -4,6 +4,7 @@
         "MId": "45",
         "Name": "Bass",
         "Description": "Buster rake wide enmy area",
+        "Damage": "60",
         "Code": [
             "F"
         ],
@@ -16,6 +17,7 @@
         "MId": "46",
         "Name": "BigHook",
         "Description": "Hook atk 2 sq wide",
+        "Damage": "240",
         "Code": [
             "H"
         ],
@@ -28,6 +30,7 @@
         "MId": "47",
         "Name": "DeltaRay",
         "Description": "A button power up by 3 swrd",
+        "Damage": "260",
         "Code": [
             "Z"
         ],
@@ -40,6 +43,7 @@
         "MId": "48",
         "Name": "ColForce",
         "Description": "Smn Col. army in open pnls",
+        "Damage": "30",
         "Code": [
             "Q"
         ],
@@ -52,6 +56,7 @@
         "MId": "49",
         "Name": "BugRSwrd",
         "Description": "Use Bug Frag with DrkSword!",
+        "Damage": "-",
         "Code": [
             "V"
         ],
@@ -64,6 +69,7 @@
         "MId": "56",
         "Name": "Gregar*",
         "Description": "Gregar's breath attack",
+        "Damage": "300",
         "Code": [
             "X"
         ],
@@ -76,6 +82,7 @@
         "MId": "50",
         "Name": "BassAnly",
         "Description": "A ring that hits 4 times",
+        "Damage": "160",
         "Code": [
             "F"
         ],
@@ -88,6 +95,7 @@
         "MId": "51",
         "Name": "MetrKnuk",
         "Description": "Meteors bombard from sky",
+        "Damage": "100",
         "Code": [
             "N"
         ],
@@ -100,6 +108,7 @@
         "MId": "52",
         "Name": "CrossDiv",
         "Description": "Cross-slice!",
+        "Damage": "250",
         "Code": [
             "D"
         ],
@@ -112,6 +121,7 @@
         "MId": "53",
         "Name": "HubBatc",
         "Description": "Blend Hub DNA Data w/MegaMan",
+        "Damage": "-",
         "Code": [
             "J"
         ],
@@ -124,6 +134,7 @@
         "MId": "54",
         "Name": "BgDthThd",
         "Description": "Use Bug Frag with DarkThnd!",
+        "Damage": " -",
         "Code": [
             "V"
         ],
@@ -136,6 +147,7 @@
         "MId": "57",
         "Name": "Falzar*",
         "Description": "Falzar's ruinous tornado",
+        "Damage": "100",
         "Code": [
             "X"
         ],
