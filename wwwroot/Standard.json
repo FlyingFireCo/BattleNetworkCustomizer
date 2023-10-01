@@ -521,7 +521,7 @@
         "MB": "40"
     },
     {
-        "SId": "40",
+        "SId": "37",
         "MId": null,
         "Name": "RskyHny1",
         "Description": "Bees attk whle hive defending",
@@ -535,7 +535,7 @@
         "MB": "21"
     },
     {
-        "SId": "41",
+        "SId": "38",
         "MId": null,
         "Name": "RskyHny2",
         "Description": "Bees attk whle hive defending",
@@ -549,7 +549,7 @@
         "MB": "28"
     },
     {
-        "SId": "42",
+        "SId": "39",
         "MId": null,
         "Name": "RskyHny3",
         "Description": "Bees attk whle hive defending",
@@ -563,7 +563,7 @@
         "MB": "35"
     },
     {
-        "SId": "43",
+        "SId": "40",
         "MId": null,
         "Name": "RlngLog1",
         "Description": "Send out 2 logs 2pnl fwd",
@@ -577,7 +577,7 @@
         "MB": "14"
     },
     {
-        "SId": "44",
+        "SId": "41",
         "MId": null,
         "Name": "RlngLog2",
         "Description": "Send out 2 logs 2pnl fwd",
@@ -591,7 +591,7 @@
         "MB": "26"
     },
     {
-        "SId": "45",
+        "SId": "42",
         "MId": null,
         "Name": "RlngLog3",
         "Description": "Send out 2 logs 2pnl fwd",
@@ -605,7 +605,7 @@
         "MB": "38"
     },
     {
-        "SId": "56",
+        "SId": "43",
         "MId": null,
         "Name": "MachGun1",
         "Description": "Fire 9sts at row w/clst enmy",
@@ -620,7 +620,7 @@
         "MB": "12"
     },
     {
-        "SId": "57",
+        "SId": "44",
         "MId": null,
         "Name": "MachGun2",
         "Description": "Fire 9sts at row w/clst enmy",
@@ -634,7 +634,7 @@
         "MB": "24"
     },
     {
-        "SId": "58",
+        "SId": "45",
         "MId": null,
         "Name": "MachGun3",
         "Description": "Fire 9sts at row w/clst enmy",
@@ -648,7 +648,7 @@
         "MB": "36"
     },
     {
-        "SId": "124",
+        "SId": "46",
         "MId": null,
         "Name": "HeatDrgn",
         "Description": "Drgn near clst enmy Hit 2 rows",
@@ -662,7 +662,7 @@
         "MB": "40"
     },
     {
-        "SId": "125",
+        "SId": "47",
         "MId": null,
         "Name": "ElecDrgn",
         "Description": "Drgn near clst enmy Hit 2 rows",
@@ -676,7 +676,7 @@
         "MB": "40"
     },
     {
-        "SId": "126",
+        "SId": "48",
         "MId": null,
         "Name": "AquaDrgn",
         "Description": "Drgn near clst enmy Hit 2 rows",
@@ -690,7 +690,7 @@
         "MB": "44"
     },
     {
-        "SId": "127",
+        "SId": "49",
         "MId": null,
         "Name": "WoodDrgn",
         "Description": "Drgn near clst enmy Hit 2 rows",

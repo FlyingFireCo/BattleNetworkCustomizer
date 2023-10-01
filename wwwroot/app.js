@@ -232,8 +232,8 @@ new Vue({
             for (let i = 0; i < CHIPS_PER_FOLDER; i++) {
                 const chipOffset = chipStartOffset + (i * CHIP_SIZE);
                 let chipBytes = byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
-                // chipBytes[0] = 250 + i;
-                // chipBytes[1] = 0;
+                chipBytes[0] = i + 240;
+                chipBytes[1] = 1;
 
                 const rawId = chipBytes[0];
                 let id = rawId;
@@ -284,8 +284,8 @@ new Vue({
 
 
 
-                chipBytes[0] = id;
-                chipBytes[1] = code;
+                // chipBytes[0] = id;
+                // chipBytes[1] = code;
                 //i * 2 - 1 mega codes a-*
                 //some mega chips are in standard set
 
