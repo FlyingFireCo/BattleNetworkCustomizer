@@ -1,0 +1,146 @@
+[
+    {
+        "SId": null,
+        "MId": "45",
+        "Name": "Bass",
+        "Description": "Buster rake wide enmy area",
+        "Code": [
+            "F"
+        ],
+        "Element": "",
+        "Image": "image282.png",
+        "MB": ""
+    },
+    {
+        "SId": null,
+        "MId": "46",
+        "Name": "BigHook",
+        "Description": "Hook atk 2 sq wide",
+        "Code": [
+            "H"
+        ],
+        "Element": "Break",
+        "Image": "image303.png",
+        "MB": ""
+    },
+    {
+        "SId": null,
+        "MId": "47",
+        "Name": "DeltaRay",
+        "Description": "A button power up by 3 swrd",
+        "Code": [
+            "Z"
+        ],
+        "Element": "Sword",
+        "Image": "image302.png",
+        "MB": ""
+    },
+    {
+        "SId": null,
+        "MId": "48",
+        "Name": "ColForce",
+        "Description": "Smn Col. army in open pnls",
+        "Code": [
+            "Q"
+        ],
+        "Element": "",
+        "Image": "image288.png",
+        "MB": ""
+    },
+    {
+        "SId": null,
+        "MId": "49",
+        "Name": "BugRSwrd",
+        "Description": "Use Bug Frag with DrkSword!",
+        "Code": [
+            "V"
+        ],
+        "Element": "Sword",
+        "Image": "image304.png",
+        "MB": ""
+    },
+    {
+        "SId": null,
+        "MId": "56",
+        "Name": "Gregar*",
+        "Description": "Gregar's breath attack",
+        "Code": [
+            "X"
+        ],
+        "Element": "",
+        "Image": "image289.png",
+        "MB": ""
+    },
+    {
+        "SId": null,
+        "MId": "50",
+        "Name": "BassAnly",
+        "Description": "A ring that hits 4 times",
+        "Code": [
+            "F"
+        ],
+        "Element": "",
+        "Image": "image299.png",
+        "MB": "95"
+    },
+    {
+        "SId": null,
+        "MId": "51",
+        "Name": "MetrKnuk",
+        "Description": "Meteors bombard from sky",
+        "Code": [
+            "N"
+        ],
+        "Element": "Break",
+        "Image": "image296.png",
+        "MB": "90"
+    },
+    {
+        "SId": null,
+        "MId": "52",
+        "Name": "CrossDiv",
+        "Description": "Cross-slice!",
+        "Code": [
+            "D"
+        ],
+        "Element": "Sword",
+        "Image": "image284.png",
+        "MB": "93"
+    },
+    {
+        "SId": null,
+        "MId": "53",
+        "Name": "HubBatc",
+        "Description": "Blend Hub DNA Data w/MegaMan",
+        "Code": [
+            "J"
+        ],
+        "Element": "",
+        "Image": "image290.png",
+        "MB": "99"
+    },
+    {
+        "SId": null,
+        "MId": "54",
+        "Name": "BgDthThd",
+        "Description": "Use Bug Frag with DarkThnd!",
+        "Code": [
+            "V"
+        ],
+        "Element": "Elec",
+        "Image": "image298.png",
+        "MB": "80"
+    },
+    {
+        "SId": null,
+        "MId": "57",
+        "Name": "Falzar*",
+        "Description": "Falzar's ruinous tornado",
+        "Code": [
+            "X"
+        ],
+        "Element": "",
+        "Image": "image286.png",
+        "MB": "99"
+    }
+]

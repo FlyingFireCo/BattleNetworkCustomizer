@@ -1,0 +1,754 @@
+[
+    {
+        "SId": "242",
+        "MId": "",
+        "Name": "AquaMan",
+        "Description": "Watr atk! Bhnd 2row power-up",
+        "Code": [
+            "*",
+            "A"
+        ],
+        "Element": "Aqua",
+        "Image": "image203.png",
+        "MB": "42"
+    },
+    {
+        "SId": "243",
+        "MId": "",
+        "Name": "AquaMnEX",
+        "Description": "Watr atk! Bhnd 2row power-up",
+        "Code": [
+            "A"
+        ],
+        "Element": "Aqua",
+        "Image": "image218.png",
+        "MB": "56"
+    },
+    {
+        "SId": "244",
+        "MId": "",
+        "Name": "AquaMnSP",
+        "Description": "Watr atk! Bhnd 2row power-up",
+        "Code": [
+            "A"
+        ],
+        "Element": "Aqua",
+        "Image": "image225.png",
+        "MB": "78"
+    },
+    {
+        "SId": "",
+        "MId": "1",
+        "Name": "BlastMan",
+        "Description": "Head fwd & launch blst attk",
+        "Code": [
+            "*",
+            "B"
+        ],
+        "Element": "Fire",
+        "Image": "image211.png",
+        "MB": "30"
+    },
+    {
+        "SId": "",
+        "MId": "2",
+        "Name": "BlastMnEX",
+        "Description": "Head fwd & launch blst attk",
+        "Code": [
+            "B"
+        ],
+        "Element": "Fire",
+        "Image": "image216.png",
+        "MB": "49"
+    },
+    {
+        "SId": "",
+        "MId": "3",
+        "Name": "BlastMnSP",
+        "Description": "Head fwd & launch blst attk",
+        "Code": [
+            "B"
+        ],
+        "Element": "Fire",
+        "Image": "image215.png",
+        "MB": "68"
+    },
+    {
+        "SId": "239",
+        "MId": "",
+        "Name": "ChrgeMan",
+        "Description": "Rush fwd! Open panl hit TrCar",
+        "Code": [
+            "*",
+            "C"
+        ],
+        "Element": "",
+        "Image": "image209.png",
+        "MB": "42"
+    },
+    {
+        "SId": "240",
+        "MId": "",
+        "Name": "ChrgeMnEX",
+        "Description": "Rush fwd! Open panl hit TrCar",
+        "Code": [
+            "C"
+        ],
+        "Element": "",
+        "Image": "image221.png",
+        "MB": "63"
+    },
+    {
+        "SId": "241",
+        "MId": "",
+        "Name": "ChrgeMnSP",
+        "Description": "Rush fwd! Open panl hit TrCar",
+        "Code": [
+            "C"
+        ],
+        "Element": "",
+        "Image": "image205.png",
+        "MB": "81"
+    },
+    {
+        "SId": "",
+        "MId": "16",
+        "Name": "Colonel",
+        "Description": "Cut enmy lines in Z shape",
+        "Code": [
+            "*",
+            "C"
+        ],
+        "Element": "Sword",
+        "Image": "image206.png",
+        "MB": "45"
+    },
+    {
+        "SId": "",
+        "MId": "17",
+        "Name": "ColonelEX",
+        "Description": "Cut enmy lines in Z shape",
+        "Code": [
+            "C"
+        ],
+        "Element": "Sword",
+        "Image": "image213.png",
+        "MB": "70"
+    },
+    {
+        "SId": "",
+        "MId": "18",
+        "Name": "ColonelSP",
+        "Description": "Cut enmy lines in Z shape",
+        "Code": [
+            "C"
+        ],
+        "Element": "Sword",
+        "Image": "image217.png",
+        "MB": "91"
+    },
+    {
+        "SId": "",
+        "MId": "19",
+        "Name": "Count*",
+        "Description": "Rain on enmy then lance atk",
+        "Code": [
+            "*",
+            "H"
+        ],
+        "Element": "",
+        "Image": "image231.png",
+        "MB": "60"
+    },
+    {
+        "SId": "",
+        "MId": "20",
+        "Name": "CountEX*",
+        "Description": "Rain on enmy then lance atk",
+        "Code": [
+            "H"
+        ],
+        "Element": "",
+        "Image": "image226.png",
+        "MB": "75"
+    },
+    {
+        "SId": "",
+        "MId": "21",
+        "Name": "CountSP*",
+        "Description": "Rain on enmy then lance atk",
+        "Code": [
+            "H"
+        ],
+        "Element": "",
+        "Image": "image220.png",
+        "MB": "89"
+    },
+    {
+        "SId": "",
+        "MId": "7",
+        "Name": "CrcusMan",
+        "Description": "Capture enmy in a ash attck",
+        "Code": [
+            "*",
+            "C"
+        ],
+        "Element": "",
+        "Image": "image219.png",
+        "MB": "42"
+    },
+    {
+        "SId": "",
+        "MId": "8",
+        "Name": "CrcusMnEX",
+        "Description": "Capture enmy in a ash attck",
+        "Code": [
+            "C"
+        ],
+        "Element": "",
+        "Image": "image229.png",
+        "MB": "64"
+    },
+    {
+        "SId": "",
+        "MId": "9",
+        "Name": "CrcusMnSP",
+        "Description": "Capture enmy in a ash attck",
+        "Code": [
+            "C"
+        ],
+        "Element": "",
+        "Image": "image222.png",
+        "MB": "86"
+    },
+    {
+        "SId": "",
+        "MId": "55",
+        "Name": "DblBeast*",
+        "Description": "Ferocious beast power!",
+        "Code": [
+            "W"
+        ],
+        "Element": "",
+        "Image": "image227.png",
+        "MB": "99"
+    },
+    {
+        "SId": "",
+        "MId": "4",
+        "Name": "DiveMan",
+        "Description": "Snd giant wave acrs area 2pnl",
+        "Code": [
+            "*",
+            "D"
+        ],
+        "Element": "Aqua",
+        "Image": "image256.png",
+        "MB": "45"
+    },
+    {
+        "SId": "",
+        "MId": "5",
+        "Name": "DiveManEX",
+        "Description": "Snd giant wave acrs area 2pnl",
+        "Code": [
+            "D"
+        ],
+        "Element": "Aqua",
+        "Image": "image236.png",
+        "MB": "60"
+    },
+    {
+        "SId": "",
+        "MId": "6",
+        "Name": "DiveManSP",
+        "Description": "Snd giant wave acrs area 2pnl",
+        "Code": [
+            "D"
+        ],
+        "Element": "Aqua",
+        "Image": "image234.png",
+        "MB": "75"
+    },
+    {
+        "SId": "",
+        "MId": "22",
+        "Name": "Django*",
+        "Description": "Hit enmy with bike rdng Djgo",
+        "Code": [
+            "*",
+            "D"
+        ],
+        "Element": "",
+        "Image": "image228.png",
+        "MB": "30"
+    },
+    {
+        "SId": "",
+        "MId": "23",
+        "Name": "Django2*",
+        "Description": "Hit enmy with bike rdng Djgo",
+        "Code": [
+            "D"
+        ],
+        "Element": "",
+        "Image": "image239.png",
+        "MB": "70"
+    },
+    {
+        "SId": "",
+        "MId": "24",
+        "Name": "Django3*",
+        "Description": "Hit enmy with bike rdng Djgo",
+        "Code": [
+            "D"
+        ],
+        "Element": "",
+        "Image": "image223.png",
+        "MB": "90"
+    },
+    {
+        "SId": "254",
+        "MId": "",
+        "Name": "DustMan",
+        "Description": "Attk ahd. Suck in & shoot out",
+        "Code": [
+            "*",
+            "D"
+        ],
+        "Element": "",
+        "Image": "image251.png",
+        "MB": "39"
+    },
+    {
+        "SId": "255",
+        "MId": "",
+        "Name": "DustManEX",
+        "Description": "Attk ahd. Suck in & shoot out",
+        "Code": [
+            "D"
+        ],
+        "Element": "",
+        "Image": "image244.png",
+        "MB": "56"
+    },
+    {
+        "SId": "",
+        "MId": "0",
+        "Name": "DustManSP",
+        "Description": "Attk ahd. Suck in & shoot out",
+        "Code": [
+            "D"
+        ],
+        "Element": "",
+        "Image": "image247.png",
+        "MB": "74"
+    },
+    {
+        "SId": "230",
+        "MId": "",
+        "Name": "ElecMan",
+        "Description": "Attk your surrndns with thdr",
+        "Code": [
+            "*",
+            "E"
+        ],
+        "Element": "Elec",
+        "Image": "image238.png",
+        "MB": "38"
+    },
+    {
+        "SId": "231",
+        "MId": "",
+        "Name": "ElecManEX",
+        "Description": "Attk your surrndns with thdr",
+        "Code": [
+            "E"
+        ],
+        "Element": "Elec",
+        "Image": "image230.png",
+        "MB": "52"
+    },
+    {
+        "SId": "232",
+        "MId": "",
+        "Name": "ElecManSP",
+        "Description": "Attk your surrndns with thdr",
+        "Code": [
+            "E"
+        ],
+        "Element": "Elec",
+        "Image": "image267.png",
+        "MB": "79"
+    },
+    {
+        "SId": "",
+        "MId": "13",
+        "Name": "ElmntMan",
+        "Description": "Hit (A) whn col chges elem attk",
+        "Code": [
+            "*",
+            "E"
+        ],
+        "Element": "",
+        "Image": "image232.png",
+        "MB": "50"
+    },
+    {
+        "SId": "",
+        "MId": "14",
+        "Name": "ElmntMnEX",
+        "Description": "Hit (A) whn col chges elem attk",
+        "Code": [
+            "E"
+        ],
+        "Element": "",
+        "Image": "image253.png",
+        "MB": "53"
+    },
+    {
+        "SId": "",
+        "MId": "15",
+        "Name": "ElmntMnSP",
+        "Description": "Hit (A) whn col chges elem attk",
+        "Code": [
+            "E"
+        ],
+        "Element": "",
+        "Image": "image241.png",
+        "MB": "66"
+    },
+    {
+        "SId": "236",
+        "MId": "",
+        "Name": "EraseMan",
+        "Description": "Press (A) for 3panl beam attk",
+        "Code": [
+            "*",
+            "K"
+        ],
+        "Element": "Cursor",
+        "Image": "image243.png",
+        "MB": "51"
+    },
+    {
+        "SId": "237",
+        "MId": "",
+        "Name": "EraseMnEX",
+        "Description": "Press (A) for 3panl beam attk",
+        "Code": [
+            "K"
+        ],
+        "Element": "Cursor",
+        "Image": "image248.png",
+        "MB": "65"
+    },
+    {
+        "SId": "238",
+        "MId": "",
+        "Name": "EraseMnSP",
+        "Description": "Press (A) for 3panl beam attk",
+        "Code": [
+            "K"
+        ],
+        "Element": "Cursor",
+        "Image": "image281.png",
+        "MB": "79"
+    },
+    {
+        "SId": "251",
+        "MId": "",
+        "Name": "GrndMan",
+        "Description": "Move fwrd then attk w/ drill",
+        "Code": [
+            "*",
+            "G"
+        ],
+        "Element": "Break",
+        "Image": "image240.png",
+        "MB": "41"
+    },
+    {
+        "SId": "252",
+        "MId": "",
+        "Name": "GrndManEX",
+        "Description": "Move fwrd then attk w/ drill",
+        "Code": [
+            "G"
+        ],
+        "Element": "Break",
+        "Image": "image245.png",
+        "MB": "66"
+    },
+    {
+        "SId": "253",
+        "MId": "",
+        "Name": "GrndManSP",
+        "Description": "Move fwrd then attk w/ drill",
+        "Code": [
+            "G"
+        ],
+        "Element": "Break",
+        "Image": "image249.png",
+        "MB": "85"
+    },
+    {
+        "SId": "227",
+        "MId": "",
+        "Name": "HeatMan",
+        "Description": "Burn with a radial fire attk",
+        "Code": [
+            "*",
+            "H"
+        ],
+        "Element": "Fire",
+        "Image": "image250.png",
+        "MB": "32"
+    },
+    {
+        "SId": "228",
+        "MId": "",
+        "Name": "HeatManEX",
+        "Description": "Burn with a radial fire attk",
+        "Code": [
+            "H"
+        ],
+        "Element": "Fire",
+        "Image": "image264.png",
+        "MB": "55"
+    },
+    {
+        "SId": "229",
+        "MId": "",
+        "Name": "HeatManSP",
+        "Description": "Burn with a radial fire attk",
+        "Code": [
+            "H"
+        ],
+        "Element": "Fire",
+        "Image": "image254.png",
+        "MB": "70"
+    },
+    {
+        "SId": "",
+        "MId": "10",
+        "Name": "JudgeMan",
+        "Description": "Whip 3 panels forward",
+        "Code": [
+            "*",
+            "J"
+        ],
+        "Element": "Elec",
+        "Image": "image258.png",
+        "MB": "52"
+    },
+    {
+        "SId": "",
+        "MId": "11",
+        "Name": "JudgeMnEX",
+        "Description": "Whip 3 panels forward",
+        "Code": [
+            "J"
+        ],
+        "Element": "Elec",
+        "Image": "image260.png",
+        "MB": "62"
+    },
+    {
+        "SId": "",
+        "MId": "12",
+        "Name": "JudgeMnSP",
+        "Description": "Whip 3 panels forward",
+        "Code": [
+            "J"
+        ],
+        "Element": "Elec",
+        "Image": "image255.png",
+        "MB": "72"
+    },
+    {
+        "SId": "224",
+        "MId": "",
+        "Name": "ProtoMan",
+        "Description": "Move in and slice the enemy",
+        "Code": [
+            "*",
+            "B"
+        ],
+        "Element": "Sword",
+        "Image": "image262.png",
+        "MB": "41"
+    },
+    {
+        "SId": "225",
+        "MId": "",
+        "Name": "ProtoMnEX",
+        "Description": "Move in and slice the enemy",
+        "Code": [
+            "B"
+        ],
+        "Element": "Sword",
+        "Image": "image261.png",
+        "MB": "53"
+    },
+    {
+        "SId": "226",
+        "MId": "",
+        "Name": "ProtoMnSP",
+        "Description": "Move in and slice the enemy",
+        "Code": [
+            "B"
+        ],
+        "Element": "Sword",
+        "Image": "image272.png",
+        "MB": "68"
+    },
+    {
+        "SId": "221",
+        "MId": "",
+        "Name": "Roll",
+        "Description": "Attacks enmy, then heals you",
+        "Code": [
+            "*",
+            "R"
+        ],
+        "Element": "",
+        "Image": "image269.png",
+        "MB": "20"
+    },
+    {
+        "SId": "222",
+        "MId": "",
+        "Name": "Roll2",
+        "Description": "Attacks enmy, then heals you",
+        "Code": [
+            "R"
+        ],
+        "Element": "",
+        "Image": "image285.png",
+        "MB": "40"
+    },
+    {
+        "SId": "223",
+        "MId": "",
+        "Name": "Roll3",
+        "Description": "Attacks enmy, then heals you",
+        "Code": [
+            "R"
+        ],
+        "Element": "",
+        "Image": "image271.png",
+        "MB": "60"
+    },
+    {
+        "SId": "233",
+        "MId": "",
+        "Name": "SlashMan",
+        "Description": "Slash an enmy w/ flyn knfe",
+        "Code": [
+            "*",
+            "S"
+        ],
+        "Element": "Sword",
+        "Image": "image265.png",
+        "MB": "42"
+    },
+    {
+        "SId": "234",
+        "MId": "",
+        "Name": "SlashMnEX",
+        "Description": "Slash an enmy w/ flyn knfe",
+        "Code": [
+            "S"
+        ],
+        "Element": "Sword",
+        "Image": "image275.png",
+        "MB": "65"
+    },
+    {
+        "SId": "235",
+        "MId": "",
+        "Name": "SlashMnSP",
+        "Description": "Slash an enmy w/ flyn knfe",
+        "Code": [
+            "S"
+        ],
+        "Element": "Sword",
+        "Image": "image273.png",
+        "MB": "79"
+    },
+    {
+        "SId": "248",
+        "MId": "",
+        "Name": "TenguMan",
+        "Description": "Attk 2row from air, then side",
+        "Code": [
+            "*",
+            "T"
+        ],
+        "Element": "Wind",
+        "Image": "image283.png",
+        "MB": "43"
+    },
+    {
+        "SId": "249",
+        "MId": "",
+        "Name": "TenguMnEX",
+        "Description": "Attk 2row from air, then side",
+        "Code": [
+            "T"
+        ],
+        "Element": "Wind",
+        "Image": "image270.png",
+        "MB": "61"
+    },
+    {
+        "SId": "250",
+        "MId": "",
+        "Name": "TenguMnSP",
+        "Description": "Attk 2row from air, then side",
+        "Code": [
+            "T"
+        ],
+        "Element": "Wind",
+        "Image": "image279.png",
+        "MB": "74"
+    },
+    {
+        "SId": "245",
+        "MId": "",
+        "Name": "TmhkMan",
+        "Description": "Slice 2sq side, 3sq vertical",
+        "Code": [
+            "*",
+            "T"
+        ],
+        "Element": "Wood",
+        "Image": "image278.png",
+        "MB": "40"
+    },
+    {
+        "SId": "246",
+        "MId": "",
+        "Name": "TmhkManEX",
+        "Description": "Slice 2sq side, 3sq vertical",
+        "Code": [
+            "T"
+        ],
+        "Element": "Wood",
+        "Image": "image277.png",
+        "MB": "60"
+    },
+    {
+        "SId": "247",
+        "MId": "",
+        "Name": "TmhkManSP",
+        "Description": "Slice 2sq side, 3sq vertical",
+        "Code": [
+            "T"
+        ],
+        "Element": "Wood",
+        "Image": "image276.png",
+        "MB": "80"
+    }
+]

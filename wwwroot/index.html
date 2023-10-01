@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Data Reader</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <input type="file" ref="fileInput" @change="loadSaveFile" />
+        <input type="file" ref="fileInput" @change="loadRom" />
+        <p>Position of game name string in the save data: {{ stringPosition }}</p>
+        <p>Extracted Game Name: {{ gameName }}</p>
+    
+        <p>Chips in Folder #{{ selectedFolder + 1 }}:</p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Code</th>
+                    <th>Element</th>
+                    <th>Image</th>
+                    <th>MB</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="chipObj in chips">
+                    <td>{{ chipObj.chip.MId || chipObj.chip.SId }}</td>
+                    <td>{{ chipObj.chip.Name }}</td>
+                    <td>{{ chipObj.chip.Description }}</td>
+                    <td>{{ chipObj.chip.code}}</td>
+                    <td>{{ chipObj.chip.Element }}</td>
+                    <td><img v-bind:src="'/img/' + chipObj.chip.Image" alt="Chip Image" width="100"></td>
+                    <td>{{ chipObj.chip.MB }}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <p>Number of Folders: {{ numFolders }}</p>
+    </div>
+    
+
+    <script src="app.js"></script>
+</body>
+</html>

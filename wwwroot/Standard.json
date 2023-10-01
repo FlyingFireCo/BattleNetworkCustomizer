@@ -1,0 +1,2841 @@
+[
+    {
+        "SId": "1",
+        "MId": null,
+        "Name": "Cannon",
+        "Description": "Cannon attack to 1 enemy",
+        "Code": [
+            "*",
+            "A",
+            "B",
+            "C"
+        ],
+        "Element": "",
+        "Image": "image1.png",
+        "MB": "6"
+    },
+    {
+        "SId": "2",
+        "MId": null,
+        "Name": "HiCannon",
+        "Description": "Cannon attack to 1 enemy",
+        "Code": [
+            "*",
+            "L",
+            "M",
+            "N"
+        ],
+        "Element": "",
+        "Image": "image2.png",
+        "MB": "24"
+    },
+    {
+        "SId": "3",
+        "MId": null,
+        "Name": "M-Cannon",
+        "Description": "Cannon attack to 1 enemy",
+        "Code": [
+            "*",
+            "R",
+            "S",
+            "T"
+        ],
+        "Element": "",
+        "Image": "image7.png",
+        "MB": "38"
+    },
+    {
+        "SId": "4",
+        "MId": null,
+        "Name": "AirShot",
+        "Description": "Knock enmy back 1 square",
+        "Code": [
+            "*"
+        ],
+        "Element": "Wind",
+        "Image": "image9.png",
+        "MB": "4"
+    },
+    {
+        "SId": "5",
+        "MId": null,
+        "Name": "Vulcan1",
+        "Description": "3-shot to pierce 1 panel!",
+        "Code": [
+            "*",
+            "B",
+            "D",
+            "S"
+        ],
+        "Element": "",
+        "Image": "image8.png",
+        "MB": "5"
+    },
+    {
+        "SId": "6",
+        "MId": null,
+        "Name": "Vulcan2",
+        "Description": "4-shot to pierce 1 panel!",
+        "Code": [
+            "D",
+            "F",
+            "L"
+        ],
+        "Element": "",
+        "Image": "image5.png",
+        "MB": "18"
+    },
+    {
+        "SId": "7",
+        "MId": null,
+        "Name": "Vulcan3",
+        "Description": "5-shot to pierce 1 panel!",
+        "Code": [
+            "A",
+            "G",
+            "R"
+        ],
+        "Element": "",
+        "Image": "image3.png",
+        "MB": "30"
+    },
+    {
+        "SId": "8",
+        "MId": null,
+        "Name": "SuprVulc",
+        "Description": "10-shot vulcan cannon!",
+        "Code": [
+            "V"
+        ],
+        "Element": "",
+        "Image": "image4.png",
+        "MB": "75"
+    },
+    {
+        "SId": "9",
+        "MId": null,
+        "Name": "Spreadr1",
+        "Description": "Spreads damg to adj panels",
+        "Code": [
+            "*",
+            "L",
+            "M",
+            "N"
+        ],
+        "Element": "",
+        "Image": "image6.png",
+        "MB": "10"
+    },
+    {
+        "SId": "10",
+        "MId": null,
+        "Name": "Spreadr2",
+        "Description": "Spreads damg to adj panels",
+        "Code": [
+            "*",
+            "A",
+            "B",
+            "C"
+        ],
+        "Element": "",
+        "Image": "image10.png",
+        "MB": "18"
+    },
+    {
+        "SId": "11",
+        "MId": null,
+        "Name": "Spreadr3",
+        "Description": "Spreads damg to adj panels",
+        "Code": [
+            "*",
+            "Q",
+            "R",
+            "S"
+        ],
+        "Element": "",
+        "Image": "image13.png",
+        "MB": "26"
+    },
+    {
+        "SId": "12",
+        "MId": null,
+        "Name": "TankCan1",
+        "Description": "3sqr blst if hits end row",
+        "Code": [
+            "A",
+            "G",
+            "R"
+        ],
+        "Element": "",
+        "Image": "image18.png",
+        "MB": "17"
+    },
+    {
+        "SId": "13",
+        "MId": null,
+        "Name": "TankCan2",
+        "Description": "3sqr blst if hits end row",
+        "Code": [
+            "L",
+            "S",
+            "V"
+        ],
+        "Element": "",
+        "Image": "image16.png",
+        "MB": "28"
+    },
+    {
+        "SId": "14",
+        "MId": null,
+        "Name": "TankCan3",
+        "Description": "3sqr blst if hits end row",
+        "Code": [
+            "B",
+            "M",
+            "P"
+        ],
+        "Element": "",
+        "Image": "image11.png",
+        "MB": "39"
+    },
+    {
+        "SId": "15",
+        "MId": null,
+        "Name": "GunDelS1",
+        "Description": "Hits row 2pnl ahd w/sunshne",
+        "Code": [
+            "*",
+            "C",
+            "M",
+            "T"
+        ],
+        "Element": "",
+        "Image": "image21.png",
+        "MB": "15"
+    },
+    {
+        "SId": "16",
+        "MId": null,
+        "Name": "GunDelS2",
+        "Description": "Hits row 2pnl ahd w/sunshne",
+        "Code": [
+            "B",
+            "E",
+            "R"
+        ],
+        "Element": "",
+        "Image": "image14.png",
+        "MB": "30"
+    },
+    {
+        "SId": "17",
+        "MId": null,
+        "Name": "GunDelS3",
+        "Description": "Hits row 2pnl ahd w/sunshne",
+        "Code": [
+            "N",
+            "Q",
+            "W"
+        ],
+        "Element": "",
+        "Image": "image15.png",
+        "MB": "38"
+    },
+    {
+        "SId": "18",
+        "MId": null,
+        "Name": "GUN DEL S EX",
+        "Description": "",
+        "Code": [
+            null
+        ],
+        "Element": "",
+        "Image": "",
+        "MB": ""
+    },
+    {
+        "SId": "18",
+        "MId": null,
+        "Name": "GunDelEX*",
+        "Description": "Fires a spread sunbeam",
+        "Code": [
+            "G"
+        ],
+        "Element": "",
+        "Image": "image17.png",
+        "MB": "80"
+    },
+    {
+        "SId": "19",
+        "MId": null,
+        "Name": "YoYo",
+        "Description": "YoYo atk reaches 3sq ahead",
+        "Code": [
+            "*",
+            "L",
+            "M",
+            "N"
+        ],
+        "Element": "",
+        "Image": "image12.png",
+        "MB": "32"
+    },
+    {
+        "SId": "20",
+        "MId": null,
+        "Name": "FireBrn1",
+        "Description": "Crcks 3 sqrs ahd with fire",
+        "Code": [
+            "*",
+            "F",
+            "G",
+            "H"
+        ],
+        "Element": "Fire",
+        "Image": "image19.png",
+        "MB": "8"
+    },
+    {
+        "SId": "21",
+        "MId": null,
+        "Name": "FireBrn2",
+        "Description": "Crcks 3 sqrs ahd with fire",
+        "Code": [
+            "S",
+            "T",
+            "U"
+        ],
+        "Element": "Fire",
+        "Image": "image24.png",
+        "MB": "21"
+    },
+    {
+        "SId": "22",
+        "MId": null,
+        "Name": "FireBrn3",
+        "Description": "Crcks 3 sqrs ahd with fire",
+        "Code": [
+            "C",
+            "D",
+            "E"
+        ],
+        "Element": "Fire",
+        "Image": "image22.png",
+        "MB": "34"
+    },
+    {
+        "SId": "23",
+        "MId": null,
+        "Name": "WideSht",
+        "Description": "Fires 3sq shotgun blast!",
+        "Code": [
+            "P",
+            "Q",
+            "R"
+        ],
+        "Element": "Aqua",
+        "Image": "image20.png",
+        "MB": "34"
+    },
+    {
+        "SId": "24",
+        "MId": null,
+        "Name": "TrnArrw1",
+        "Description": "Hits enmy w/arrow. Use dstnc",
+        "Code": [
+            "A",
+            "F",
+            "K"
+        ],
+        "Element": "Aqua",
+        "Image": "image25.png",
+        "MB": "30"
+    },
+    {
+        "SId": "25",
+        "MId": null,
+        "Name": "TrnArrw2",
+        "Description": "Hits enmy w/arrow. Use dstnc",
+        "Code": [
+            "G",
+            "M",
+            "Z"
+        ],
+        "Element": "Aqua",
+        "Image": "image23.png",
+        "MB": "36"
+    },
+    {
+        "SId": "26",
+        "MId": null,
+        "Name": "TrnArrw3",
+        "Description": "Hits enmy w/arrow. Use dstnc",
+        "Code": [
+            "M",
+            "S",
+            "Y"
+        ],
+        "Element": "Aqua",
+        "Image": "image26.png",
+        "MB": "42"
+    },
+    {
+        "SId": "27",
+        "MId": null,
+        "Name": "BblStar1",
+        "Description": "Seals an enemy in a bubble.",
+        "Code": [
+            "B",
+            "E",
+            "T"
+        ],
+        "Element": "Aqua",
+        "Image": "image31.png",
+        "MB": "30"
+    },
+    {
+        "SId": "28",
+        "MId": null,
+        "Name": "BblStar2",
+        "Description": "Seals an enemy in a bubble.",
+        "Code": [
+            "C",
+            "L",
+            "V"
+        ],
+        "Element": "Aqua",
+        "Image": "image27.png",
+        "MB": "38"
+    },
+    {
+        "SId": "29",
+        "MId": null,
+        "Name": "BblStar3",
+        "Description": "Seals an enemy in a bubble.",
+        "Code": [
+            "G",
+            "R",
+            "S"
+        ],
+        "Element": "Aqua",
+        "Image": "image29.png",
+        "MB": "46"
+    },
+    {
+        "SId": "30",
+        "MId": null,
+        "Name": "Thunder",
+        "Description": "Pralyzing electric attack!",
+        "Code": [
+            "*",
+            "B",
+            "R",
+            "S"
+        ],
+        "Element": "Elec",
+        "Image": "image28.png",
+        "MB": "7"
+    },
+    {
+        "SId": "31",
+        "MId": null,
+        "Name": "DolThdr1",
+        "Description": "A piercng thunder attack!",
+        "Code": [
+            "A",
+            "E",
+            "Q"
+        ],
+        "Element": "Elec",
+        "Image": "image32.png",
+        "MB": "24"
+    },
+    {
+        "SId": "32",
+        "MId": null,
+        "Name": "DolThdr2",
+        "Description": "A piercng thunder attack!",
+        "Code": [
+            "C",
+            "L",
+            "P"
+        ],
+        "Element": "Elec",
+        "Image": "image33.png",
+        "MB": "31"
+    },
+    {
+        "SId": "33",
+        "MId": null,
+        "Name": "DolThdr3",
+        "Description": "A piercng thunder attack!",
+        "Code": [
+            "B",
+            "R",
+            "V"
+        ],
+        "Element": "Elec",
+        "Image": "image30.png",
+        "MB": "38"
+    },
+    {
+        "SId": "34",
+        "MId": null,
+        "Name": "ElcPuls1",
+        "Description": "Sprd elec puls that paralyzes",
+        "Code": [
+            "J",
+            "L",
+            "S"
+        ],
+        "Element": "Elec",
+        "Image": "image36.png",
+        "MB": "32"
+    },
+    {
+        "SId": "35",
+        "MId": null,
+        "Name": "ElcPuls2",
+        "Description": "Sprd elec pulse. Pul enemy in.",
+        "Code": [
+            "A",
+            "E",
+            "J"
+        ],
+        "Element": "Elec",
+        "Image": "image34.png",
+        "MB": "36"
+    },
+    {
+        "SId": "36",
+        "MId": null,
+        "Name": "ElcPuls3",
+        "Description": "Sprd elec puls. Hit w/HP bug.",
+        "Code": [
+            "A",
+            "J",
+            "S"
+        ],
+        "Element": "Elec",
+        "Image": "image45.png",
+        "MB": "40"
+    },
+    {
+        "SId": "40",
+        "MId": null,
+        "Name": "RskyHny1",
+        "Description": "Bees attk whle hive defending",
+        "Code": [
+            "B",
+            "G",
+            "S"
+        ],
+        "Element": "Wood",
+        "Image": "image35.png",
+        "MB": "21"
+    },
+    {
+        "SId": "41",
+        "MId": null,
+        "Name": "RskyHny2",
+        "Description": "Bees attk whle hive defending",
+        "Code": [
+            "C",
+            "R",
+            "V"
+        ],
+        "Element": "Wood",
+        "Image": "image37.png",
+        "MB": "28"
+    },
+    {
+        "SId": "42",
+        "MId": null,
+        "Name": "RskyHny3",
+        "Description": "Bees attk whle hive defending",
+        "Code": [
+            "A",
+            "D",
+            "M"
+        ],
+        "Element": "Wood",
+        "Image": "image38.png",
+        "MB": "35"
+    },
+    {
+        "SId": "43",
+        "MId": null,
+        "Name": "RlngLog1",
+        "Description": "Send out 2 logs 2pnl fwd",
+        "Code": [
+            "I",
+            "K",
+            "P"
+        ],
+        "Element": "Wood",
+        "Image": "image41.png",
+        "MB": "14"
+    },
+    {
+        "SId": "44",
+        "MId": null,
+        "Name": "RlngLog2",
+        "Description": "Send out 2 logs 2pnl fwd",
+        "Code": [
+            "E",
+            "Q",
+            "Z"
+        ],
+        "Element": "Wood",
+        "Image": "image39.png",
+        "MB": "26"
+    },
+    {
+        "SId": "45",
+        "MId": null,
+        "Name": "RlngLog3",
+        "Description": "Send out 2 logs 2pnl fwd",
+        "Code": [
+            "F",
+            "N",
+            "W"
+        ],
+        "Element": "Wood",
+        "Image": "image43.png",
+        "MB": "38"
+    },
+    {
+        "SId": "56",
+        "MId": null,
+        "Name": "MachGun1",
+        "Description": "Fire 9sts at row w/clst enmy",
+        "Code": [
+            "*",
+            "A",
+            "R",
+            "T"
+        ],
+        "Element": "Cursor",
+        "Image": "image44.png",
+        "MB": "12"
+    },
+    {
+        "SId": "57",
+        "MId": null,
+        "Name": "MachGun2",
+        "Description": "Fire 9sts at row w/clst enmy",
+        "Code": [
+            "E",
+            "G",
+            "S"
+        ],
+        "Element": "Cursor",
+        "Image": "image40.png",
+        "MB": "24"
+    },
+    {
+        "SId": "58",
+        "MId": null,
+        "Name": "MachGun3",
+        "Description": "Fire 9sts at row w/clst enmy",
+        "Code": [
+            "B",
+            "F",
+            "M"
+        ],
+        "Element": "Cursor",
+        "Image": "image46.png",
+        "MB": "36"
+    },
+    {
+        "SId": "124",
+        "MId": null,
+        "Name": "HeatDrgn",
+        "Description": "Drgn near clst enmy Hit 2 rows",
+        "Code": [
+            "G",
+            "R",
+            "T"
+        ],
+        "Element": "Fire",
+        "Image": "image52.png",
+        "MB": "40"
+    },
+    {
+        "SId": "125",
+        "MId": null,
+        "Name": "ElecDrgn",
+        "Description": "Drgn near clst enmy Hit 2 rows",
+        "Code": [
+            "A",
+            "L",
+            "V"
+        ],
+        "Element": "Elec",
+        "Image": "image42.png",
+        "MB": "40"
+    },
+    {
+        "SId": "126",
+        "MId": null,
+        "Name": "AquaDrgn",
+        "Description": "Drgn near clst enmy Hit 2 rows",
+        "Code": [
+            "H",
+            "P",
+            "S"
+        ],
+        "Element": "Aqua",
+        "Image": "image49.png",
+        "MB": "44"
+    },
+    {
+        "SId": "127",
+        "MId": null,
+        "Name": "WoodDrgn",
+        "Description": "Drgn near clst enmy Hit 2 rows",
+        "Code": [
+            "G",
+            "T",
+            "V"
+        ],
+        "Element": "Wood",
+        "Image": "image47.png",
+        "MB": "48"
+    },
+    {
+        "SId": "50",
+        "MId": null,
+        "Name": "AirHocky",
+        "Description": "Bounce the puck off walls",
+        "Code": [
+            "L",
+            "M",
+            "N"
+        ],
+        "Element": "Break",
+        "Image": "image51.png",
+        "MB": "19"
+    },
+    {
+        "SId": "51",
+        "MId": null,
+        "Name": "DrilArm",
+        "Description": "Knocks enmy 2sq away",
+        "Code": [
+            "G",
+            "M",
+            "W"
+        ],
+        "Element": "Break",
+        "Image": "image48.png",
+        "MB": "32"
+    },
+    {
+        "SId": "52",
+        "MId": null,
+        "Name": "Tornado",
+        "Description": "8hit strm 2 squares ahead",
+        "Code": [
+            "L",
+            "R",
+            "T"
+        ],
+        "Element": "Wind",
+        "Image": "image50.png",
+        "MB": "16"
+    },
+    {
+        "SId": "53",
+        "MId": null,
+        "Name": "Static",
+        "Description": "A static blast 2sq ahead",
+        "Code": [
+            "G",
+            "S",
+            "V"
+        ],
+        "Element": "Wind",
+        "Image": "image53.png",
+        "MB": "30"
+    },
+    {
+        "SId": "54",
+        "MId": null,
+        "Name": "MiniBomb",
+        "Description": "Throws a MiniBomb 3sq ahead",
+        "Code": [
+            "*",
+            "B",
+            "L",
+            "R"
+        ],
+        "Element": "",
+        "Image": "image54.png",
+        "MB": "6"
+    },
+    {
+        "SId": "55",
+        "MId": null,
+        "Name": "EnergBom",
+        "Description": "Throws a bomb 3sq ahead",
+        "Code": [
+            "*",
+            "C",
+            "K",
+            "V"
+        ],
+        "Element": "",
+        "Image": "image56.png",
+        "MB": "11"
+    },
+    {
+        "SId": "56",
+        "MId": null,
+        "Name": "MegEnBom",
+        "Description": "Throws a bomb 3sq ahead",
+        "Code": [
+            "*",
+            "G",
+            "M",
+            "O"
+        ],
+        "Element": "",
+        "Image": "image61.png",
+        "MB": "27"
+    },
+    {
+        "SId": "57",
+        "MId": null,
+        "Name": "FlshBom1",
+        "Description": "Thrw dlyd stun bomb 3sq fwd",
+        "Code": [
+            "*",
+            "J",
+            "L",
+            "Q"
+        ],
+        "Element": "",
+        "Image": "image55.png",
+        "MB": "30"
+    },
+    {
+        "SId": "58",
+        "MId": null,
+        "Name": "FlshBom2",
+        "Description": "Thrw dlyd stun bomb 3sq fwd",
+        "Code": [
+            "G",
+            "K",
+            "R"
+        ],
+        "Element": "",
+        "Image": "image69.png",
+        "MB": "34"
+    },
+    {
+        "SId": "59",
+        "MId": null,
+        "Name": "FlshBom3",
+        "Description": "Thrw dlyd stun bomb 3sq fwd",
+        "Code": [
+            "H",
+            "P",
+            "S"
+        ],
+        "Element": "",
+        "Image": "image58.png",
+        "MB": "38"
+    },
+    {
+        "SId": "60",
+        "MId": null,
+        "Name": "BlkBomb",
+        "Description": "Thrw shel 3sqr fwd. Fire attk",
+        "Code": [
+            "B",
+            "F",
+            "O"
+        ],
+        "Element": "Fire",
+        "Image": "image57.png",
+        "MB": "32"
+    },
+    {
+        "SId": "61",
+        "MId": null,
+        "Name": "AquaNdl1",
+        "Description": "Target 3 needles at enemy!",
+        "Code": [
+            "C",
+            "J",
+            "P"
+        ],
+        "Element": "Aqua",
+        "Image": "image59.png",
+        "MB": "31"
+    },
+    {
+        "SId": "62",
+        "MId": null,
+        "Name": "AquaNdl2",
+        "Description": "Target 3 needles at enemy!",
+        "Code": [
+            "F",
+            "K",
+            "T"
+        ],
+        "Element": "Aqua",
+        "Image": "image63.png",
+        "MB": "35"
+    },
+    {
+        "SId": "63",
+        "MId": null,
+        "Name": "AquaNdl3",
+        "Description": "Target 3 needles at enemy!",
+        "Code": [
+            "A",
+            "L",
+            "U"
+        ],
+        "Element": "Aqua",
+        "Image": "image60.png",
+        "MB": "39"
+    },
+    {
+        "SId": "64",
+        "MId": null,
+        "Name": "CornSht1",
+        "Description": "Damages enemies w/corn",
+        "Code": [
+            "J",
+            "K",
+            "L"
+        ],
+        "Element": "Wood",
+        "Image": "image62.png",
+        "MB": "14"
+    },
+    {
+        "SId": "65",
+        "MId": null,
+        "Name": "CornSht2",
+        "Description": "Damages enemies w/corn",
+        "Code": [
+            "C",
+            "D",
+            "E"
+        ],
+        "Element": "Wood",
+        "Image": "image64.png",
+        "MB": "26"
+    },
+    {
+        "SId": "66",
+        "MId": null,
+        "Name": "CornSht3",
+        "Description": "Damages enemies w/corn",
+        "Code": [
+            "P",
+            "Q",
+            "R"
+        ],
+        "Element": "Wood",
+        "Image": "image65.png",
+        "MB": "38"
+    },
+    {
+        "SId": "67",
+        "MId": null,
+        "Name": "BugBomb",
+        "Description": "Throws a BugBomb 3sq ahead",
+        "Code": [
+            "G",
+            "S",
+            "V"
+        ],
+        "Element": "",
+        "Image": "image67.png",
+        "MB": "24"
+    },
+    {
+        "SId": "68",
+        "MId": null,
+        "Name": "GrasSeed",
+        "Description": "Makes 9sq meadow 3sq ahead",
+        "Code": [
+            "*",
+            "A",
+            "F",
+            "S"
+        ],
+        "Element": "Wood",
+        "Image": "image66.png",
+        "MB": "19"
+    },
+    {
+        "SId": "69",
+        "MId": null,
+        "Name": "IceSeed",
+        "Description": "Makes 9sq ice field 3sq ahead",
+        "Code": [
+            "*",
+            "A",
+            "L",
+            "R"
+        ],
+        "Element": "Aqua",
+        "Image": "image70.png",
+        "MB": "31"
+    },
+    {
+        "SId": "70",
+        "MId": null,
+        "Name": "PoisSeed",
+        "Description": "Makes 9sq poisn swp 3sq ahead",
+        "Code": [
+            "*",
+            "H",
+            "N",
+            "P"
+        ],
+        "Element": "",
+        "Image": "image72.png",
+        "MB": "37"
+    },
+    {
+        "SId": "71",
+        "MId": null,
+        "Name": "Sword",
+        "Description": "Cuts enmy in front! Range 1",
+        "Code": [
+            "*",
+            "H",
+            "L",
+            "S"
+        ],
+        "Element": "Sword",
+        "Image": "image71.png",
+        "MB": "8"
+    },
+    {
+        "SId": "72",
+        "MId": null,
+        "Name": "WideSwrd",
+        "Description": "Cuts enmy in front! Range 3",
+        "Code": [
+            "*",
+            "H",
+            "L",
+            "S"
+        ],
+        "Element": "Sword",
+        "Image": "image68.png",
+        "MB": "12"
+    },
+    {
+        "SId": "73",
+        "MId": null,
+        "Name": "LongSwrd",
+        "Description": "Cuts enmy in front! Range 2",
+        "Code": [
+            "*",
+            "H",
+            "L",
+            "S"
+        ],
+        "Element": "Sword",
+        "Image": "image74.png",
+        "MB": "25"
+    },
+    {
+        "SId": "74",
+        "MId": null,
+        "Name": "WideBlde",
+        "Description": "Cuts enmy in front! Range 3",
+        "Code": [
+            "B",
+            "R",
+            "W"
+        ],
+        "Element": "Sword",
+        "Image": "image73.png",
+        "MB": "38"
+    },
+    {
+        "SId": "75",
+        "MId": null,
+        "Name": "LongBlde",
+        "Description": "Cuts enmy in front! Range 2",
+        "Code": [
+            "B",
+            "M",
+            "V"
+        ],
+        "Element": "Sword",
+        "Image": "image79.png",
+        "MB": "38"
+    },
+    {
+        "SId": "76",
+        "MId": null,
+        "Name": "FireSwrd",
+        "Description": "Cut enmy 3sq fwrd w/fire",
+        "Code": [
+            "F",
+            "O",
+            "Z"
+        ],
+        "Element": "Fire",
+        "Image": "image75.png",
+        "MB": "30"
+    },
+    {
+        "SId": "77",
+        "MId": null,
+        "Name": "AquaSwrd",
+        "Description": "Cut enmy 3sq fwrd w/aqua",
+        "Code": [
+            "A",
+            "I",
+            "Y"
+        ],
+        "Element": "Aqua",
+        "Image": "image76.png",
+        "MB": "32"
+    },
+    {
+        "SId": "78",
+        "MId": null,
+        "Name": "ElecSwrd",
+        "Description": "Cut enmy 3sq fwrd w/elec",
+        "Code": [
+            "E",
+            "K",
+            "N"
+        ],
+        "Element": "Elec",
+        "Image": "image77.png",
+        "MB": "35"
+    },
+    {
+        "SId": "79",
+        "MId": null,
+        "Name": "BambSwrd",
+        "Description": "Cut enmy 3sq fwrd w/wood",
+        "Code": [
+            "H",
+            "S",
+            "W"
+        ],
+        "Element": "Wood",
+        "Image": "image80.png",
+        "MB": "34"
+    },
+    {
+        "SId": "80",
+        "MId": null,
+        "Name": "WindRack",
+        "Description": "Blow enmy in front! Range 3",
+        "Code": [
+            "*",
+            "F",
+            "J",
+            "T"
+        ],
+        "Element": "Wind",
+        "Image": "image81.png",
+        "MB": "19"
+    },
+    {
+        "SId": "81",
+        "MId": null,
+        "Name": "StepSwrd",
+        "Description": "Use WideSwrd 2sq ahead",
+        "Code": [
+            "B",
+            "L",
+            "P"
+        ],
+        "Element": "Sword",
+        "Image": "image78.png",
+        "MB": "28"
+    },
+    {
+        "SId": "82",
+        "MId": null,
+        "Name": "VarSwrd",
+        "Description": "A magical shifting sword.",
+        "Code": [
+            "K",
+            "V",
+            "W"
+        ],
+        "Element": "Sword",
+        "Image": "image86.png",
+        "MB": "28"
+    },
+    {
+        "SId": "83",
+        "MId": null,
+        "Name": "NeoVari",
+        "Description": "A magical shifting sword.",
+        "Code": [
+            "N"
+        ],
+        "Element": "Sword",
+        "Image": "image82.png",
+        "MB": "52"
+    },
+    {
+        "SId": "84",
+        "MId": null,
+        "Name": "MoonBld",
+        "Description": "Slices enemies around",
+        "Code": [
+            "A",
+            "M",
+            "T"
+        ],
+        "Element": "Sword",
+        "Image": "image84.png",
+        "MB": "35"
+    },
+    {
+        "SId": "85",
+        "MId": null,
+        "Name": "Muramasa",
+        "Description": "Atk power equals amt of lostHP",
+        "Code": [
+            "M"
+        ],
+        "Element": "Sword",
+        "Image": "image88.png",
+        "MB": "77"
+    },
+    {
+        "SId": "86",
+        "MId": null,
+        "Name": "MchnSwrd",
+        "Description": "Search and hit stund enemies.",
+        "Code": [
+            "H",
+            "L",
+            "Q"
+        ],
+        "Element": "",
+        "Image": "image83.png",
+        "MB": "37"
+    },
+    {
+        "SId": "87",
+        "MId": null,
+        "Name": "ElemSwrd",
+        "Description": "Cuts enmy on Wood, ice, fire",
+        "Code": [
+            "J",
+            "M",
+            "U"
+        ],
+        "Element": "",
+        "Image": "image87.png",
+        "MB": "43"
+    },
+    {
+        "SId": "88",
+        "MId": null,
+        "Name": "AssnSwrd",
+        "Description": "When plyz cut enemy spec panl",
+        "Code": [
+            "N",
+            "R",
+            "Y"
+        ],
+        "Element": "",
+        "Image": "image85.png",
+        "MB": "50"
+    },
+    {
+        "SId": "89",
+        "MId": null,
+        "Name": "CrakShot",
+        "Description": "Shoot a panel at an enemy!",
+        "Code": [
+            "*",
+            "A",
+            "G",
+            "T"
+        ],
+        "Element": "",
+        "Image": "image89.png",
+        "MB": "4"
+    },
+    {
+        "SId": "90",
+        "MId": null,
+        "Name": "DublShot",
+        "Description": "Shoot 2 panels at an enemy!",
+        "Code": [
+            "*",
+            "C",
+            "R",
+            "U"
+        ],
+        "Element": "",
+        "Image": "image91.png",
+        "MB": "8"
+    },
+    {
+        "SId": "91",
+        "MId": null,
+        "Name": "TrplShot",
+        "Description": "Shoot 3 panels at an enemy!",
+        "Code": [
+            "*",
+            "J",
+            "L",
+            "V"
+        ],
+        "Element": "",
+        "Image": "image93.png",
+        "MB": "12"
+    },
+    {
+        "SId": "92",
+        "MId": null,
+        "Name": "WaveArm1",
+        "Description": "Fllw enemy and fire trap wave",
+        "Code": [
+            "E",
+            "F",
+            "G"
+        ],
+        "Element": "",
+        "Image": "image92.png",
+        "MB": "15"
+    },
+    {
+        "SId": "93",
+        "MId": null,
+        "Name": "WaveArm2",
+        "Description": "Fllw enemy and fire trap wave",
+        "Code": [
+            "L",
+            "M",
+            "N"
+        ],
+        "Element": "",
+        "Image": "image90.png",
+        "MB": "22"
+    },
+    {
+        "SId": "94",
+        "MId": null,
+        "Name": "WaveArm3",
+        "Description": "Fllw enemy and fire trap wave",
+        "Code": [
+            "R",
+            "S",
+            "T"
+        ],
+        "Element": "",
+        "Image": "image95.png",
+        "MB": "29"
+    },
+    {
+        "SId": "95",
+        "MId": null,
+        "Name": "AuraHed1",
+        "Description": "A flying head with 2spc tail",
+        "Code": [
+            "B",
+            "C",
+            "D"
+        ],
+        "Element": "Break",
+        "Image": "image94.png",
+        "MB": "25"
+    },
+    {
+        "SId": "96",
+        "MId": null,
+        "Name": "AuraHed2",
+        "Description": "A flying head with 2spc tail",
+        "Code": [
+            "D",
+            "E",
+            "F"
+        ],
+        "Element": "Break",
+        "Image": "image112.png",
+        "MB": "33"
+    },
+    {
+        "SId": "97",
+        "MId": null,
+        "Name": "AuraHed3",
+        "Description": "A flying head with 2spc tail",
+        "Code": [
+            "F",
+            "G",
+            "H"
+        ],
+        "Element": "Break",
+        "Image": "image97.png",
+        "MB": "39"
+    },
+    {
+        "SId": "98",
+        "MId": null,
+        "Name": "LilBolr1",
+        "Description": "3pnl fwd Kttl attk Attack+",
+        "Code": [
+            "F",
+            "K",
+            "L"
+        ],
+        "Element": "Obstacle",
+        "Image": "image100.png",
+        "MB": "18"
+    },
+    {
+        "SId": "99",
+        "MId": null,
+        "Name": "LilBolr2",
+        "Description": "3pnl fwd Kttl attk Attack+",
+        "Code": [
+            "E",
+            "M",
+            "V"
+        ],
+        "Element": "Obstacle",
+        "Image": "image98.png",
+        "MB": "23"
+    },
+    {
+        "SId": "100",
+        "MId": null,
+        "Name": "LilBolr3",
+        "Description": "3pnl fwd Kttl attk Attack+",
+        "Code": [
+            "G",
+            "S",
+            "Z"
+        ],
+        "Element": "Obstacle",
+        "Image": "image102.png",
+        "MB": "28"
+    },
+    {
+        "SId": "101",
+        "MId": null,
+        "Name": "SandWrm1",
+        "Description": "Attk enmy from rear w/snakarm",
+        "Code": [
+            "A",
+            "G",
+            "L"
+        ],
+        "Element": "",
+        "Image": "image96.png",
+        "MB": "30"
+    },
+    {
+        "SId": "102",
+        "MId": null,
+        "Name": "SandWrm2",
+        "Description": "Attk enmy from rear w/snakarm",
+        "Code": [
+            "B",
+            "R",
+            "Y"
+        ],
+        "Element": "",
+        "Image": "image99.png",
+        "MB": "34"
+    },
+    {
+        "SId": "103",
+        "MId": null,
+        "Name": "SandWrm3",
+        "Description": "Attk enmy from rear w/snakarm",
+        "Code": [
+            "H",
+            "J",
+            "S"
+        ],
+        "Element": "",
+        "Image": "image101.png",
+        "MB": "38"
+    },
+    {
+        "SId": "104",
+        "MId": null,
+        "Name": "AirRaid1",
+        "Description": "Attk enmy w/flying FgtrPlne.",
+        "Code": [
+            "G",
+            "K",
+            "R"
+        ],
+        "Element": "Obstacle",
+        "Image": "image104.png",
+        "MB": "26"
+    },
+    {
+        "SId": "105",
+        "MId": null,
+        "Name": "AirRaid2",
+        "Description": "Attk enmy w/flying FgtrPlne.",
+        "Code": [
+            "O",
+            "T",
+            "Y"
+        ],
+        "Element": "Obstacle",
+        "Image": "image103.png",
+        "MB": "32"
+    },
+    {
+        "SId": "106",
+        "MId": null,
+        "Name": "AirRaid3",
+        "Description": "Attk enmy w/flying FgtrPlne.",
+        "Code": [
+            "N",
+            "U",
+            "Z"
+        ],
+        "Element": "Obstacle",
+        "Image": "image107.png",
+        "MB": "39"
+    },
+    {
+        "SId": "107",
+        "MId": null,
+        "Name": "FireHit1",
+        "Description": "Slams closest enemy",
+        "Code": [
+            "D",
+            "E",
+            "F"
+        ],
+        "Element": "Fire",
+        "Image": "image110.png",
+        "MB": "12"
+    },
+    {
+        "SId": "108",
+        "MId": null,
+        "Name": "FireHit2",
+        "Description": "Slams closest enemy",
+        "Code": [
+            "R",
+            "S",
+            "T"
+        ],
+        "Element": "Fire",
+        "Image": "image105.png",
+        "MB": "22"
+    },
+    {
+        "SId": "109",
+        "MId": null,
+        "Name": "FireHit3",
+        "Description": "Slams closest enemy",
+        "Code": [
+            "A",
+            "B",
+            "C"
+        ],
+        "Element": "Fire",
+        "Image": "image111.png",
+        "MB": "32"
+    },
+    {
+        "SId": "110",
+        "MId": null,
+        "Name": "BurnSqr1",
+        "Description": "Press A to burn a 4pnl sqr",
+        "Code": [
+            "H",
+            "P",
+            "V"
+        ],
+        "Element": "Fire",
+        "Image": "image106.png",
+        "MB": "24"
+    },
+    {
+        "SId": "111",
+        "MId": null,
+        "Name": "BurnSqr2",
+        "Description": "Press A to burn a 4pnl sqr",
+        "Code": [
+            "D",
+            "M",
+            "T"
+        ],
+        "Element": "Fire",
+        "Image": "image108.png",
+        "MB": "30"
+    },
+    {
+        "SId": "112",
+        "MId": null,
+        "Name": "BurnSqr3",
+        "Description": "Press A to burn a 4pnl sqr",
+        "Code": [
+            "E",
+            "O",
+            "Z"
+        ],
+        "Element": "Fire",
+        "Image": "image109.png",
+        "MB": "36"
+    },
+    {
+        "SId": "113",
+        "MId": null,
+        "Name": "Sensor1",
+        "Description": "Hit enmy with beam from snsr",
+        "Code": [
+            "J",
+            "O",
+            "W"
+        ],
+        "Element": "Elec",
+        "Image": "image113.png",
+        "MB": "32"
+    },
+    {
+        "SId": "114",
+        "MId": null,
+        "Name": "Sensor2",
+        "Description": "Hit enmy with beam from snsr",
+        "Code": [
+            "N",
+            "U",
+            "Y"
+        ],
+        "Element": "Elec",
+        "Image": "image115.png",
+        "MB": "35"
+    },
+    {
+        "SId": "115",
+        "MId": null,
+        "Name": "Sensor3",
+        "Description": "Hit enmy with beam from snsr",
+        "Code": [
+            "I",
+            "K",
+            "Q"
+        ],
+        "Element": "Elec",
+        "Image": "image114.png",
+        "MB": "38"
+    },
+    {
+        "SId": "116",
+        "MId": null,
+        "Name": "Boomer",
+        "Description": "Boomerang that circ btl field",
+        "Code": [
+            "J",
+            "K",
+            "T"
+        ],
+        "Element": "Wood",
+        "Image": "image116.png",
+        "MB": "16"
+    },
+    {
+        "SId": "117",
+        "MId": null,
+        "Name": "HiBoomer",
+        "Description": "Boomerang that circ btl field",
+        "Code": [
+            "B",
+            "L",
+            "V"
+        ],
+        "Element": "Wood",
+        "Image": "image121.png",
+        "MB": "26"
+    },
+    {
+        "SId": "118",
+        "MId": null,
+        "Name": "M-Boomer",
+        "Description": "Boomerang that circ btl field",
+        "Code": [
+            "I",
+            "M",
+            "W"
+        ],
+        "Element": "Wood",
+        "Image": "image119.png",
+        "MB": "36"
+    },
+    {
+        "SId": "119",
+        "MId": null,
+        "Name": "Lance",
+        "Description": "Lance through back line",
+        "Code": [
+            "*",
+            "A",
+            "R",
+            "W"
+        ],
+        "Element": "Wood",
+        "Image": "image117.png",
+        "MB": "42"
+    },
+    {
+        "SId": "120",
+        "MId": null,
+        "Name": "GolmHit1",
+        "Description": "Hit 3pnl area arnd clst enmy",
+        "Code": [
+            "I",
+            "K",
+            "Y"
+        ],
+        "Element": "Break",
+        "Image": "image120.png",
+        "MB": "17"
+    },
+    {
+        "SId": "121",
+        "MId": null,
+        "Name": "GolmHit2",
+        "Description": "Hit 3pnl area arnd clst enmy",
+        "Code": [
+            "D",
+            "P",
+            "U"
+        ],
+        "Element": "Break",
+        "Image": "image118.png",
+        "MB": "27"
+    },
+    {
+        "SId": "122",
+        "MId": null,
+        "Name": "GolmHit3",
+        "Description": "Hit 3pnl area arnd clst enmy",
+        "Code": [
+            "H",
+            "M",
+            "V"
+        ],
+        "Element": "Break",
+        "Image": "image123.png",
+        "MB": "37"
+    },
+    {
+        "SId": "123",
+        "MId": null,
+        "Name": "IronShl1",
+        "Description": "Fire off piercing shell.",
+        "Code": [
+            "J",
+            "K",
+            "L"
+        ],
+        "Element": "Break",
+        "Image": "image122.png",
+        "MB": "13"
+    },
+    {
+        "SId": "124",
+        "MId": null,
+        "Name": "IronShl2",
+        "Description": "Fire off piercing shell.",
+        "Code": [
+            "C",
+            "D",
+            "E"
+        ],
+        "Element": "Break",
+        "Image": "image125.png",
+        "MB": "20"
+    },
+    {
+        "SId": "125",
+        "MId": null,
+        "Name": "IronShl3",
+        "Description": "Fire off piercing shell.",
+        "Code": [
+            "L",
+            "M",
+            "N"
+        ],
+        "Element": "Break",
+        "Image": "image124.png",
+        "MB": "27"
+    },
+    {
+        "SId": "126",
+        "MId": null,
+        "Name": "AirSpin1",
+        "Description": "Spits out hurricane attack",
+        "Code": [
+            "F",
+            "G",
+            "R"
+        ],
+        "Element": "Wind",
+        "Image": "image128.png",
+        "MB": "22"
+    },
+    {
+        "SId": "127",
+        "MId": null,
+        "Name": "AirSpin2",
+        "Description": "Spits out hurricane attack",
+        "Code": [
+            "A",
+            "L",
+            "T"
+        ],
+        "Element": "Wind",
+        "Image": "image129.png",
+        "MB": "29"
+    },
+    {
+        "SId": "128",
+        "MId": null,
+        "Name": "AirSpin3",
+        "Description": "Spits out hurricane attack",
+        "Code": [
+            "N",
+            "O",
+            "T"
+        ],
+        "Element": "Wind",
+        "Image": "image126.png",
+        "MB": "36"
+    },
+    {
+        "SId": "129",
+        "MId": null,
+        "Name": "Wind",
+        "Description": "Windbox blows at enmy area",
+        "Code": [
+            "*"
+        ],
+        "Element": "Wind",
+        "Image": "image132.png",
+        "MB": "10"
+    },
+    {
+        "SId": "130",
+        "MId": null,
+        "Name": "Fan",
+        "Description": "VacuumFn pulls enemy in",
+        "Code": [
+            "*"
+        ],
+        "Element": "Wind",
+        "Image": "image127.png",
+        "MB": "10"
+    },
+    {
+        "SId": "131",
+        "MId": null,
+        "Name": "Rflectr1",
+        "Description": "Bounce an attk back at them!",
+        "Code": [
+            "*",
+            "A",
+            "C",
+            "F"
+        ],
+        "Element": "",
+        "Image": "image131.png",
+        "MB": "7"
+    },
+    {
+        "SId": "132",
+        "MId": null,
+        "Name": "Rflectr2",
+        "Description": "Bounce an attk back at them!",
+        "Code": [
+            "*",
+            "A",
+            "G",
+            "Y"
+        ],
+        "Element": "",
+        "Image": "image135.png",
+        "MB": "16"
+    },
+    {
+        "SId": "133",
+        "MId": null,
+        "Name": "Rflectr3",
+        "Description": "Bounce an attk back at them!",
+        "Code": [
+            "*",
+            "E",
+            "F",
+            "O"
+        ],
+        "Element": "",
+        "Image": "image134.png",
+        "MB": "25"
+    },
+    {
+        "SId": "134",
+        "MId": null,
+        "Name": "Snake",
+        "Description": "Call snke from hole in area.",
+        "Code": [
+            "H",
+            "L",
+            "M"
+        ],
+        "Element": "",
+        "Image": "image133.png",
+        "MB": "34"
+    },
+    {
+        "SId": "135",
+        "MId": null,
+        "Name": "SumnBlk1",
+        "Description": "Summon a Nghtmare attack!",
+        "Code": [
+            "E",
+            "I",
+            "P"
+        ],
+        "Element": "",
+        "Image": "image130.png",
+        "MB": "30"
+    },
+    {
+        "SId": "136",
+        "MId": null,
+        "Name": "SumnBlk2",
+        "Description": "Summon a Nghtmare attack!",
+        "Code": [
+            "H",
+            "O",
+            "V"
+        ],
+        "Element": "",
+        "Image": "image141.png",
+        "MB": "40"
+    },
+    {
+        "SId": "137",
+        "MId": null,
+        "Name": "SumnBlk3",
+        "Description": "Summon a Nghtmare attack!",
+        "Code": [
+            "W",
+            "Y",
+            "Z"
+        ],
+        "Element": "",
+        "Image": "image136.png",
+        "MB": "46"
+    },
+    {
+        "SId": "138",
+        "MId": null,
+        "Name": "NumbrBl",
+        "Description": "Last 2 HP digits = atk pwr",
+        "Code": [
+            "N"
+        ],
+        "Element": "",
+        "Image": "image140.png",
+        "MB": "69"
+    },
+    {
+        "SId": "139",
+        "MId": null,
+        "Name": "Meteors",
+        "Description": "Drop many meteor on enmy area",
+        "Code": [
+            "R"
+        ],
+        "Element": "Fire",
+        "Image": "image137.png",
+        "MB": "73"
+    },
+    {
+        "SId": "140",
+        "MId": null,
+        "Name": "JustcOne",
+        "Description": "Fist Atk on center panel",
+        "Code": [
+            "J"
+        ],
+        "Element": "Break",
+        "Image": "image144.png",
+        "MB": "90"
+    },
+    {
+        "SId": "141",
+        "MId": null,
+        "Name": "Magnum",
+        "Description": "Cursor destroys panels!",
+        "Code": [
+            "F",
+            "L",
+            "W"
+        ],
+        "Element": "Cursor",
+        "Image": "image154.png",
+        "MB": "31"
+    },
+    {
+        "SId": "142",
+        "MId": null,
+        "Name": "CircGun",
+        "Description": "Stop sght w/Button and attck",
+        "Code": [
+            "P",
+            "T",
+            "V"
+        ],
+        "Element": "Cursor",
+        "Image": "image146.png",
+        "MB": "35"
+    },
+    {
+        "SId": "143",
+        "MId": null,
+        "Name": "RockCube",
+        "Description": "Place a RockCube in front",
+        "Code": [
+            "*"
+        ],
+        "Element": "Obstacle",
+        "Image": "image139.png",
+        "MB": "6"
+    },
+    {
+        "SId": "144",
+        "MId": null,
+        "Name": "TimeBom1",
+        "Description": "Explodes 3 seconds later",
+        "Code": [
+            "F",
+            "G",
+            "H"
+        ],
+        "Element": "Obstacle",
+        "Image": "image147.png",
+        "MB": "20"
+    },
+    {
+        "SId": "145",
+        "MId": null,
+        "Name": "Mine",
+        "Description": "Place a mine in enmy area",
+        "Code": [
+            "A",
+            "S",
+            "T"
+        ],
+        "Element": "Obstacle",
+        "Image": "image138.png",
+        "MB": "28"
+    },
+    {
+        "SId": "146",
+        "MId": null,
+        "Name": "Fanfare",
+        "Description": "Take no dmage for a while",
+        "Code": [
+            "*",
+            "P",
+            "S",
+            "Z"
+        ],
+        "Element": "Obstacle",
+        "Image": "image142.png",
+        "MB": "20"
+    },
+    {
+        "SId": "147",
+        "MId": null,
+        "Name": "Discord",
+        "Description": "Confuses enemies w/music",
+        "Code": [
+            "*",
+            "A",
+            "G",
+            "S"
+        ],
+        "Element": "Obstacle",
+        "Image": "image143.png",
+        "MB": "20"
+    },
+    {
+        "SId": "148",
+        "MId": null,
+        "Name": "Timpani",
+        "Description": "Stop enmy feet with music",
+        "Code": [
+            "*",
+            "I",
+            "O",
+            "T"
+        ],
+        "Element": "Obstacle",
+        "Image": "image145.png",
+        "MB": "20"
+    },
+    {
+        "SId": "149",
+        "MId": null,
+        "Name": "Silence",
+        "Description": "Blinds enemies w/music",
+        "Code": [
+            "*",
+            "B",
+            "R",
+            "W"
+        ],
+        "Element": "Obstacle",
+        "Image": "image158.png",
+        "MB": "20"
+    },
+    {
+        "SId": "150",
+        "MId": null,
+        "Name": "VDoll",
+        "Description": "Throws VDoll 3sq ahead",
+        "Code": [
+            "*",
+            "F",
+            "N",
+            "S"
+        ],
+        "Element": "Obstacle",
+        "Image": "image150.png",
+        "MB": "39"
+    },
+    {
+        "SId": "151",
+        "MId": null,
+        "Name": "Guardian",
+        "Description": "Statue punishes when hit",
+        "Code": [
+            "O"
+        ],
+        "Element": "Obstacle",
+        "Image": "image148.png",
+        "MB": "64"
+    },
+    {
+        "SId": "152",
+        "MId": null,
+        "Name": "Anubis",
+        "Description": "Anubis poisons enemies",
+        "Code": [
+            "P"
+        ],
+        "Element": "Obstacle",
+        "Image": "image149.png",
+        "MB": "86"
+    },
+    {
+        "SId": "153",
+        "MId": null,
+        "Name": "Otenko*",
+        "Description": "Put Otnko to raise atk pwr",
+        "Code": [
+            "O"
+        ],
+        "Element": "Obstacle",
+        "Image": "image151.png",
+        "MB": "66"
+    },
+    {
+        "SId": "154",
+        "MId": null,
+        "Name": "Recov10",
+        "Description": "Recovers 10HP",
+        "Code": [
+            "*",
+            "A",
+            "D",
+            "L"
+        ],
+        "Element": "",
+        "Image": "image153.png",
+        "MB": "4"
+    },
+    {
+        "SId": "155",
+        "MId": null,
+        "Name": "Recov30",
+        "Description": "Recovers 30HP",
+        "Code": [
+            "*",
+            "E",
+            "L",
+            "Q"
+        ],
+        "Element": "",
+        "Image": "image152.png",
+        "MB": "12"
+    },
+    {
+        "SId": "156",
+        "MId": null,
+        "Name": "Recov50",
+        "Description": "Recovers 50HP",
+        "Code": [
+            "*",
+            "C",
+            "M",
+            "P"
+        ],
+        "Element": "",
+        "Image": "image155.png",
+        "MB": "18"
+    },
+    {
+        "SId": "157",
+        "MId": null,
+        "Name": "Recov80",
+        "Description": "Recovers 80HP",
+        "Code": [
+            "*",
+            "H",
+            "K",
+            "V"
+        ],
+        "Element": "",
+        "Image": "image162.png",
+        "MB": "24"
+    },
+    {
+        "SId": "158",
+        "MId": null,
+        "Name": "Recov120",
+        "Description": "Recovers 120HP",
+        "Code": [
+            "F",
+            "P",
+            "S"
+        ],
+        "Element": "",
+        "Image": "image156.png",
+        "MB": "32"
+    },
+    {
+        "SId": "159",
+        "MId": null,
+        "Name": "Recov150",
+        "Description": "Recovers 150HP",
+        "Code": [
+            "J",
+            "M",
+            "T"
+        ],
+        "Element": "",
+        "Image": "image160.png",
+        "MB": "38"
+    },
+    {
+        "SId": "160",
+        "MId": null,
+        "Name": "Recov200",
+        "Description": "Recovers 200HP",
+        "Code": [
+            "I",
+            "Q",
+            "Z"
+        ],
+        "Element": "",
+        "Image": "image157.png",
+        "MB": "42"
+    },
+    {
+        "SId": "161",
+        "MId": null,
+        "Name": "Recov300",
+        "Description": "Recovers 300HP",
+        "Code": [
+            "J",
+            "O",
+            "Y"
+        ],
+        "Element": "",
+        "Image": "image161.png",
+        "MB": "48"
+    },
+    {
+        "SId": "162",
+        "MId": null,
+        "Name": "PanlGrab",
+        "Description": "Steals 1 enemy square!",
+        "Code": [
+            "*"
+        ],
+        "Element": "",
+        "Image": "image159.png",
+        "MB": "6"
+    },
+    {
+        "SId": "163",
+        "MId": null,
+        "Name": "AreaGrab",
+        "Description": "Steals left edge from enmy",
+        "Code": [
+            "*",
+            "F",
+            "S"
+        ],
+        "Element": "",
+        "Image": "image163.png",
+        "MB": "8"
+    },
+    {
+        "SId": "163",
+        "MId": null,
+        "Name": "AreaGrab",
+        "Description": "Steals left edge from enmy",
+        "Code": [
+            "B"
+        ],
+        "Element": "1",
+        "Image": "image163.png",
+        "MB": "8"
+    },
+    {
+        "SId": "164",
+        "MId": null,
+        "Name": "GrabBnsh",
+        "Description": "20 damage for every stolen sq",
+        "Code": [
+            "B",
+            "M",
+            "S"
+        ],
+        "Element": "",
+        "Image": "image165.png",
+        "MB": "24"
+    },
+    {
+        "SId": "165",
+        "MId": null,
+        "Name": "GrabRvng",
+        "Description": "40 damage for every stolen sq",
+        "Code": [
+            "I",
+            "Q",
+            "Z"
+        ],
+        "Element": "",
+        "Image": "image164.png",
+        "MB": "50"
+    },
+    {
+        "SId": "166",
+        "MId": null,
+        "Name": "PnlRetrn",
+        "Description": "Fix your area's panels",
+        "Code": [
+            "*"
+        ],
+        "Element": "",
+        "Image": "image167.png",
+        "MB": "14"
+    },
+    {
+        "SId": "167",
+        "MId": null,
+        "Name": "Geddon",
+        "Description": "Breaks all empty panels",
+        "Code": [
+            "*",
+            "A",
+            "L",
+            "R"
+        ],
+        "Element": "",
+        "Image": "image166.png",
+        "MB": "47"
+    },
+    {
+        "SId": "168",
+        "MId": null,
+        "Name": "HolyPanl",
+        "Description": "Creates a HolyPanl in front",
+        "Code": [
+            "*",
+            "A",
+            "B",
+            "S"
+        ],
+        "Element": "",
+        "Image": "image171.png",
+        "MB": "24"
+    },
+    {
+        "SId": "169",
+        "MId": null,
+        "Name": "Snctuary",
+        "Description": "Chng all own panel to holy",
+        "Code": [
+            "Z"
+        ],
+        "Element": "",
+        "Image": "image168.png",
+        "MB": "62"
+    },
+    {
+        "SId": "170",
+        "MId": null,
+        "Name": "ComingRd",
+        "Description": "Pull an enemy to the front",
+        "Code": [
+            "*"
+        ],
+        "Element": "",
+        "Image": "image174.png",
+        "MB": "21"
+    },
+    {
+        "SId": "171",
+        "MId": null,
+        "Name": "GoingRd",
+        "Description": "Push an enemy to the back",
+        "Code": [
+            "*"
+        ],
+        "Element": "",
+        "Image": "image170.png",
+        "MB": "21"
+    },
+    {
+        "SId": "172",
+        "MId": null,
+        "Name": "SloGauge",
+        "Description": "CustGauge slow-down",
+        "Code": [
+            "*",
+            "A",
+            "B",
+            "G"
+        ],
+        "Element": "",
+        "Image": "image169.png",
+        "MB": "42"
+    },
+    {
+        "SId": "173",
+        "MId": null,
+        "Name": "FstGauge",
+        "Description": "CustGauge speed-up",
+        "Code": [
+            "*",
+            "E",
+            "M",
+            "R"
+        ],
+        "Element": "",
+        "Image": "image172.png",
+        "MB": "48"
+    },
+    {
+        "SId": "174",
+        "MId": null,
+        "Name": "FullCust",
+        "Description": "CustGauge instantly refills",
+        "Code": [
+            "*"
+        ],
+        "Element": "",
+        "Image": "image177.png",
+        "MB": "50"
+    },
+    {
+        "SId": "175",
+        "MId": null,
+        "Name": "BusterUp",
+        "Description": "Power goes up by 1",
+        "Code": [
+            "*"
+        ],
+        "Element": "+/-",
+        "Image": "image175.png",
+        "MB": "11"
+    },
+    {
+        "SId": "176",
+        "MId": null,
+        "Name": "BugFix",
+        "Description": "Repairs & removes bugs",
+        "Code": [
+            "*",
+            "K",
+            "P",
+            "Z"
+        ],
+        "Element": "",
+        "Image": "image178.png",
+        "MB": "62"
+    },
+    {
+        "SId": "177",
+        "MId": null,
+        "Name": "Invisibl",
+        "Description": "Invisible for a while",
+        "Code": [
+            "*"
+        ],
+        "Element": "",
+        "Image": "image173.png",
+        "MB": "30"
+    },
+    {
+        "SId": "178",
+        "MId": null,
+        "Name": "Barrier",
+        "Description": "Nullifies 10 HP of damage",
+        "Code": [
+            "*",
+            "A",
+            "F",
+            "R"
+        ],
+        "Element": "",
+        "Image": "image176.png",
+        "MB": "7"
+    },
+    {
+        "SId": "179",
+        "MId": null,
+        "Name": "Barr100",
+        "Description": "Nullifies 100 HP of damage",
+        "Code": [
+            "H",
+            "O",
+            "Y"
+        ],
+        "Element": "",
+        "Image": "image186.png",
+        "MB": "30"
+    },
+    {
+        "SId": "180",
+        "MId": null,
+        "Name": "Barr200",
+        "Description": "Nullifies 200 HP of damage",
+        "Code": [
+            "K",
+            "U",
+            "W"
+        ],
+        "Element": "",
+        "Image": "image183.png",
+        "MB": "52"
+    },
+    {
+        "SId": "181",
+        "MId": null,
+        "Name": "BblWrap",
+        "Description": "Weak against elec atk",
+        "Code": [
+            "I",
+            "Q",
+            "Z"
+        ],
+        "Element": "Aqua",
+        "Image": "image185.png",
+        "MB": "58"
+    },
+    {
+        "SId": "182",
+        "MId": null,
+        "Name": "LifeAur",
+        "Description": "Repel all attacks under200",
+        "Code": [
+            "U"
+        ],
+        "Element": "",
+        "Image": "image180.png",
+        "MB": "70"
+    },
+    {
+        "SId": "183",
+        "MId": null,
+        "Name": "MagCoil",
+        "Description": "Draw in enmy with mag force",
+        "Code": [
+            "*"
+        ],
+        "Element": "",
+        "Image": "image182.png",
+        "MB": "14"
+    },
+    {
+        "SId": "184",
+        "MId": null,
+        "Name": "WhiCapsl",
+        "Description": "Add an effect Paralyze",
+        "Code": [
+            "*"
+        ],
+        "Element": "",
+        "Image": "image179.png",
+        "MB": "30"
+    },
+    {
+        "SId": "185",
+        "MId": null,
+        "Name": "Uninstll",
+        "Description": "Attach to NoDim chp NavCusOff",
+        "Code": [
+            "G",
+            "L",
+            "R"
+        ],
+        "Element": "",
+        "Image": "image188.png",
+        "MB": "60"
+    },
+    {
+        "SId": "186",
+        "MId": null,
+        "Name": "AntiNavi",
+        "Description": "Takes the enemy's Navi away",
+        "Code": [
+            "*",
+            "F",
+            "L",
+            "T"
+        ],
+        "Element": "",
+        "Image": "image187.png",
+        "MB": "50"
+    },
+    {
+        "SId": "187",
+        "MId": null,
+        "Name": "AntiDmg",
+        "Description": "Sets trap and throw stars",
+        "Code": [
+            "*",
+            "G",
+            "R",
+            "V"
+        ],
+        "Element": "",
+        "Image": "image181.png",
+        "MB": "30"
+    },
+    {
+        "SId": "188",
+        "MId": null,
+        "Name": "AntiSwrd",
+        "Description": "Retaliate for sword damage",
+        "Code": [
+            "*",
+            "A",
+            "R",
+            "Z"
+        ],
+        "Element": "Sword",
+        "Image": "image184.png",
+        "MB": "33"
+    },
+    {
+        "SId": "189",
+        "MId": null,
+        "Name": "AntiRecv",
+        "Description": "Damages enemy in recovery",
+        "Code": [
+            "*",
+            "A",
+            "F",
+            "V"
+        ],
+        "Element": "",
+        "Image": "image194.png",
+        "MB": "37"
+    },
+    {
+        "SId": "190",
+        "MId": null,
+        "Name": "CopyDmg",
+        "Description": "Duplicate damage to 2nd enemy",
+        "Code": [
+            "*"
+        ],
+        "Element": "Cursor",
+        "Image": "image189.png",
+        "MB": "12"
+    },
+    {
+        "SId": "191",
+        "MId": null,
+        "Name": "LifeSync",
+        "Description": "Makes HP same as enemy",
+        "Code": [
+            "*"
+        ],
+        "Element": "Cursor",
+        "Image": "image190.png",
+        "MB": "12"
+    },
+    {
+        "SId": "192",
+        "MId": null,
+        "Name": "Atk+10",
+        "Description": "+10 for selected atk chip",
+        "Code": [
+            "*"
+        ],
+        "Element": "+/-",
+        "Image": "image199.png",
+        "MB": "4"
+    },
+    {
+        "SId": "193",
+        "MId": null,
+        "Name": "Navi+20",
+        "Description": "+20 for selected Navi chip",
+        "Code": [
+            "*"
+        ],
+        "Element": "+/-",
+        "Image": "image193.png",
+        "MB": "36"
+    },
+    {
+        "SId": "194",
+        "MId": null,
+        "Name": "ColorPt",
+        "Description": "+10 for next chip attack",
+        "Code": [
+            "*"
+        ],
+        "Element": "+/-",
+        "Image": "image195.png",
+        "MB": "31"
+    },
+    {
+        "SId": "195",
+        "MId": null,
+        "Name": "Atk+30",
+        "Description": "+30 for selected atk chip",
+        "Code": [
+            "*"
+        ],
+        "Element": "+/-",
+        "Image": "image191.png",
+        "MB": "66"
+    },
+    {
+        "SId": "196",
+        "MId": null,
+        "Name": "DblPoint",
+        "Description": "+20 for next chip attack",
+        "Code": [
+            "*"
+        ],
+        "Element": "+/-",
+        "Image": "image202.png",
+        "MB": "50"
+    },
+    {
+        "SId": "197",
+        "MId": null,
+        "Name": "ElemTrap",
+        "Description": "Trap enmy and attk with elem",
+        "Code": [
+            "*",
+            "G",
+            "S",
+            "U"
+        ],
+        "Element": "",
+        "Image": "image197.png",
+        "MB": "42"
+    },
+    {
+        "SId": "198",
+        "MId": null,
+        "Name": "ColArmy",
+        "Description": "Launch an attk with Col. army",
+        "Code": [
+            "*",
+            "B",
+            "G",
+            "R"
+        ],
+        "Element": "",
+        "Image": "image192.png",
+        "MB": "25"
+    },
+    {
+        "SId": "199",
+        "MId": null,
+        "Name": "BlzrdBal",
+        "Description": "Launch a giant snowball",
+        "Code": [
+            "H",
+            "N",
+            "T"
+        ],
+        "Element": "Aqua",
+        "Image": "image198.png",
+        "MB": "39"
+    },
+    {
+        "SId": "200",
+        "MId": null,
+        "Name": "TimeBom2",
+        "Description": "Explodes 3 seconds later",
+        "Code": [
+            "C",
+            "D",
+            "E"
+        ],
+        "Element": "Obstacle",
+        "Image": "image196.png",
+        "MB": "30"
+    },
+    {
+        "SId": "201",
+        "MId": null,
+        "Name": "TimeBom3",
+        "Description": "Explodes 3 seconds later",
+        "Code": [
+            "L",
+            "M",
+            "N"
+        ],
+        "Element": "Obstacle",
+        "Image": "image200.png",
+        "MB": "37"
+    },
+    {
+        "SId": "202",
+        "MId": null,
+        "Name": "BigBomb",
+        "Description": "Throws a 9 panl bomb 3panl fwd",
+        "Code": [
+            "O",
+            "P",
+            "V"
+        ],
+        "Element": "",
+        "Image": "image201.png",
+        "MB": "32"
+    }
+]

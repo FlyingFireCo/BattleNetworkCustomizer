@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\Giga.csv",
+      "PackagePath": "staticwebassets\\Giga.csv"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\Giga.json",
+      "PackagePath": "staticwebassets\\Giga.json"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\Mega.csv",
+      "PackagePath": "staticwebassets\\Mega.csv"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\Mega.json",
+      "PackagePath": "staticwebassets\\Mega.json"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\Standard.csv",
+      "PackagePath": "staticwebassets\\Standard.csv"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\Standard.json",
+      "PackagePath": "staticwebassets\\Standard.json"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\app.js",
+      "PackagePath": "staticwebassets\\app.js"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\csvParser.py",
+      "PackagePath": "staticwebassets\\csvParser.py"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\vue.js",
+      "PackagePath": "staticwebassets\\vue.js"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BattleNetworkCustomizer.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.BattleNetworkCustomizer.props",
+      "PackagePath": "build\\BattleNetworkCustomizer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.BattleNetworkCustomizer.props",
+      "PackagePath": "buildMultiTargeting\\BattleNetworkCustomizer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.BattleNetworkCustomizer.props",
+      "PackagePath": "buildTransitive\\BattleNetworkCustomizer.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
