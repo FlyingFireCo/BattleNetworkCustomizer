@@ -15,109 +15,149 @@
         <!-- <p>Position of game name string in the save data: {{ stringPosition }}</p> -->
         <p>Extracted Game Name: {{ gameName }}</p>
 
-        <!-- <p>Chips in Folder #{{ selectedFolder + 1 }}:</p> -->
-        <div style="float:left; width: 50%;
+        <div style="width:80%; margin: 0 auto">
+            <!-- <p>Chips in Folder #{{ selectedFolder + 1 }}:</p> -->
+            <div style="float:left; width: 50%;
         height: 90vh;
         overflow-y: scroll;">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Damage</th>
-                        <th>Code</th>
-                        <th>Element</th>
-                        <th>MB</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="chipObj in chips">
-                        <td>{{ chipObj.chip.MId || chipObj.chip.SId }}</td>
-                        <td><img v-bind:src="'/img/' + chipObj.chip.Image" alt="Chip Image" width="100"></td>
-                        <td>{{ chipObj.chip.Name }}</td>
-                        <td>{{ chipObj.chip.Description }}</td>
-                        <td>{{ chipObj.chip.Damage}}</td>
-                        <td>{{ chipObj.chip.code}}</td>
-                        <td>{{ chipObj.chip.Element }}</td>
-                        <td>{{ chipObj.chip.MB }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Damage</th>
+                            <th>Code</th>
+                            <th>Element</th>
+                            <th>MB</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="chipObj in rows"
+                            :class="{ 'highlighted': highlightedFolderChips.includes(chipObj.chip) }"
+                            style="cursor: pointer; height:2em;">
+                            <td>{{ chipObj.chip.MId || chipObj.chip.SId }}</td>
+                            <td><img v-if="chipObj.chip.Image != null" v-bind:src="'/img/' + chipObj.chip.Image"
+                                    alt="Chip Image" width="100"></td>
+                            <td>{{ chipObj.chip.Name }}</td>
+                            <td>{{ chipObj.chip.Description }}</td>
+                            <td>{{ chipObj.chip.Damage}}</td>
+                            <td>{{ chipObj.chip.code}}</td>
+                            <td>{{ chipObj.chip.Element }}</td>
+                            <td>{{ chipObj.chip.MB }}</td>
+                            <td><button v-if="chipObj.chip.Name != ''" @click="removeFolderChip(chipObj)">X</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        <!-- Chips view on the right -->
-        <div style="    float: right;
+            <!-- Chips view on the right -->
+            <div style="    float: right;
         width: 50%;
         height: 90vh;
         overflow-y: scroll;">
 
-            <!-- Toggle Detailed Filter Button -->
-            <button @click="showDetailedFilter = !showDetailedFilter">Toggle Detailed Filter</button>
+                <!-- Toggle Detailed Filter Button -->
+                <button @click="showDetailedFilter = !showDetailedFilter">Toggle Detailed Filter</button>
 
-            <!-- Detailed Filter Inputs -->
-            <div v-if="showDetailedFilter">
-                <label>Name:
-                    <input type="text" v-model="detailedFilter.Name" placeholder="Filter by Name..."></label>
-                </label>
-                <label>Description:
-                    <input type="text" v-model="detailedFilter.Description"
-                        placeholder="Filter by Description..."></label>
-                </label>
-                <label>Damage:
-                    <input type="text" v-model="detailedFilter.Damage" placeholder="Filter by Damage..."></label>
-                </label>
-                <label>Code:
-                    <input type="text" v-model="detailedFilter.Code"
-                        placeholder="Filter by Code (comma separated)..."></label>
-                </label>
-                <label>Element:
-                    <input type="text" v-model="detailedFilter.Element" placeholder="Filter by Element..."></label>
-                </label>
-                <label>MB:
-                    <input type="text" v-model="detailedFilter.MB" placeholder="Filter by MB..."></label>
-                </label>
+                <!-- Detailed Filter Inputs -->
+                <div v-if="showDetailedFilter">
+                    <label>Name:
+                        <input type="text" v-model="detailedFilter.Name" placeholder="Filter by Name..."></label>
+                    <button @click="toggleSort('Name')">Sort
+                        <span v-if="sortField === 'Name' && sortDirection === 1">↑</span>
+                        <span v-if="sortField === 'Name' && sortDirection === -1">↓</span>
+                    </button>
+                    <br>
+                    </label>
+                    <label>Description:
+                        <input type="text" v-model="detailedFilter.Description"
+                            placeholder="Filter by Description..."></label>
+                    <button @click="toggleSort('Description')">Sort
+                        <span v-if="sortField === 'Description' && sortDirection === 1">↑</span>
+                        <span v-if="sortField === 'Description' && sortDirection === -1">↓</span>
+                    </button>
+                    <br>
+                    </label>
+                    <label>Damage:
+                        <input type="text" v-model="detailedFilter.Damage" placeholder="Filter by Damage..."></label>
+                    <button @click="toggleSort('Damage')">Sort
+                        <span v-if="sortField === 'Damage' && sortDirection === 1">↑</span>
+                        <span v-if="sortField === 'Damage' && sortDirection === -1">↓</span>
+                    </button>
+                    <br>
+                    </label>
+                    <label>Code:
+                        <input type="text" v-model="detailedFilter.Code"
+                            placeholder="Filter by Code (comma separated)..."></label>
+                    <button @click="toggleSort('Code')">Sort
+                        <span v-if="sortField === 'Code' && sortDirection === 1">↑</span>
+                        <span v-if="sortField === 'Code' && sortDirection === -1">↓</span>
+                    </button>
+                    <br>
+                    </label>
+                    <label>Element:
+                        <input type="text" v-model="detailedFilter.Element" placeholder="Filter by Element..."></label>
+                    <button @click="toggleSort('Element')">Sort
+                        <span v-if="sortField === 'Element' && sortDirection === 1">↑</span>
+                        <span v-if="sortField === 'Element' && sortDirection === -1">↓</span>
+                    </button>
+                    <br>
+                    </label>
+                    <label>MB:
+                        <input type="text" v-model="detailedFilter.MB" placeholder="Filter by MB..."></label>
+                    <button @click="toggleSort('MB')">Sort
+                        <span v-if="sortField === 'MB' && sortDirection === 1">↑</span>
+                        <span v-if="sortField === 'MB' && sortDirection === -1">↓</span>
+                    </button>
+                    <br>
+                    </label>
+                </div>
+                <div v-else>
+                    <!-- Search bar -->
+                    <input type="text" v-model="searchQuery" placeholder="Search for chips...">
+                </div>
+
+                <!-- Tabs -->
+                <button v-for="tab in ['Standard', 'Mega', 'Giga', 'All']" @click="currentTab = tab">{{ tab }}</button>
+
+                <!-- Chips Table based on current tab -->
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Damage</th>
+                            <th>Code(s)</th>
+                            <th>Element</th>
+                            <th>MB</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- In the library chip table -->
+                        <tr v-for="chip in sortedAndFilteredChips"
+                            :class="{ 'highlighted': highlightedLibraryChips.includes(chip) }"
+                            @click="addToFolder(chip)" style="cursor: pointer;">
+                            <td>{{ chip.SId || chip.MId }}</td>
+                            <td><img v-bind:src="'/img/' + chip.Image" alt="Chip Image" width="100"></td>
+                            <td>{{ chip.Name }}</td>
+                            <td>{{ chip.Description }}</td>
+                            <td>{{ chip.Damage }}</td>
+                            <td>{{ chip.Code }}</td> <!-- Since chip.Code is now just a single code string -->
+                            <td>{{ chip.Element }}</td>
+                            <td>{{ chip.MB }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div v-else>
-                <!-- Search bar -->
-                <input type="text" v-model="searchQuery" placeholder="Search for chips...">
-            </div>
 
-            <!-- Tabs -->
-            <button v-for="tab in ['Standard', 'Mega', 'Giga', 'All']" @click="currentTab = tab">{{ tab }}</button>
-
-            <!-- Chips Table based on current tab -->
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Damage</th>
-                        <th>Code(s)</th>
-                        <th>Element</th>
-                        <th>MB</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="chip in filteredChips">
-                        <td>{{ chip.SId || chip.MId }}</td>
-                        <td><img v-bind:src="'/img/' + chip.Image" alt="Chip Image" width="100"></td>
-                        <td>{{ chip.Name }}</td>
-                        <td>{{ chip.Description }}</td>
-                        <td>{{ chip.Damage }}</td>
-                        <td>{{ chip.Code.join(', ') }}</td>
-                        <td>{{ chip.Element }}</td>
-                        <td>{{ chip.MB }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div style="clear:both;"></div> <!-- Clearing floats -->
         </div>
-
-        <div style="clear:both;"></div> <!-- Clearing floats -->
-
         <!-- <p>Number of Folders: {{ numFolders }}</p> -->
     </div>
 

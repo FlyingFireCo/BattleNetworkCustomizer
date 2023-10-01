@@ -205,7 +205,7 @@ button {
   input[type=text],
   input[type=number],
   select {
-    width: 100%;
+    width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -213,7 +213,7 @@ button {
     border-radius: 4px;
     box-sizing: border-box;
     transition-duration: 0.4s;
-    background: #334;
+    background: #223;
     color: white;
   }
   
@@ -359,4 +359,11 @@ table td img {
     display: block; /* Making images block to remove any unwanted space */
     margin: 0 auto; /* Centering images horizontally in cells */
     border-radius: 4px; /* Optional rounded corners */
+    
+    height: 2em;
+    width: auto;
+}
+
+.highlighted {
+    background-color: yellow; /* or any other color to indicate highlighting */
 }

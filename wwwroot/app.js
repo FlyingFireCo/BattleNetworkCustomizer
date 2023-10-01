@@ -30,6 +30,8 @@ new Vue({
         standardList: [],  // This will hold the data from Giga.json
         allChips: [],
         searchQuery: '',
+        sortField: null,  // Will store the current field to sort by.
+        sortDirection: 0,  // 0: none, 1: ascending, -1: descending.
         currentTab: 'Standard',
         showDetailedFilter: false,
         detailedFilter: {
@@ -40,12 +42,52 @@ new Vue({
             Element: '',
             MB: ''
         },
+        selectedFolderChips: [], // Chips currently in the folder
+        highlightedFolderChips: [], // Chips highlighted in the folder
+        highlightedLibraryChips: [], // Chips highlighted in the library
 
     },
     computed: {
+        flattenedChips() {
+            let currentChips;  // Variable to hold chips based on current tab
+
+            switch (this.currentTab) {
+                case 'Giga':
+                    currentChips = this.gigaList;
+                    break;
+                case 'Mega':
+                    currentChips = this.megaList;
+                    break;
+                case 'Standard':
+                    currentChips = this.standardList;
+                    break;
+                case 'All':
+                default:
+                    currentChips = this.allChips;
+                    break;
+            }
+
+            const flattened = [];
+            for (let chip of currentChips) {
+                if (chip.Code && Array.isArray(chip.Code)) {
+                    for (let code of chip.Code) {
+                        // Create a shallow copy of the chip object with a single code
+                        let chipCopy = { ...chip, Code: code };
+                        flattened.push(chipCopy);
+                    }
+                } else {
+                    // If the chip doesn't have an array of codes, just add it as is
+                    flattened.push(chip);
+                }
+            }
+            return flattened;
+        },
         filteredChips() {
-            return this.allChips.filter(chip => {
-                
+            // Using flattenedChips to get the flattened list of chips
+            const flattened = this.flattenedChips;
+
+            return flattened.filter(chip => {
+
                 // General search
                 if (this.searchQuery && !this.showDetailedFilter) {
                     let regex = new RegExp(this.searchQuery, 'i');
@@ -56,13 +98,14 @@ new Vue({
                     }
                     return false;
                 }
-                
+
                 // Detailed search
                 if (this.showDetailedFilter) {
                     for (let key in this.detailedFilter) {
                         if (this.detailedFilter[key] && chip[key]) {
-                            if (Array.isArray(this.detailedFilter[key])) {
-                                if (!this.detailedFilter[key].every(val => chip[key].includes(val))) {
+                            if (key === 'Code') {
+                                let searchCodes = this.detailedFilter.Code.split(',').map(code => code.trim());
+                                if (!searchCodes.includes(chip.Code)) {
                                     return false;
                                 }
                             } else if (!chip[key].toString().toLowerCase().includes(this.detailedFilter[key].toLowerCase())) {
@@ -72,9 +115,40 @@ new Vue({
                     }
                     return true;
                 }
-    
+
                 return true;
             });
+
+        }
+        ,
+        sortedAndFilteredChips() {
+            const chips = [...this.filteredChips];  // Copy the filtered chips array.
+
+            if (this.sortField) {
+                chips.sort((a, b) => {
+                    if (a[this.sortField] < b[this.sortField]) return -1 * this.sortDirection;
+                    if (a[this.sortField] > b[this.sortField]) return 1 * this.sortDirection;
+                    return 0;
+                });
+            }
+
+            return chips;
+        },
+        rows() {
+            const placeholders = Array(30 - this.chips.length).fill({
+                chip: {
+                    MId: '',
+                    SId: '',
+                    Image: null, // an image for empty rows if you have one
+                    Name: '',
+                    Description: '',
+                    Damage: '',
+                    Code: '',
+                    Element: '',
+                    MB: '',
+                }
+            });
+            return [...this.chips, ...placeholders];
         }
     },
 
@@ -86,6 +160,49 @@ new Vue({
 
     methods: {
 
+        removeFolderChip(chip) {
+            const chipIndex = this.chips.indexOf(chip);
+            this.chips.splice(chipIndex, 1);
+            this.$forceUpdate();
+        },
+        toggleSort(field) {
+            if (this.sortField !== field) {
+                // New field, start with ascending sort.
+                this.sortField = field;
+                this.sortDirection = 1;
+            } else {
+                // Cycle between none, ascending, and descending for the current field.
+                this.sortDirection = this.sortDirection === 0 ? 1 : this.sortDirection === 1 ? -1 : 0;
+
+                // If back to none, clear the sortField as well.
+                if (this.sortDirection === 0) {
+                    this.sortField = null;
+                }
+            }
+        },
+        addToFolder(chip) {
+            if (this.chips.length >= 30
+                || !this.checkCanAddToFolder(chip)) return; // Don't add if the folder is full
+            //deep clone chip
+            let newChip = Object.assign({}, chip);
+            if (newChip.MId) {
+                newChip.id = newChip.MId;
+            }
+            else {
+                newChip.id = newChip.SId;
+            }
+
+            newChip.code = newChip.Code;
+            this.chips.push({
+                chip: newChip
+            });
+            this.$forceUpdate();
+        },
+
+        checkCanAddToFolder(chip){
+            //todo check MB and limitiations
+            return true;
+        },
         fetchChips(chipType, chipList) {
             fetch(`/chips/${chipType}`)
                 .then(response => {
