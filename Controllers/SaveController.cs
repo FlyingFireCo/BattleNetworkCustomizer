@@ -44,4 +44,29 @@ public class SaveController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+    [HttpPost("OverwriteSaveData")]
+    public IActionResult OverwriteSaveData([FromBody] SaveDataRequest requestData)
+    {
+        try
+        {
+            // Convert regular array back to byte array
+            byte[] data = requestData.Data.ToArray();
+
+            // Write to file (You need to implement the logic to securely locate and write to the file)
+            System.IO.File.WriteAllBytes(requestData.Filename, data);
+
+            return Ok(new { success = true });
+        }
+        catch(Exception ex)
+        {
+            return BadRequest(new { success = false, message = ex.Message });
+        }
+    }
+
+    public class SaveDataRequest
+    {
+        public string Filename { get; set; }
+        public List<byte> Data { get; set; }
+    }
+
 }

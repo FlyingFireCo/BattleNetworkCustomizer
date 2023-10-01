@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KpKUQSa2V4NqqLVC/KveBSq1vrSoLzagorMjQXTPVnI=",
+  "Hash": "ltxZxdUG3xCbwqM8Qvy3zRTEElZFYlq73hN1XQqWFPs=",
   "Source": "BattleNetworkCustomizer",
   "BasePath": "_content/BattleNetworkCustomizer",
   "Mode": "Default",
@@ -34,6 +34,23 @@
       "OriginalItemSpec": "wwwroot\\app.js"
     },
     {
+      "Identity": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Def Not Cheating.json",
+      "SourceId": "BattleNetworkCustomizer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\",
+      "BasePath": "_content/BattleNetworkCustomizer",
+      "RelativePath": "folders/Def Not Cheating.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\folders\\Def Not Cheating.json"
+    },
+    {
       "Identity": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Folder1.json",
       "SourceId": "BattleNetworkCustomizer",
       "SourceType": "Discovered",
@@ -49,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\folders\\Folder1.json"
+    },
+    {
+      "Identity": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Gregar1.json",
+      "SourceId": "BattleNetworkCustomizer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\",
+      "BasePath": "_content/BattleNetworkCustomizer",
+      "RelativePath": "folders/Gregar1.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\folders\\Gregar1.json"
     },
     {
       "Identity": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Shinobi.json",

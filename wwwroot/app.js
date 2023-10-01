@@ -54,6 +54,7 @@ new Vue({
             Element: '',
             MB: ''
         },
+        saveFileName: '',
         selectedItemsChips: [], // Chips currently in the folder
         highlightedFolderChips: [], // Chips highlighted in the folder
         highlightedLibraryChips: [], // Chips highlighted in the library
@@ -114,19 +115,28 @@ new Vue({
                 // Detailed search
                 if (this.showDetailedFilter) {
                     for (let key in this.detailedFilter) {
-                        if (this.detailedFilter[key] && chip[key]) {
+                        if (this.detailedFilter[key]) {
                             if (key === 'Code') {
                                 let searchCodes = this.detailedFilter.Code.split(',').map(code => code.trim());
-                                if (!searchCodes.includes(chip.Code)) {
+                                if (!chip[key] || !searchCodes.includes(chip.Code)) {
                                     return false;
                                 }
-                            } else if (!chip[key].toString().toLowerCase().includes(this.detailedFilter[key].toLowerCase())) {
-                                return false;
+                            }else if (key === 'Element') {
+                                let searchCodes = this.detailedFilter.Element.split(',').map(code => code.trim());
+                                if (!chip[key] || !searchCodes.includes(chip.Element)) {
+                                    return false;
+                                }
+                            } else {
+                                // It checks for the presence of a chip key and if it doesn't match the filter, return false.
+                                if (!chip[key] || !chip[key].toString().toLowerCase().includes(this.detailedFilter[key].toLowerCase())) {
+                                    return false;
+                                }
                             }
                         }
                     }
                     return true;
                 }
+
 
                 return true;
             });
@@ -231,7 +241,6 @@ new Vue({
 
         async loadSelectedFolder() {
             if (!this.selectedItem) return;
-
             try {
                 const response = await fetch(`/folders/${encodeURIComponent(this.selectedItem)}`);
 
@@ -373,10 +382,10 @@ new Vue({
                     console.error(`There was an error fetching the ${chipType} chip JSON data:`, error);
                 });
         },
-
         async loadSaveFileFromAPI() {
             try {
                 let response = await this.fetchSaveData(this.selectedItem);
+                this.saveFileName = this.selectedItem;
 
                 if (response) {
                     this.fullByteArray = new Uint8Array(response);
@@ -395,9 +404,9 @@ new Vue({
                 },
                 body: JSON.stringify({ path: filePath })
             };
-            
+
             let response = await fetch("/Save/GetSaveData", requestConfig);
-            
+
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -422,7 +431,7 @@ new Vue({
             // const originalByteArray = new Uint8Array(byteArray); // Make a copy of the original bytes for comparison later
 
             const expectedBytes = new TextEncoder().encode(this.gameName);
-            
+
             // Mask the entire data
             this.mask(this.byteArray);
 
@@ -450,6 +459,23 @@ new Vue({
             // At the end of the loadSaveFile, load the chip data for the selected folder
             this.loadFolderChips(this.byteArray, this.selectedFolder);
 
+
+
+            // Mask the entire data
+            this.mask(this.byteArray);
+
+
+            // Add a call to download the modified file
+            // this.downloadModifiedFile(fullByteArray); // Using fullByteArray here
+
+        },
+
+
+        async overwriteSave() {
+
+            // Re-mask the entire data before saving
+            this.mask(this.byteArray);
+
             const originalChecksum = new DataView(this.byteArray.buffer).getUint32(CHECKSUM_OFFSET, true); // assuming little-endian
             console.log(`Original Checksum: ${originalChecksum}`);
 
@@ -457,6 +483,26 @@ new Vue({
             const startLogOffset = CHECKSUM_OFFSET - 10; // 10 bytes before
             const endLogOffset = CHECKSUM_OFFSET + 14; // 10 bytes after + 4 bytes of checksum itself
             console.log(`Bytes around the checksum: ${Array.from(this.byteArray.slice(startLogOffset, endLogOffset)).map(b => b.toString(16).padStart(2, '0')).join(' ')}`);
+
+
+            const rawChips = this.chips.map(chipObj => this.chipToRaw(chipObj.chip));
+
+            const chipStartOffset = CHIP_FOLDER_OFFSET + (this.selectedFolder * CHIPS_PER_FOLDER * CHIP_SIZE);
+
+            for (let i = 0; i < CHIPS_PER_FOLDER; i++) {
+                const chipOffset = chipStartOffset + (i * CHIP_SIZE);
+                const chipBytes = this.byteArray.slice(chipOffset, chipOffset + CHIP_SIZE);
+
+                chipBytes[0] = rawChips[i].id;
+                chipBytes[1] = rawChips[i].code;
+
+                // Set the changes back to the byteArray
+                this.byteArray.set(chipBytes, chipOffset);
+            }
+
+
+
+
             if (true) {//checksum debug
                 const newChecksum = this.computeChecksum(this.byteArray);
                 const checksumBytes = new Uint8Array(new Uint32Array([newChecksum]).buffer);
@@ -473,13 +519,40 @@ new Vue({
             // Merge the modified byteArray back into fullByteArray
             this.fullByteArray.set(this.byteArray, SAVE_START_OFFSET);
 
-
-
-            // Add a call to download the modified file
-            // this.downloadModifiedFile(fullByteArray); // Using fullByteArray here
-
+            // Call the API to overwrite the save file
+            await this.saveToServer(this.saveFileName, this.fullByteArray);
         },
 
+        async saveToServer(filename, data) {
+            try {
+                const requestData = {
+                    filename: filename,
+                    data: Array.from(data) // Convert Uint8Array to regular array for JSON serialization
+                };
+
+                const response = await fetch("/save/OverwriteSaveData", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const responseData = await response.json();
+                if (responseData.success) {
+                    console.log("Save data successfully written to server.");
+                } else {
+                    console.error("Error from server:", responseData.message);
+                }
+
+            } catch (error) {
+                console.error("Error saving data to server:", error);
+            }
+        },
         loadRom(event) {
             const file = event.target.files[0];
             if (!file) return;

@@ -12,17 +12,21 @@
 <body>
     <div id="app">
         <input type="file" ref="fileInput" @change="loadSaveFile" />
-        <button @click="openDialog('Select a Folder', '/folders', confirmFolder)">Select Folder</button>
+
         <!-- <p>Position of game name string in the save data: {{ stringPosition }}</p> -->
         <p>Extracted Game Name: {{ gameName }}</p>
         <label>Folder Name:
-            <input style="width:10%" type="text" v-model="folderName" placeholder="Enter folder name...">
-        </label><button @click="saveFolder">Save Folder</button>
+            <input style="width:30%" type="text" v-model="folderName" placeholder="Enter folder name...">
+        </label><button @click="saveFolder">Save Folder</button><button @click="openDialog('Select a Folder', '/folders', confirmFolder)">Load Folder</button>
 
+        <br>
+        Loaded Save File Name: {{ saveFileName.replace(tangoSaveFolderName,'') }}
+        <br>
         <label>Tango Save Folder:
-            <input style="width:10%" type="text" v-model="tangoSaveFolderName" placeholder="Enter folder name...">
+            <input style="width:30%" type="text" v-model="tangoSaveFolderName" placeholder="Enter folder name...">
         </label>
-        <button @click="openDialogPost('Open Save', `/save`, loadSaveFileFromAPI)">Open Save</button>
+        <button @click="overwriteSave">Overwrite Save</button><button @click="openDialogPost('Open Save', `/save`, loadSaveFileFromAPI)">Load Save</button>
+        <br>
 
         <!-- <button @click="saveFolder">Save Folder</button> -->
 

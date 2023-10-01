@@ -29,8 +29,16 @@
       "PackagePath": "staticwebassets\\app.js"
     },
     {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Def Not Cheating.json",
+      "PackagePath": "staticwebassets\\folders\\Def Not Cheating.json"
+    },
+    {
       "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Folder1.json",
       "PackagePath": "staticwebassets\\folders\\Folder1.json"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Gregar1.json",
+      "PackagePath": "staticwebassets\\folders\\Gregar1.json"
     },
     {
       "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Shinobi.json",
