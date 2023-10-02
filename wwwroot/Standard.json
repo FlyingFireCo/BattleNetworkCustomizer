@@ -261,19 +261,6 @@
     {
         "SId": "18",
         "MId": null,
-        "Name": "GUN DEL S EX",
-        "Description": "",
-        "Damage": "",
-        "Code": [
-            null
-        ],
-        "Element": "",
-        "Image": "",
-        "MB": ""
-    },
-    {
-        "SId": "18",
-        "MId": null,
         "Name": "GunDelEX*",
         "Description": "Fires a spread sunbeam",
         "Damage": "",

@@ -14,6 +14,38 @@ const CHIP_FOLDER_OFFSET = 0x2178;
 const CHIP_SIZE = 2; // based on RawChip
 const CHIPS_PER_FOLDER = 30;
 
+class SeededRandom {
+    constructor(seed) {
+        const m = 0x80000000; // 2**31;
+        const a = 1664525;
+        const c = 1013904223;
+
+        // Convert string seed to a number if a string is provided
+        if (typeof seed === 'string') {
+            seed = this.stringToSeed(seed);
+        }
+
+        this.state = seed ? seed % m : Math.floor(Math.random() * m);
+    }
+
+    stringToSeed(str) {
+        let hash = 0, i, chr;
+        if (str.length === 0) return hash;
+        for (i = 0; i < str.length; i++) {
+            chr = str.charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to a 32bit integer
+        }
+        return hash;
+    }
+
+    next() {
+        this.state = (1664525 * this.state + 1013904223) % 0x80000000;
+        return this.state / 0x80000000;
+    }
+}
+
+
 
 new Vue({
     el: '#app',
@@ -36,16 +68,33 @@ new Vue({
         showDetailedFilter: false,
         folderName: '',
         folderNames: [],
+        warnMessage: "",
         selectedItems: null,
         tangoSaveFolderName: '',
         showDialog: false,
         dialogTitle: "",
+        maxMega: 5,
+        maxGiga: 1,
+        includeMaxMega: true,
+        includeMaxGiga: true,
+        includeFailsafeMaxMega: true,
+        includeFailsafeMaxGiga: true,
         dialogItems: [],
         selectedItem: null,
         dialogFilter: "",
         dialogCallback: null, // This will store a function to be executed on confirmation
         fullByteArray: null,
         byteArray: null,
+        allowedCodes: "",
+        allowedElements: "",
+        allowFolderRules: true,
+        alphabetSoup: false,
+        alphabetSoupCodes: "ABCDEFGHIJKLMNOPQRSTUVWXYZ*",
+        allowedTypes: { Standard: true, Mega: true, Giga: true },
+        damageRange: { min: 0, max: 300 },
+        mbRange: { min: 0, max: 99 },
+        seed: null,
+        numChips: 30,
         detailedFilter: {
             Name: '',
             Description: '',
@@ -82,6 +131,20 @@ new Vue({
 
             const flattened = [];
             for (let chip of currentChips) {
+                // If the chip has a damage range, extract the maximum value
+                if (chip.Damage) {
+                    //first check if string
+                    if (typeof chip.Damage === 'string') {
+                        if (chip.Damage.includes('-')) {
+                            let parts = chip.Damage.split('-');
+                            chip.Damage = parseInt(parts[1]);
+                        }
+                        else {
+                            chip.Damage = parseInt(chip.Damage);
+                        }
+                    }
+                }
+
                 if (chip.Code && Array.isArray(chip.Code)) {
                     for (let code of chip.Code) {
                         // Create a shallow copy of the chip object with a single code
@@ -121,7 +184,7 @@ new Vue({
                                 if (!chip[key] || !searchCodes.includes(chip.Code)) {
                                     return false;
                                 }
-                            }else if (key === 'Element') {
+                            } else if (key === 'Element') {
                                 let searchCodes = this.detailedFilter.Element.split(',').map(code => code.trim());
                                 if (!chip[key] || !searchCodes.includes(chip.Element)) {
                                     return false;
@@ -206,6 +269,161 @@ new Vue({
     },
 
     methods: {
+        canAddChipToFolder(newChip) {
+            if (!this.allowFolderRules) return true;
+            const currentCount = this.chips.filter(chip => chip.chip.Name === newChip.Name).length;
+
+            // Check MB based limitations
+            if (newChip.MB < 20 && currentCount >= 5) return false;
+            if (newChip.MB >= 20 && newChip.MB < 30 && currentCount >= 4) return false;
+            if (newChip.MB >= 30 && newChip.MB < 40 && currentCount >= 3) return false;
+            if (newChip.MB >= 40 && newChip.MB < 50 && currentCount >= 2) return false;
+            if (newChip.MB >= 50 && currentCount >= 1) return false;
+
+            // Check Mega-class chips limitation
+            if (this.megaList.some(chip => chip.Name === newChip.Name) && this.chips.filter(chip => this.megaList.some(megaChip => megaChip.Name === chip.chip.Name)).length >= this.maxMega) return false;
+
+            // Check Giga-class chips limitation
+            if (this.gigaList.some(chip => chip.Name === newChip.Name) && this.chips.filter(chip => this.gigaList.some(gigaChip => gigaChip.Name === chip.chip.Name)).length >= this.maxGiga) return false;
+
+            return true;
+        },
+        generateRandomFolder() {
+            // Initialize random function with seed if provided
+            const randomGenerator = this.seed ? new SeededRandom(this.seed) : { next: () => Math.random() };
+            const alphabetSoupCodes = this.alphabetSoup ? [...this.alphabetSoupCodes] : [];
+
+            // Consolidate chips based on allowedTypes
+            let consolidatedChips = [];
+            if (this.allowedTypes.Standard) consolidatedChips.push(...this.standardList);
+            if (this.allowedTypes.Mega) consolidatedChips.push(...this.megaList);
+            if (this.allowedTypes.Giga) consolidatedChips.push(...this.gigaList);
+
+            // Dedicated filtering for alphabet soup
+            let alphabetSoupFilteredChips = consolidatedChips.filter(chip => chip.Code.some(code => alphabetSoupCodes.includes(code)));
+            this.chips = [];
+
+            // For "alphabet soup", try to find a chip for each code
+            for (let code of alphabetSoupCodes) {
+                let matchingChips = alphabetSoupFilteredChips.filter(chip => chip.Code.includes(code));
+                if (matchingChips.length > 0) {
+                    let randomIndex = Math.floor(randomGenerator.next() * matchingChips.length);
+                    let selectedChip = { ...matchingChips[randomIndex] };
+                    selectedChip.code = code;
+                    this.chips.push({ chip: selectedChip });
+                    // Remove the selected chip from both lists
+                    consolidatedChips.splice(consolidatedChips.indexOf(selectedChip), 1);
+                    alphabetSoupFilteredChips.splice(alphabetSoupFilteredChips.indexOf(selectedChip), 1);
+                }
+            }
+
+
+            // Standard filtering for the rest of the folder
+            let standardFilteredChips = consolidatedChips.filter(chip => {
+                // Filter by allowed elements
+                if (this.allowedElements && !this.allowedElements.split(',').map(element => element.trim()).includes(chip.Element)) return false;
+
+                // Filter by damage range
+                // Check if string
+                if (typeof chip.Damage === 'string') {
+                    if (chip.Damage.includes('-')) {
+                        let parts = chip.Damage.split('-');
+                        chip.Damage = parseInt(parts[1]);
+                    } else {
+                        chip.Damage = parseInt(chip.Damage);
+                    }
+                }
+                let damageValue = isNaN(chip.Damage) ? 0 : chip.Damage; // Treat NaN as 0
+                if (this.damageRange.min && damageValue < this.damageRange.min) return false;
+                if (this.damageRange.max && damageValue > this.damageRange.max) return false;
+
+                // Filter by MB range
+                let mbValue = parseInt(chip.MB);
+                mbValue = isNaN(mbValue) ? 0 : mbValue; // Treat NaN as 0
+                if (this.mbRange.min && mbValue < this.mbRange.min) return false;
+                if (this.mbRange.max && mbValue > this.mbRange.max) return false;
+
+                // If allowedCodes is specified, check if the chip has at least one matching code
+                if (this.allowedCodes) {
+                    const allowedCodesArray = this.allowedCodes.split(',').map(code => code.trim());
+                    if (!chip.Code.some(code => allowedCodesArray.includes(code))) return false;
+                }
+
+                return true;
+            });
+
+            // Function to add a certain amount of chips of a specific type, adhering to filters.
+            const addChipsOfType = (typeList, maxCount, includeFailsafe, failsafeAlertMessage) => {
+                let addedCount = 0;
+                let filteredChipsOfType = standardFilteredChips.filter(chip => typeList.includes(chip));
+                let failsafe = 0;
+                while (addedCount < maxCount && filteredChipsOfType.length > 0 && failsafe < 100) {
+                    ++failsafe;
+                    let randomIndex = Math.floor(randomGenerator.next() * filteredChipsOfType.length);
+                    let selectedChip = { ...filteredChipsOfType[randomIndex] };
+
+                    const allowedCodesArray = this.allowedCodes ? this.allowedCodes.split(',').map(code => code.trim()) : selectedChip.Code;
+                    const validCodes = selectedChip.Code.filter(code => allowedCodesArray.includes(code));
+                    selectedChip.code = validCodes[Math.floor(randomGenerator.next() * validCodes.length)];
+
+                    if (this.canAddChipToFolder(selectedChip)) {
+                        this.chips.push({ chip: selectedChip });
+                        addedCount++;
+
+                        // Remove the selected chip from the list
+                        standardFilteredChips.splice(standardFilteredChips.indexOf(selectedChip), 1);
+                        filteredChipsOfType.splice(filteredChipsOfType.indexOf(selectedChip), 1);
+                    }
+                }
+
+                // If we didn't add enough chips and failsafe is checked, select any chip of that type
+                if (addedCount < maxCount && includeFailsafe) {
+                    while (addedCount < maxCount && typeList.length > 0) {
+                        let randomIndex = Math.floor(randomGenerator.next() * typeList.length);
+                        let selectedChip = { ...typeList[randomIndex] };
+                        //set the code to a random one from the list
+                        selectedChip.code = selectedChip.Code[Math.floor(randomGenerator.next() * selectedChip.Code.length)];
+                        this.chips.push({ chip: selectedChip });
+                        addedCount++;
+
+                        // Alert that failsafe was used
+                        this.warnMessage += `\n${failsafeAlertMessage} - ${selectedChip.Name}`
+                    }
+                }
+            };
+            this.warnMessage = "";
+            // Add Giga chips
+            if (this.includeMaxGiga && !this.alphabetSoup) {
+                addChipsOfType(this.gigaList, this.maxGiga, this.includeFailsafeMaxGiga, "Included Giga chips that don't match the filter due to failsafe.");
+            }
+            // Add Mega chips
+            if (this.includeMaxMega&& !this.alphabetSoup) {
+                addChipsOfType(this.megaList, this.maxMega, this.includeFailsafeMaxMega, "Included Mega chips that don't match the filter due to failsafe.");
+            }
+
+
+            let failCount = 0;
+            // Fill the rest of the folder with chips that adhere to the standard filtering criteria
+            while (this.chips.length < this.numChips && standardFilteredChips.length > 0 && failCount < 1000) {
+                let randomIndex = Math.floor(randomGenerator.next() * standardFilteredChips.length);
+                let selectedChip = { ...standardFilteredChips[randomIndex] };
+
+                // Assign a random code to the chip based on allowed codes or chip codes
+                const allowedCodesArray = this.allowedCodes ? this.allowedCodes.split(',').map(code => code.trim()) : selectedChip.Code;
+                const validCodes = selectedChip.Code.filter(code => allowedCodesArray.includes(code));
+                selectedChip.code = validCodes[Math.floor(randomGenerator.next() * validCodes.length)];
+
+                if (this.canAddChipToFolder(selectedChip)) {
+                    this.chips.push({ chip: selectedChip });
+                }
+                else {
+                    failCount++;
+                }
+            }
+
+        }
+
+        ,
         setCookie(name, value, days) {
             let expires = "";
             if (days) {
@@ -343,7 +561,7 @@ new Vue({
         },
         addToFolder(chip) {
             if (this.chips.length >= 30
-                || !this.checkCanAddToFolder(chip)) return; // Don't add if the folder is full
+                || !this.canAddChipToFolder(chip)) return; // Don't add if the folder is full
             //deep clone chip
             let newChip = Object.assign({}, chip);
             if (newChip.MId) {
@@ -358,11 +576,6 @@ new Vue({
                 chip: newChip
             });
             this.$forceUpdate();
-        },
-
-        checkCanAddToFolder(chip) {
-            //todo check MB and limitiations
-            return true;
         },
         fetchChips(chipType, chipList) {
             fetch(`/chips/${chipType}`)
