@@ -26,8 +26,11 @@
         <label>Tango Save Folder:
             <input style="width:30%" type="text" v-model="tangoSaveFolderName" placeholder="Enter folder name...">
         </label>
-        <button @click="overwriteSave">Overwrite Save</button><button
-            @click="openDialogPost('Open Save', `/save`, loadSaveFileFromAPI)">Load Save</button>
+        <button @click="overwriteSave">Overwrite Save</button>
+        <button @click="openDialogPost('Open Save', `/save`, loadSaveFileFromAPI)">Load Save</button>
+        <br>
+        <button @click="setReg" :class="{ 'reg-button': settingReg }">Set REG</button>
+        <button @click="setTag" :class="{ 'tag-button': settingTag }">Set TAG</button>
         <br>
 
         <!-- <button @click="saveFolder">Save Folder</button> -->
@@ -40,6 +43,7 @@
                 <table border="1">
                     <thead>
                         <tr>
+                            <th>R/T</th>
                             <th>ID</th>
                             <th>Image</th>
                             <th>Name</th>
@@ -50,11 +54,16 @@
                             <th>MB</th>
                             <th>Remove</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="chipObj in rows"
+                    </thead>987                    <tbody>
+                        <tr v-for="(chipObj, chipIndex) in rows"
                             :class="{ 'highlighted': highlightedFolderChips.includes(chipObj.chip) }"
-                            style="cursor: pointer; height:2em;">
+                            style="cursor: pointer; height:2em;" @click="clickChip(chipObj, chipIndex)">
+
+                            <!-- Reg & Tag Blocks -->
+                            <td style="white-space: nowrap;">
+                                <span v-if="isRegged(chipIndex)" class="reg-tag reg">REG</span>
+                                <span v-if="isTagged(chipIndex)" class="reg-tag tag">TAG</span>
+                            </td>
                             <td>{{ chipObj.chip.MId || chipObj.chip.SId }}</td>
                             <td><img v-if="chipObj.chip.Image != null" v-bind:src="'/img/' + chipObj.chip.Image"
                                     alt="Chip Image" width="100"></td>
@@ -113,7 +122,7 @@
                     <label><input type="checkbox" v-model="allowedTypes.Giga">Giga</label>
                     <br>
 
-
+\
 
                     <label><input type="checkbox" v-model="alphabetSoup">Alphabet Soup</label>
                     <br>
@@ -138,8 +147,8 @@
                         <input type="number" v-model="numChips" min="1" max="30"></label>
                     <br>
 
-                    <div v-if = "!alphabetSoup">
-                        <label><input type="checkbox" v-model="includeMaxMega" >Include Max Mega</label><br>
+                    <div v-if="!alphabetSoup">
+                        <label><input type="checkbox" v-model="includeMaxMega">Include Max Mega</label><br>
                         <label><input type="checkbox" v-model="includeMaxGiga">Include Max Giga</label><br>
                         <label><input type="checkbox" v-model="includeFailsafeMaxMega">Include Failsafe Mega</label><br>
                         <label><input type="checkbox" v-model="includeFailsafeMaxGiga">Include Failsafe Giga</label><br>
@@ -148,7 +157,8 @@
                     <!-- Generate Random Folder button -->
                     <button @click="generateRandomFolder">Generate Random Folder</button>
                     <br>
-                    <pre>{{warnMessage}}</pre>
+                    <pre style = "color: yellow">{{warnMessage}}</pre>
+                    <pre>{{infoMessage}}</pre>
                 </div>
 
                 <div v-else>

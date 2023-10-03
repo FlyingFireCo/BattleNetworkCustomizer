@@ -69,6 +69,7 @@ new Vue({
         folderName: '',
         folderNames: [],
         warnMessage: "",
+        infoMessage: "",
         selectedItems: null,
         tangoSaveFolderName: '',
         showDialog: false,
@@ -79,6 +80,8 @@ new Vue({
         includeMaxGiga: true,
         includeFailsafeMaxMega: true,
         includeFailsafeMaxGiga: true,
+        regged: null,
+        tagged: [],
         dialogItems: [],
         selectedItem: null,
         dialogFilter: "",
@@ -95,6 +98,8 @@ new Vue({
         mbRange: { min: 0, max: 99 },
         seed: null,
         numChips: 30,
+        settingReg: false,
+        settingTag: false,
         detailedFilter: {
             Name: '',
             Description: '',
@@ -269,6 +274,91 @@ new Vue({
     },
 
     methods: {
+        setReg() {
+            if (this.settingReg) {
+                this.settingReg = false;
+                return;
+            }
+            this.settingReg = true;
+            this.settingTag = false;
+        },
+        setTag() {
+            if (this.settingTag) {
+                this.settingTag = false;
+                return;
+            }
+            this.settingTag = true;
+            this.settingReg = false;
+            this.tagged = [];
+        },
+        clickChip(chip, index) {
+            if (this.settingReg
+                && !this.tagged.includes(index)) {
+                if (this.regged == index) {
+                    this.regged = 255;
+                    return;
+                }
+                if (parseInt(chip.chip.MB) <= 50) {
+                    this.regged = index;
+                    this.settingReg = false;
+                    return;
+                }
+            }
+            if (this.settingTag
+                && !this.tagged.includes(index)
+                && this.regged != index) {
+                this.tagged.push(index);
+                if (this.tagged.length == 2) {
+                    this.settingTag = false;
+                    this.sortTaggedChips();
+                }
+                if (this.tagged.length > 2) {
+                    this.tagged = [];
+                    this.tagged.push(index);
+                }
+            }
+        },
+
+        sortTaggedChips() {
+            // Store the tagged chips
+            let firstTagged = this.chips[this.tagged[0]];
+            let secondTagged = this.chips[this.tagged[1]];
+
+            // Track if regged was displaced by the sort
+            let reggedDisplaced = false;
+
+            // Check if regged lies between the original positions of the tagged chips
+            if (this.regged > this.tagged[0] && this.regged <= this.tagged[1]) {
+                reggedDisplaced = true;
+            }
+
+            // Remove the tagged chips starting from the highest index
+            if (this.tagged[0] > this.tagged[1]) {
+                this.chips.splice(this.tagged[0], 1);
+                this.chips.splice(this.tagged[1], 1);
+            } else {
+                this.chips.splice(this.tagged[1], 1);
+                this.chips.splice(this.tagged[0], 1);
+            }
+
+            // Insert them back next to each other at the position of the first tagged chip
+            this.chips.splice(this.tagged[0], 0, firstTagged, secondTagged);
+
+            // Update the tagged indices
+            this.tagged = [this.tagged[0], this.tagged[0] + 1];
+
+            // If the regged index was displaced, adjust it
+            if (reggedDisplaced) {
+                this.regged += 1;
+            }
+
+            // Check if the regged index now matches a tagged index and move it if needed
+            if (this.regged === this.tagged[0] || this.regged === this.tagged[1]) {
+                this.regged += 1;  // Bump it one place forward
+            }
+        }
+        ,
+
         canAddChipToFolder(newChip) {
             if (!this.allowFolderRules) return true;
             const currentCount = this.chips.filter(chip => chip.chip.Name === newChip.Name).length;
@@ -289,6 +379,68 @@ new Vue({
             return true;
         },
         generateRandomFolder() {
+            let codeRequirements = {};  // e.g. { 'A': 15, 'E': 6 }
+            let elementRequirements = {};  // e.g. { 'Aqua': 9, 'Break': 15 }
+
+            let totalCodeCount = 0;
+            let totalElementCount = 0;
+
+            let didCodePercent = false;
+            let didElementPercent = false;
+
+            if (this.allowedCodes) {
+                const codeParts = this.allowedCodes.split(',');
+                for (let part of codeParts) {
+                    let code, percentage;
+                    if (part.includes('(')) {
+                        [code, percentage] = part.split('(');
+                        const actualPercentage = parseInt(percentage);
+                        if (actualPercentage) {
+                            const requiredChips = Math.round((actualPercentage / 100) * this.numChips);
+                            codeRequirements[code.trim()] = requiredChips;
+                            totalCodeCount += requiredChips;
+                            didCodePercent = true;
+                        }
+                    } else {
+                        code = part.trim();
+                        codeRequirements[code] = 0; // Placeholder, we will compute the real number later.
+                    }
+                }
+            }
+
+            if (this.allowedElements) {
+                const elementParts = this.allowedElements.split(',');
+                for (let part of elementParts) {
+                    let element, percentage;
+                    if (part.includes('(')) {
+                        [element, percentage] = part.split('(');
+                        const actualPercentage = parseInt(percentage);
+                        if (actualPercentage) {
+                            const requiredChips = Math.round((actualPercentage / 100) * this.numChips);
+                            elementRequirements[element.trim()] = requiredChips;
+                            totalElementCount += requiredChips;
+                            didElementPercent = true;
+                        }
+                    } else {
+                        element = part.trim();
+                        elementRequirements[element] = 0; // Placeholder, we will compute the real number later.
+                    }
+                }
+            }
+
+            // Check for any discrepancies in total counts and assign the rest to the "catch-all" categories.
+            if (!codeRequirements['*'] && totalCodeCount < this.numChips && this.allowedCodes.length > 0 && didCodePercent) {
+                codeRequirements['*'] = this.numChips - totalCodeCount;
+            }
+
+            if (!elementRequirements[''] && totalElementCount < this.numChips && this.allowedElements.length > 0 && didElementPercent) {
+                elementRequirements[''] = this.numChips - totalElementCount; // Using empty string for the "None" element.
+            }
+
+            //create comma separated list of codeRequirement keys and allowed elements keys
+            let codeKeys = Object.keys(codeRequirements).join(',');
+            let elementKeys = Object.keys(elementRequirements).join(',');
+
             // Initialize random function with seed if provided
             const randomGenerator = this.seed ? new SeededRandom(this.seed) : { next: () => Math.random() };
             const alphabetSoupCodes = this.alphabetSoup ? [...this.alphabetSoupCodes] : [];
@@ -312,8 +464,8 @@ new Vue({
                     selectedChip.code = code;
                     this.chips.push({ chip: selectedChip });
                     // Remove the selected chip from both lists
-                    consolidatedChips.splice(consolidatedChips.indexOf(selectedChip), 1);
-                    alphabetSoupFilteredChips.splice(alphabetSoupFilteredChips.indexOf(selectedChip), 1);
+                    // consolidatedChips.splice(consolidatedChips.indexOf(selectedChip), 1);
+                    // alphabetSoupFilteredChips.splice(alphabetSoupFilteredChips.indexOf(selectedChip), 1);
                 }
             }
 
@@ -321,7 +473,7 @@ new Vue({
             // Standard filtering for the rest of the folder
             let standardFilteredChips = consolidatedChips.filter(chip => {
                 // Filter by allowed elements
-                if (this.allowedElements && !this.allowedElements.split(',').map(element => element.trim()).includes(chip.Element)) return false;
+                if (elementKeys && !elementKeys.split(',').map(element => element.trim()).includes(chip.Element)) return false;
 
                 // Filter by damage range
                 // Check if string
@@ -344,25 +496,77 @@ new Vue({
                 if (this.mbRange.max && mbValue > this.mbRange.max) return false;
 
                 // If allowedCodes is specified, check if the chip has at least one matching code
-                if (this.allowedCodes) {
-                    const allowedCodesArray = this.allowedCodes.split(',').map(code => code.trim());
+                if (codeKeys) {
+                    const allowedCodesArray = codeKeys.split(',').map(code => code.trim());
                     if (!chip.Code.some(code => allowedCodesArray.includes(code))) return false;
                 }
 
                 return true;
             });
 
+
+            this.infoMessage = "";
+            this.infoMessage += `Total available chips: ${standardFilteredChips.length}\n`;
+            // Initialize dictionaries for counting elements and codes
+            let elementCount = {};
+            let codeCount = {};
+
+            // Loop through standardFilteredChips to count elements and codes
+            for (let chip of standardFilteredChips) {
+                // Count elements
+                if (chip.Element in elementCount) {
+                    elementCount[chip.Element]++;
+                } else {
+                    elementCount[chip.Element] = 1;
+                }
+
+                // Count codes
+                for (let code of chip.Code) {
+                    if (code in codeCount) {
+                        codeCount[code]++;
+                    } else {
+                        codeCount[code] = 1;
+                    }
+                }
+            }
+
+            // Sort and log element counts
+            let sortedElementCounts = Object.entries(elementCount).sort(([, a], [, b]) => b - a);
+            this.infoMessage += "Element Counts:\n";
+            for (let [element, count] of sortedElementCounts) {
+                this.infoMessage += `${element}: ${count}\n`;
+            }
+
+            // Sort and log code counts
+            let sortedCodeCounts = Object.entries(codeCount).sort(([, a], [, b]) => b - a);
+            this.infoMessage += "Code Counts:\n";
+            for (let [code, count] of sortedCodeCounts) {
+                this.infoMessage += `${code}: ${count}\n`;
+            }
+
+
+            // Function to check if a chip meets the code and element requirements.
+            const meetsRequirements = (chip, requiredCode, requiredElement) => {
+                const meetsCode = requiredCode ? chip.Code.includes(requiredCode) : true;
+                const meetsElement = requiredElement ? chip.Element === requiredElement : true;
+                return meetsCode && meetsElement;
+            };
+
             // Function to add a certain amount of chips of a specific type, adhering to filters.
-            const addChipsOfType = (typeList, maxCount, includeFailsafe, failsafeAlertMessage) => {
+            const addChipsOfType = (typeList, maxCount, includeFailsafe, failsafeAlertMessage, requiredCount = null, requiredElement = null) => {
                 let addedCount = 0;
-                let filteredChipsOfType = standardFilteredChips.filter(chip => typeList.includes(chip));
+                // This section of code needs modification:
+                let filteredChipsOfType = standardFilteredChips.filter(chip => typeList.includes(chip) && meetsRequirements(chip, null, requiredElement));
                 let failsafe = 0;
-                while (addedCount < maxCount && filteredChipsOfType.length > 0 && failsafe < 100) {
+                while (((requiredCount && addedCount < requiredCount) || (addedCount < maxCount && !requiredCount)) && failsafe < 1000) {
+                    if (this.chips.length >= 30) { break };
                     ++failsafe;
+                    if (filteredChipsOfType.length == 0) {
+                        break;
+                    }
                     let randomIndex = Math.floor(randomGenerator.next() * filteredChipsOfType.length);
                     let selectedChip = { ...filteredChipsOfType[randomIndex] };
-
-                    const allowedCodesArray = this.allowedCodes ? this.allowedCodes.split(',').map(code => code.trim()) : selectedChip.Code;
+                    const allowedCodesArray = codeKeys ? codeKeys.split(',').map(code => code.trim()) : selectedChip.Code;
                     const validCodes = selectedChip.Code.filter(code => allowedCodesArray.includes(code));
                     selectedChip.code = validCodes[Math.floor(randomGenerator.next() * validCodes.length)];
 
@@ -370,15 +574,17 @@ new Vue({
                         this.chips.push({ chip: selectedChip });
                         addedCount++;
 
-                        // Remove the selected chip from the list
-                        standardFilteredChips.splice(standardFilteredChips.indexOf(selectedChip), 1);
-                        filteredChipsOfType.splice(filteredChipsOfType.indexOf(selectedChip), 1);
+                        // // Remove the selected chip from the list
+                        // standardFilteredChips.splice(standardFilteredChips.indexOf(selectedChip), 1);
+                        // filteredChipsOfType.splice(filteredChipsOfType.indexOf(selectedChip), 1);
                     }
                 }
 
                 // If we didn't add enough chips and failsafe is checked, select any chip of that type
                 if (addedCount < maxCount && includeFailsafe) {
-                    while (addedCount < maxCount && typeList.length > 0) {
+                    let failsafe = 0;
+                    while (addedCount < maxCount && typeList.length > 0 && failsafe < 1000) {
+                        ++failsafe;
                         let randomIndex = Math.floor(randomGenerator.next() * typeList.length);
                         let selectedChip = { ...typeList[randomIndex] };
                         //set the code to a random one from the list
@@ -397,16 +603,54 @@ new Vue({
                 addChipsOfType(this.gigaList, this.maxGiga, this.includeFailsafeMaxGiga, "Included Giga chips that don't match the filter due to failsafe.");
             }
             // Add Mega chips
-            if (this.includeMaxMega&& !this.alphabetSoup) {
+            if (this.includeMaxMega && !this.alphabetSoup) {
                 addChipsOfType(this.megaList, this.maxMega, this.includeFailsafeMaxMega, "Included Mega chips that don't match the filter due to failsafe.");
+            }
+
+            // Adding chips based on code requirements
+            // Modify the loops for adding chips based on code and element requirements:
+            for (let code in codeRequirements) {
+                const requiredCount = codeRequirements[code];
+                const chipsForCode = standardFilteredChips.filter(chip => chip.Code.includes(code));
+                addChipsOfType(chipsForCode, requiredCount, false, `Not enough chips for code ${code} added.`, requiredCount);
+            }
+
+            for (let element in elementRequirements) {
+                const requiredCount = elementRequirements[element];
+                // Note: Now passing the required element into addChipsOfType
+                addChipsOfType(standardFilteredChips, requiredCount, false, `Not enough chips for element ${element} added.`, requiredCount, element);
             }
 
 
             let failCount = 0;
             // Fill the rest of the folder with chips that adhere to the standard filtering criteria
             while (this.chips.length < this.numChips && standardFilteredChips.length > 0 && failCount < 1000) {
-                let randomIndex = Math.floor(randomGenerator.next() * standardFilteredChips.length);
-                let selectedChip = { ...standardFilteredChips[randomIndex] };
+                let potentialChips = [];
+
+                // If any code requirement is still unmet, filter chips for that code.
+                for (let code in codeRequirements) {
+                    if (this.chips.filter(chip => chip.code === code).length < codeRequirements[code]) {
+                        potentialChips = standardFilteredChips.filter(chip => chip.Code.includes(code));
+                        break;
+                    }
+                }
+                // If any element requirement is still unmet, filter chips for that element.
+                if (!potentialChips.length) {
+                    for (let element in elementRequirements) {
+                        if (this.chips.filter(chip => chip.Element === element).length < elementRequirements[element]) {
+                            potentialChips = standardFilteredChips.filter(chip => chip.Element === element);
+                            break;
+                        }
+                    }
+                }
+
+                // If there are no potential chips based on remaining requirements, fall back to standard logic.
+                if (!potentialChips.length) {
+                    potentialChips = standardFilteredChips;
+                }
+
+                let randomIndex = Math.floor(randomGenerator.next() * potentialChips.length);
+                let selectedChip = { ...potentialChips[randomIndex] };
 
                 // Assign a random code to the chip based on allowed codes or chip codes
                 const allowedCodesArray = this.allowedCodes ? this.allowedCodes.split(',').map(code => code.trim()) : selectedChip.Code;
@@ -421,9 +665,51 @@ new Vue({
                 }
             }
 
-        }
+            //randomly reg a chip index 0-29
+            this.regged = 255;
+            let tryCount = 0;
+            while (this.regged > 29 && tryCount < 1000) {
+                ++tryCount;
+                let index = Math.floor(randomGenerator.next() * 30);
+                if (this.chips[index].chip.MB <= 50) {
+                    this.regged = index;
+                }
+            }
+            //randomly tag 2 chips that are not regged
+            this.tagged = [];
+            while (this.tagged.length < 2) {
+                let randomIndex = Math.floor(randomGenerator.next() * 30);
+                if (randomIndex != this.regged
+                    && !this.tagged.includes(randomIndex)) {
+                    this.tagged.push(randomIndex);
+                }
+            }
+            this.sortTaggedChips();
+            this.reorderRegTag();
+            this.$forceUpdate();
+        },
+        reorderRegTag() {
+            // Extract the regged and tagged chips
+            const reggedChip = this.chips[this.regged];
+            const firstTaggedChip = this.chips[this.tagged[0]];
+            const secondTaggedChip = this.chips[this.tagged[1]];
 
-        ,
+            // Remove the regged and tagged chips from the array
+            const removedChips = [reggedChip, firstTaggedChip, secondTaggedChip];
+            this.chips = this.chips.filter((chip, index) => {
+                return !removedChips.includes(chip);
+            });
+
+            // Insert the regged chip at the start
+            this.chips.unshift(reggedChip);
+
+            // Insert the tagged chips right after the regged chip
+            this.chips.splice(1, 0, firstTaggedChip, secondTaggedChip);
+
+            // Update the indices
+            this.regged = 0;
+            this.tagged = [1, 2];
+        },
         setCookie(name, value, days) {
             let expires = "";
             if (days) {
@@ -473,9 +759,11 @@ new Vue({
             }
         },
 
-        loadFolderFromJson(jsonChips) {
+        loadFolderFromJson(folder) {
             this.chips = []; // Clear chips array
-
+            jsonChips = folder.RawChips;
+            this.regged = folder.Regged;
+            this.tagged = folder.Tagged;
             jsonChips.forEach(chipData => {
                 const chip = this.readChipData(chipData.Id, chipData.Code);
                 this.chips.push({ chip });
@@ -713,6 +1001,24 @@ new Vue({
                 this.byteArray.set(chipBytes, chipOffset);
             }
 
+            // Set the reg chip index
+            const regChipIndexOffset = this.getNaviStatsOffset(0) + 0x2e + this.selectedFolder;
+            if (this.regged < 30) {
+                this.byteArray[regChipIndexOffset] = this.regged;
+            } else {
+                this.byteArray[regChipIndexOffset] = 0xff; // default or error value
+            }
+
+            // Set the tagged chip indexes
+            const taggedChipsOffset = this.getNaviStatsOffset(0) + 0x56 + this.selectedFolder * 2;
+            if (this.tagged && this.tagged.length >= 2) {
+                this.byteArray[taggedChipsOffset] = this.tagged[0];
+                this.byteArray[taggedChipsOffset + 1] = this.tagged[1];
+            } else {
+                this.byteArray[taggedChipsOffset] = 0xff; // default or error value
+                this.byteArray[taggedChipsOffset + 1] = 0xff; // default or error value
+            }
+
 
 
 
@@ -848,12 +1154,53 @@ new Vue({
             return 0x47cc + 0x64 * (naviId === 0 ? 0 : 1);
         },
 
+        regularChipIndex(folderIndex) {
+            if (folderIndex >= this.numFolders || !this.byteArray) {
+                return null;
+            }
 
+            const naviStatsOffset = this.getNaviStatsOffset(0);
+            const idx = this.byteArray[naviStatsOffset + 0x2e + folderIndex];
+
+            return idx >= 30 ? null : idx;
+        },
+
+        tagChipIndexes(folderIndex) {
+            if (folderIndex >= this.numFolders || !this.byteArray) {
+                return null;
+            }
+
+
+            const naviStatsOffset = this.getNaviStatsOffset(0);
+            const tagChipsOffset = naviStatsOffset + 0x56 + folderIndex * 2;
+
+            const idx1 = this.byteArray[tagChipsOffset];
+            const idx2 = this.byteArray[tagChipsOffset + 1];
+
+            return idx1 === 0xff || idx2 === 0xff ? null : [idx1, idx2];
+        },
+        isRegged(chipIndex) {
+            return this.regged === chipIndex;
+        },
+
+        isTagged(chipIndex) {
+            if (this.tagged) {
+                return this.tagged.includes(chipIndex);
+            }
+            return false;
+        },
 
         // This method will extract the chips for the given folder
         loadFolderChips(byteArray, folderIndex) {
             const chipStartOffset = CHIP_FOLDER_OFFSET + (folderIndex * CHIPS_PER_FOLDER * CHIP_SIZE);
             this.chips = []; // Clear chips array
+
+            this.regged = this.regularChipIndex(folderIndex);
+            this.tagged = this.tagChipIndexes(folderIndex);
+
+            if (!this.tagged) {
+                this.tagged = [];
+            }
 
             for (let i = 0; i < CHIPS_PER_FOLDER; i++) {
                 const chipOffset = chipStartOffset + (i * CHIP_SIZE);
@@ -901,6 +1248,11 @@ new Vue({
         async saveFolder() {
             // Convert this.chips to raw data
             const rawChips = this.chips.map(chipObj => this.chipToRaw(chipObj.chip));
+            let folder = {
+                regged: this.regged,
+                tagged: this.tagged,
+                rawChips: rawChips,
+            }
 
             // Make an HTTP POST request using fetch
             try {
@@ -909,7 +1261,7 @@ new Vue({
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(rawChips)  // Sending rawChips directly without wrapping in an object
+                    body: JSON.stringify(folder)  // Sending rawChips directly without wrapping in an object
                 });
 
                 if (!response.ok) {

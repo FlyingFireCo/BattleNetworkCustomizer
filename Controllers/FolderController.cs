@@ -13,7 +13,7 @@ public class FoldersController : ControllerBase
 
 
     [HttpPost("{folderName}")]
-    public async Task<IActionResult> SaveFolder(string folderName, [FromBody] List<FolderData> folderData)
+    public async Task<IActionResult> SaveFolder(string folderName, [FromBody] Folder folderData)
     {
         if (string.IsNullOrWhiteSpace(folderName))
             return BadRequest("Invalid folder name.");
@@ -67,9 +67,15 @@ public class FoldersController : ControllerBase
         return Ok($"Folder {folderName} deleted successfully.");
     }
 
-    public class FolderData
+    public class RawChipData
     {
         public int Id { get; set; }
         public int Code { get; set; }
+    }
+
+    public class Folder{
+        public int Regged { get; set; }
+        public List<int> Tagged { get; set; }
+        public List<RawChipData> RawChips { get; set; }
     }
 }

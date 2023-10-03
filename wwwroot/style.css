@@ -46,6 +46,20 @@
     padding: 12px;
 }
 
+
+.reg-tag {
+    color: white;
+    padding: 0 5px;
+    margin-right: 5px;
+}
+.reg {
+    background-color: red;
+}
+.tag {
+    background-color: green;
+}
+
+
 .new-item {
     background: #334;
     color: white;
@@ -366,4 +380,15 @@ table td img {
 
 .highlighted {
     background-color: yellow; /* or any other color to indicate highlighting */
+}
+
+
+.reg-button {
+    background-color: red!important;
+    color: white; /* for the text color */
+}
+
+.tag-button {
+    background-color: green!important;
+    color: white; /* for the text color */
 }
