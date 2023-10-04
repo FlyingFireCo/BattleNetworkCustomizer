@@ -360,6 +360,16 @@ new Vue({
         ,
 
         canAddChipToFolder(newChip) {
+            //Can only add chips to the correct version
+            if(newChip.Version != ""){
+                if (this.gameName.includes("REXE6 G")
+                && newChip.Version == "Falzar") {
+                    return false;
+                } else if (this.gameName.includes("REXE6 F")
+                && newChip.Version == "Gregar") {
+                    return false;
+                }
+            } 
             if (!this.allowFolderRules) return true;
             const currentCount = this.chips.filter(chip => chip.chip.Name === newChip.Name).length;
 

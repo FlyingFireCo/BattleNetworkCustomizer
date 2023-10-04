@@ -10,7 +10,8 @@
         ],
         "Element": "",
         "Image": "image282.png",
-        "MB": "99"
+        "MB": "99",
+        "Version":"Gregar"
     },
     {
         "SId": null,
@@ -23,7 +24,8 @@
         ],
         "Element": "Break",
         "Image": "image303.png",
-        "MB": "99"
+        "MB": "99",
+        "Version":"Gregar"
     },
     {
         "SId": null,
@@ -36,7 +38,8 @@
         ],
         "Element": "Sword",
         "Image": "image302.png",
-        "MB": "99"
+        "MB": "99",
+        "Version":"Gregar"
     },
     {
         "SId": null,
@@ -49,7 +52,8 @@
         ],
         "Element": "",
         "Image": "image288.png",
-        "MB": "99"
+        "MB": "99",
+        "Version":"Gregar"
     },
     {
         "SId": null,
@@ -62,7 +66,8 @@
         ],
         "Element": "Sword",
         "Image": "image304.png",
-        "MB": "99"
+        "MB": "99",
+        "Version":"Gregar"
     },
     {
         "SId": null,
@@ -75,7 +80,8 @@
         ],
         "Element": "",
         "Image": "image289.png",
-        "MB": "99"
+        "MB": "99",
+        "Version":"Gregar"
     },
     {
         "SId": null,
@@ -88,7 +94,8 @@
         ],
         "Element": "",
         "Image": "image299.png",
-        "MB": "95"
+        "MB": "95",
+        "Version":"Falzar"
     },
     {
         "SId": null,
@@ -101,7 +108,8 @@
         ],
         "Element": "Break",
         "Image": "image296.png",
-        "MB": "90"
+        "MB": "90",
+        "Version":"Falzar"
     },
     {
         "SId": null,
@@ -114,7 +122,8 @@
         ],
         "Element": "Sword",
         "Image": "image284.png",
-        "MB": "93"
+        "MB": "93",
+        "Version":"Falzar"
     },
     {
         "SId": null,
@@ -127,7 +136,8 @@
         ],
         "Element": "",
         "Image": "image290.png",
-        "MB": "99"
+        "MB": "99",
+        "Version":"Falzar"
     },
     {
         "SId": null,
@@ -140,7 +150,8 @@
         ],
         "Element": "Elec",
         "Image": "image298.png",
-        "MB": "80"
+        "MB": "80",
+        "Version":"Falzar"
     },
     {
         "SId": null,
@@ -153,6 +164,7 @@
         ],
         "Element": "",
         "Image": "image286.png",
-        "MB": "99"
+        "MB": "99",
+        "Version":"Falzar"
     }
 ]

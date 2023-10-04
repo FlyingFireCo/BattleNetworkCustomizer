@@ -29,6 +29,18 @@
       "PackagePath": "staticwebassets\\app.js"
     },
     {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Gregar.json",
+      "PackagePath": "staticwebassets\\folders\\Gregar.json"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Random AH Fire Aqua.json",
+      "PackagePath": "staticwebassets\\folders\\Random AH Fire Aqua.json"
+    },
+    {
+      "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\folders\\Shinobi.json",
+      "PackagePath": "staticwebassets\\folders\\Shinobi.json"
+    },
+    {
       "Id": "C:\\Users\\Lee\\FFCO\\bn\\wwwroot\\img\\image1.png",
       "PackagePath": "staticwebassets\\img\\image1.png"
     },
