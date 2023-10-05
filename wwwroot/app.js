@@ -361,15 +361,15 @@ new Vue({
 
         canAddChipToFolder(newChip) {
             //Can only add chips to the correct version
-            if(newChip.Version != ""){
+            if (newChip.Version != "") {
                 if (this.gameName.includes("REXE6 G")
-                && newChip.Version == "Falzar") {
+                    && newChip.Version == "Falzar") {
                     return false;
                 } else if (this.gameName.includes("REXE6 F")
-                && newChip.Version == "Gregar") {
+                    && newChip.Version == "Gregar") {
                     return false;
                 }
-            } 
+            }
             if (!this.allowFolderRules) return true;
             const currentCount = this.chips.filter(chip => chip.chip.Name === newChip.Name).length;
 
@@ -597,13 +597,16 @@ new Vue({
                         ++failsafe;
                         let randomIndex = Math.floor(randomGenerator.next() * typeList.length);
                         let selectedChip = { ...typeList[randomIndex] };
-                        //set the code to a random one from the list
-                        selectedChip.code = selectedChip.Code[Math.floor(randomGenerator.next() * selectedChip.Code.length)];
-                        this.chips.push({ chip: selectedChip });
-                        addedCount++;
 
-                        // Alert that failsafe was used
-                        this.warnMessage += `\n${failsafeAlertMessage} - ${selectedChip.Name}`
+                        if (this.canAddChipToFolder(selectedChip)) {
+                            //set the code to a random one from the list
+                            selectedChip.code = selectedChip.Code[Math.floor(randomGenerator.next() * selectedChip.Code.length)];
+                            this.chips.push({ chip: selectedChip });
+                            addedCount++;
+
+                            // Alert that failsafe was used
+                            this.warnMessage += `\n${failsafeAlertMessage} - ${selectedChip.Name}`
+                        }
                     }
                 }
             };
@@ -744,6 +747,8 @@ new Vue({
                 const response = await fetch(`/folders`);
 
                 if (!response.ok) {
+                    //alert
+                    alert("Error loading the folder names");
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
 
@@ -759,6 +764,8 @@ new Vue({
                 const response = await fetch(`/folders/${encodeURIComponent(this.selectedItem)}`);
 
                 if (!response.ok) {
+                    //alert
+                    alert("Error loading the selected folder");
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
 
@@ -919,6 +926,8 @@ new Vue({
             let response = await fetch("/Save/GetSaveData", requestConfig);
 
             if (!response.ok) {
+                //alert
+                alert("Error loading the selected save file" + response.status);
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
@@ -1068,6 +1077,8 @@ new Vue({
                 });
 
                 if (!response.ok) {
+                    //alert
+                    alert("Error saving the file");
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
 
@@ -1076,6 +1087,8 @@ new Vue({
                     console.log("Save data successfully written to server.");
                 } else {
                     console.error("Error from server:", responseData.message);
+                    //alert
+                    alert("Error saving the file: " + responseData.message);
                 }
 
             } catch (error) {
